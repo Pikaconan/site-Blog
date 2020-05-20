@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Maverick,原谅糖,Kepler,blog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Kepler" />
+    <link rel="alternate" type="application/rss+xml" title="原谅糖 &raquo; RSS 2.0" href="https://yltang.cn/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="原谅糖 &raquo; ATOM 1.0" href="https://yltang.cn/feed/atom/index.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/kepler-426969802d.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.10.0/dist/tocbot.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/2ccdfb68a7fc2c48969d57ec1efa9892.json"
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
+                document.body.classList.add('safari')
+            }else{
+                document.body.classList.remove('safari')
+            }
+        });
+    </script>
+    
+<title>我的导航页修改方案 - 原谅糖</title>
+<meta name="author" content="原谅糖" />
+<meta name="description" content="CSS 代码看得我头疼。" />
+<meta property="og:title" content="我的导航页修改方案 - 原谅糖" />
+<meta property="og:description" content="CSS 代码看得我头疼。" />
+<meta property="og:site_name" content="原谅糖" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yltang.cn/archives/my-start-page/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2020-02-12T19:56:00-00.00" />
+<meta name="twitter:title" content="我的导航页修改方案 - 原谅糖" />
+<meta name="twitter:description" content="CSS 代码看得我头疼。" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="dns-prefetch" href="//yltang.cn" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style>.yue a {color: #42b983;border-bottom: 0px solid #42b983;}</style>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?662d4f74107525a0ad20ea78dc27c62e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    </head>
+    
+    <body class="content">
+        <header>
+            <div class="container">
+                <section>
+                    <a href="https://yltang.cn/"><img src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png">原谅糖</a>
+                </section>
+                <section>
+                    <nav>
+                        <ul>
+                            
+                                <li><a href="https://travellings.now.sh/" target="_blank">Travelling</a></li>
+                            
+                        </ul>
+                    </nav>
+                </section>
+    
+                <section>
+                    <a hidden class="toggle-toc" target="_self" href="javascript:void(0)" onclick="$(body).toggleClass('toc-open')"><i class="fa fa-align-right"></i></a>
+                    <a hidden class="toggle-navbar" target="_self" href="javascript:void(0)" onclick="$(body).toggleClass('navbar-open')"><i class="fa fa-indent"></i></a>
+                    <button class="search-form-input"><i class="fa fa-search"></i></button>
+                </section>
+            </div>
+        </header>
+
+        <main>
+            <div id="pjax-container" class="container">
+                <aside id="navbar" class="no-scrollbar">
+                    
+                    <section class="sidebar-nav">
+                        
+                            <div class="None" ><span><a href="https://yltang.cn/">首页</a></span></div>
+                        
+                            <div class="None" ><span><a href="https://yltang.cn/music/">音乐</a></span></div>
+                        
+                            <div class="None" ><span><a href="https://yltang.cn/links/">友链</a></span></div>
+                        
+                            <div class="None" ><span><a href="https://yltang.cn/archives/">归档</a></span></div>
+                        
+                            <div class="None" ><span><a href="https://yltang.cn/about/">关于</a></span></div>
+                        
+                    </section>
+                    
+                    <section>
+                        
+    <div class="open "><span><a href="https://yltang.cn/category/胡诌/">胡诌</a><button class="toggle_sidebar fa"></button></span><ul><li class=""><a href="https://yltang.cn/archives/black-white-memory/">黑白记忆</a></li><li class=""><a href="https://yltang.cn/archives/nothing-happened/">最难过的，是我们什么都没发生过</a></li><li class=""><a href="https://yltang.cn/archives/still-alive/">但是活下去说不定能找到有意思的事</a></li><li class=""><a href="https://yltang.cn/archives/maverick-music-pio/">Maverick 增加音乐 / 看板娘功能</a></li><li class=""><a href="https://yltang.cn/archives/ffmpeg-flv-mp4/">利用 FFmpeg 转换 flv 至 mp4</a></li><li class=""><a href="https://yltang.cn/archives/cloud-gaming-and-5g/">5G 是云游戏的未来吗</a></li><li class="current"><a href="https://yltang.cn/archives/my-start-page/">我的导航页修改方案</a></li><li class=""><a href="https://yltang.cn/archives/wiki-by-maverick/">使用 Maverick 搭建个人 Wiki</a></li><li class=""><a href="https://yltang.cn/archives/awesome-bilibili/">观 Bilibili 新年晚会有感</a></li><li class=""><a href="https://yltang.cn/archives/something-about-blog-migration/">博客迁移二三事</a></li><li class=""><a href="https://yltang.cn/archives/unlock-rss-hide-skill/">解锁 RSS 隐藏技能</a></li><li class=""><a href="https://yltang.cn/archives/bye-suzhou-shantang/">再见苏州</a></li><li class=""><a href="https://yltang.cn/archives/awesome-iqunix-f96-joker/">iQunix F96 Joker 开箱</a></li><li class=""><a href="https://yltang.cn/archives/the-shawshank-redemption/">肖申克的救赎</a></li><li class=""><a href="https://yltang.cn/archives/i-love-u/">对不起</a></li><li class=""><a href="https://yltang.cn/archives/talk-nonsense/">胡言乱语</a></li><li class=""><a href="https://yltang.cn/archives/qq-screenshot-enhance/">PC QQ：截图工具史诗级增强</a></li><li class=""><a href="https://yltang.cn/archives/office-tool-plus/">Office Tool Plus：一键自定义安装 Office 套件</a></li><li class=""><a href="https://yltang.cn/archives/one-account/">一个账号走天下</a></li><li class=""><a href="https://yltang.cn/archives/the-world-between-us/">我们与恶的距离</a></li><li class=""><a href="https://yltang.cn/archives/rss-helper-for-blog/">RSS：独立博客的好帮手</a></li><li class=""><a href="https://yltang.cn/archives/gridea-like-to-abandon/">Gridea：从喜欢到放弃</a></li><li class=""><a href="https://yltang.cn/archives/hackintosh-start-end/">黑苹果：从入坑到去世</a></li><li class=""><a href="https://yltang.cn/archives/low-cost-private-cloud-synchronization/">低成本打造私人云同步</a></li><li class=""><a href="https://yltang.cn/archives/how-to-play-blog/">整理这些天折腾博客的经验</a></li><li class=""><a href="https://yltang.cn/archives/my-blog-path/">我的博客之路</a></li><li class=""><a href="https://yltang.cn/archives/teach-long-PM/">终于看到有人骂张小龙了</a></li><li class=""><a href="https://yltang.cn/archives/typecho-theme-plugin/">Typecho 主题 / 插件推荐</a></li><li class=""><a href="https://yltang.cn/archives/about-hetongxue/">关于何同学恰饭视频</a></li><li class=""><a href="https://yltang.cn/archives/about-mix-alpha/">今天去小米之家看小米 Mix Alpha 了</a></li><li class=""><a href="https://yltang.cn/archives/about-5G/">破除迷雾看 5G</a></li><li class=""><a href="https://yltang.cn/archives/about-blank-space/">中文与英文之间是否要有空格</a></li><li class=""><a href="https://yltang.cn/archives/stepping-one-holding-one/">什么是踩一捧一</a></li><li class=""><a href="https://yltang.cn/archives/chrome-plugin/">Chrome 插件推荐</a></li><li class=""><a href="https://yltang.cn/archives/before-iPhone11-sales/">写在 iPhone 11 系列即将预购之前</a></li><li class=""><a href="https://yltang.cn/archives/a-terrible-day/">糟糕的一天</a></li><li class=""><a href="https://yltang.cn/archives/why-cancel-headphone-hole/">为什么取消耳机孔</a></li><li class=""><a href="https://yltang.cn/archives/user-suffer-weixin/">用户苦微信久矣</a></li><li class=""><a href="https://yltang.cn/archives/markdown-basic-grammar/">Markdown 基本语法</a></li></ul></div>
+
+                    </section>
+                    <section hidden class="sidebar-external-link">
+                        
+                            <div class="external"><span><a href="https://travellings.now.sh/">Travelling</a><button class="go-external"><i class="fa fa-external-link"></i></button></span></div>
+                        
+                    </section>
+                    <section class="maverick">
+                        <div><span style="border: 1px solid #d4dadf;"><a href="https://github.com/AlanDecode/Maverick" target="_blank">Maverick & Kepler</a></span></div>
+                    </section>
+                </aside>
+                <div id="content-wrapper">
+                    <div id="content">
+    <section>
+        <h1 class="post-title">我的导航页修改方案</h1>
+        <p class="post-meta">
+            <time>February 12 2020</time>
+            <span class="tags">
+                
+                <span>
+                    <a href="https://yltang.cn/tag/导航页/">#导航页</a>
+                </span>
+                
+            </span>
+        </p>
+        <article class="yue"><p><figure><img data-width="1920" data-height="1080" src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/archives/assets/93ea80820cb9806f54856260843b693e.jpg" alt="" /></figure></p>
+<p>ICP 备案之后，还需要公安备案。在公安备案中需要选择网站是交互式还是非交互式，简单来说有评论系统就是交互式，而交互式需要网警上门核验，很麻烦。于是我打算将 @ 和 www 页面做成静态导航页。</p>
+<p>如今想找个静态导航页还是挺难的，搜索关键字 HTML 模板，一堆上个世纪的模板网站出现在面前，让人梦回十年前。</p>
+<p>不过还好，有 HTML5UP 这么个网站专门做静态模板，如果你不知道 HTML5UP 的话，那你大概率也见过他们制作的 <a href="https://html5up.net/dimension">Dimension | HTML5 UP</a> 主题。</p>
+<p>最终我找到现在这个 <a href="https://html5up.net/eventually">Eventually | HTML5 UP</a> 这个模板，背景动态轮换非常适合做导航页。</p>
+<p>点击查看：<a href="https://luhe.xyz/">我的导航页</a>。</p>
+<h3>更新</h3>
+<p>因为有些 BUG 无法解决，加上作者也已修改样式，于是我也放弃了这个样式。</p>
+<p><del>突然注意到 Maverick 作者的着陆页 <a href="https://www.imalan.cn/">三无计划 | Triple NULL</a>，这个站点点击按钮弹出窗口并显示一个页面的功能，我非常喜欢，于是本前端小白花了点时间把这个功能 Ctrl+C 到我的导航页上了。</del></p>
+<p><del>主要思路就是将三个静态文件：<code>font_1041623_qjcj60752f.css</code>、<code>main-13d7fc41f2.css</code>、<code>bundle-ffcbbae2ae.js</code>，分别下载到自己的站点并引入。再将自己站点的几个<code>&lt;a href&gt;</code>标签里增加<code>class=&quot;link top&quot;</code>，就能实现弹出窗口的效果。</del></p>
+<p><del>最后需要注意的是，因为原站也有<code>header</code>、<code>footer</code>标签，所以样式会混乱，需要自行把新引入的 css 文件中冲突的样式删除，结合使用 F12 和 VScode 格式化插件即可。</del></p>
+<h3>修改主页</h3>
+<ol>
+<li><p>首先修改主页<code>index.html</code>文件中的标题，文字之类的个性化文字，在<code>head</code>标签里用<code>link</code>标签插入 ico 图标。</p>
+</li>
+<li><p>删除文本框和按钮，改成文字超链接，这里借鉴了<a href="https://volf.club/">群狼动力</a> 的样式，是否新标签页打开自行斟酌。</p>
+</li>
+<li><p>底部<code>footer</code>部分的图标是 FontAwesome 的，你可以在 <a href="http://fa5.dashgame.com/#/%E6%96%87%E6%A1%A3/%E5%A0%86%E5%8F%A0">这里</a> 查看相关文档语法。我是这样写的：</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">footer</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;footer&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icons&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;font-size: 1.5rem;&quot;</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fab fa-qq fa-1g&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fab fa-weibo fa-1g&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fab fa-github fa-1g&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fab fa-weixin fa-1g&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;copyright&quot;</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>备案号<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">footer</span><span class="p">&gt;</span>
+</pre></div>
+</li>
+</ol>
+<h3>修改 CSS</h3>
+<p>由于我的博客是居中风格的，如果导航页居左，会给浏览者视觉上的割裂。</p>
+<ol>
+<li><p>打开<code>/images/css</code>下的<code>main.css</code>文件，映入眼帘的第二行就是万恶的谷歌字体，注释或者删除这一行：</p>
+<div class="highlight"><pre><span></span><span class="c">/*@import url(&quot;https://fonts.googleapis.com/css?family=Roboto:400,700&quot;);*/</span>
+</pre></div>
+</li>
+<li><p>找到 357 行<code>header p</code>，添加一条<code>text-align: center;</code>：</p>
+<div class="highlight"><pre><span></span><span class="nt">header</span> <span class="nt">p</span> <span class="p">{</span>
+  <span class="k">color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+  <span class="k">position</span><span class="p">:</span> <span class="kc">relative</span><span class="p">;</span>
+  <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">1.5</span><span class="kt">em</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;}</span>
+</pre></div>
+</li>
+<li><p>找到 286 行<code>h1</code>，添加一条<code>text-align: center;</code>：</p>
+<div class="highlight"><pre><span></span><span class="nt">h1</span> <span class="p">{</span>
+  <span class="k">font-size</span><span class="p">:</span> <span class="mf">2.5</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">line-height</span><span class="p">:</span> <span class="mf">1.25</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;}</span>
+</pre></div>
+</li>
+<li><p><code>footer</code>部分跟<code>header</code>不太一样，我摸索了一阵，最后是这样修改的，从 838 行开始：</p>
+<div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">footer</span> <span class="p">{</span>
+  <span class="kp">-moz-</span><span class="k">transition</span><span class="p">:</span> <span class="k">opacity</span> <span class="mf">0.5</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+  <span class="kp">-webkit-</span><span class="k">transition</span><span class="p">:</span> <span class="k">opacity</span> <span class="mf">0.5</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+  <span class="kp">-ms-</span><span class="k">transition</span><span class="p">:</span> <span class="k">opacity</span> <span class="mf">0.5</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+  <span class="k">transition</span><span class="p">:</span> <span class="k">opacity</span> <span class="mf">0.5</span><span class="kt">s</span> <span class="kc">ease-in-out</span><span class="p">;</span>
+  <span class="k">bottom</span><span class="p">:</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">color</span><span class="p">:</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+  <span class="k">left</span><span class="p">:</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">right</span><span class="p">:</span> <span class="mi">4</span><span class="kt">em</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+  <span class="k">opacity</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">;</span>
+  <span class="k">position</span><span class="p">:</span> <span class="kc">absolute</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">#</span><span class="nn">footer</span> <span class="p">.</span><span class="nc">icons</span> <span class="p">{</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.5</span><span class="kt">em</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">#</span><span class="nn">footer</span> <span class="p">.</span><span class="nc">copyright</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="p">:</span> <span class="mf">0.8</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">#</span><span class="nn">footer</span> <span class="p">.</span><span class="nc">copyright</span> <span class="nt">li</span> <span class="p">{</span>
+      <span class="k">border-left</span><span class="p">:</span> <span class="kc">solid</span> <span class="mi">1</span><span class="kt">px</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">);</span>
+      <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+      <span class="k">line-height</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.75</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mf">0.75</span><span class="kt">em</span><span class="p">;</span> <span class="p">}</span>
+      <span class="p">#</span><span class="nn">footer</span> <span class="p">.</span><span class="nc">copyright</span> <span class="nt">li</span><span class="p">:</span><span class="nd">first-child</span> <span class="p">{</span>
+        <span class="k">border-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">padding-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">#</span><span class="nn">footer</span> <span class="p">.</span><span class="nc">copyright</span> <span class="nt">a</span> <span class="p">{</span>
+      <span class="k">color</span><span class="p">:</span> <span class="kc">inherit</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">#</span><span class="nn">footer</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+    <span class="k">opacity</span><span class="p">:</span> <span class="mi">1</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">#</span><span class="nn">footer</span> <span class="o">&gt;</span> <span class="p">:</span><span class="nd">last-child</span> <span class="p">{</span>
+    <span class="k">margin-bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span>
+  <span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">1680px</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">#</span><span class="nn">footer</span> <span class="p">{</span>
+      <span class="k">bottom</span><span class="p">:</span> <span class="mf">3.5</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">left</span><span class="p">:</span> <span class="mf">3.5</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">right</span><span class="p">:</span> <span class="mf">3.5</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;}</span> <span class="p">}</span>
+  <span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">736px</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">#</span><span class="nn">footer</span> <span class="p">{</span>
+      <span class="k">bottom</span><span class="p">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">left</span><span class="p">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">right</span><span class="p">:</span> <span class="mi">2</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;}</span> <span class="p">}</span>
+  <span class="p">@</span><span class="k">media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">360px</span><span class="o">)</span> <span class="p">{</span>
+    <span class="p">#</span><span class="nn">footer</span> <span class="p">{</span>
+      <span class="k">bottom</span><span class="p">:</span> <span class="mf">1.25</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">left</span><span class="p">:</span> <span class="mf">1.25</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">right</span><span class="p">:</span> <span class="mf">1.25</span><span class="kt">em</span><span class="p">;</span>
+      <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;}</span> <span class="p">}</span>
+</pre></div>
+<p>主要是挨个添加了<code>right</code>字段和<code>text-align: center;</code>，删除了最后一段<code>max-height: 640px</code>部分。</p>
+</li>
+<li><p>做完这些还没结束，有些移动端自适应还需修改，比如在 84 行，我将<code>640px</code>修改为<code>736px</code>正好是我的手机 iPhone7 Plus 的竖向逻辑分辨率。这样在我的手机上，<code>header</code>部分是偏上的，而到了类似 iPhone X 的全面屏上，由于手机较长，<code>header</code>部分是垂直居中的，方便单手操作。</p>
+</li>
+<li><p>另外我还注释了 70 行到 72 行，使得横向分辨率无论拉到多小，<code>header</code>部分也会居中，而不是去到屏幕外。这里纯粹是我强迫症。</p>
+</li>
+</ol>
+<h3>修改 JS</h3>
+<p>主要是修改背景图，很简单。打开<code>/images/js</code>下的<code>main.js</code>，在 38 行修改图片链接即可。</p>
+<h3>总结</h3>
+<p>还有些冗余代码，如原版模板中的<code>form</code>表单，也可以删除，但是我懒，就算了，F12 里没有多余加载项就 OK。</p>
+</article>
+    </section>
+
+    
+    <section id="content-pager">
+        
+            <div class="next">
+                <a class="card" href="https://yltang.cn/archives/cloud-gaming-and-5g/">
+                    <time>February 23 2020</time>
+                    <span>5G 是云游戏的未来吗</span>
+                </a>
+            </div>
+        
+        
+            <div class="prev">
+                <a class="card" href="https://yltang.cn/archives/wiki-by-maverick/">
+                    <time>January 06 2020</time>
+                    <span>使用 Maverick 搭建个人 Wiki</span>
+                </a>
+            </div>
+        
+    </section>
+    
+
+    
+        <section id="comments">
+            <div id="vcomments"></div>
+        </section>
+        <script>
+            window.ValineOpt = {"enable": true, "el": "#vcomments", "appId": "qfulUMeeHaHSTNRWkv0NtufY-9Nh9j0Va", "appKey": "NpoJYNLR7JX05K9gJwbnccrS", "visitor": true, "placeholder": "\u6765\u7545\u6240\u6b32\u8a00\u5427~"};
+            window.ValineOpt.path = window.location.pathname;
+        </script>
+    
+
+    <script>
+        document.body.classList.add('content');
+        document.body.classList.remove('archive');
+    </script>
+</div>
+                    <footer>
+                        <span>Copyright © 2020 原谅糖</span>
+                        
+    <span class="leancloud_visitors"
+            id="/archives/my-start-page/" 
+            data-flag-title="我的导航页修改方案">
+            <i class="fa fa-eye"></i> <i style="font-style: normal" class="leancloud-visitors-count"></i> Views
+        </span>
+
+                        <span class="addon"><a no-style href="http://www.beian.miit.gov.cn/" target="_blank">苏ICP备20021763号</a> | <a no-style href="https://www.upyun.com/" target="_blank">又拍云</a></span>
+                    </footer>
+                </div>
+                
+<aside id="toc-container" class="no-scrollbar">
+    <span><i class="fa fa-align-right"></i> CONTENTS</span>
+    <div id="toc"></div>
+</aside>
+
+            </div>
+        </main>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/tocbot@4.10.0/dist/tocbot.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/kepler-ef161b04d5.js"></script>
+        <script>
+            function ExSearchCall(item){
+                if (item && item.length) {
+                    $('.ins-close').click(); // 关闭搜索框
+                    $('input.ins-search-input').val(''); // 清空
+                    let url = item.attr('data-url'); // 获取目标页面 URL
+                    $.pjax({url: url, 
+                        container: '#pjax-container',
+                        fragment: '#pjax-container',
+                        timeout: 8000, }); // 发起一次 PJAX 请求
+                }
+            }
+        </script>
+
+        <!--Valine-->
+        
+            <script>
+                var initValine = function () {
+                    if (typeof window.ValineOpt === 'object' && $(window.ValineOpt.el).length) {
+                        new Valine(window.ValineOpt);
+                    }
+                }
+            </script>
+            <script async src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js' onload="initValine()"></script>
+        
+
+        <!--ExSearch-->
+        <script src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+        
+        <!--katex-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/katex.min.js"></script>
+        <script>
+        mathOpts = {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        };
+        </script>
+        <script defer src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+        
+    </body>
+</html>

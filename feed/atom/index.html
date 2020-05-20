@@ -1,365 +1,323 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>https://wiki.imalan.cn/</id><title>無知識 | 三無計劃</title><updated>2020-05-01T11:19:39.915342+08:06</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email></author><link href="https://wiki.imalan.cn/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>https://cdn.jsdelivr.net/gh/AlanDecode/site-Wiki@gh-pages/android-chrome-512x512.png</logo><subtitle>熊猫小A的Wiki站点</subtitle><entry><id>https://wiki.imalan.cn/archives/Windows 实现有线 + Wifi 同时上网（分管内外网）/</id><title>Windows 实现有线 + Wifi 同时上网（分管内外网）</title><updated>2020-05-01T11:19:39.915625+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;现在的笔记本大多是双网卡，一个有线一个无线。若同时连上有线与 Wifi，Windows 优先使用有线连接。有时我们需要两者皆能联网，例如我的场景：Wifi 连接实验室内网，有线连接校园网，方便挂 PT。那么可按本文操作如下。&lt;/p&gt;
-&lt;p&gt;首先连接有线与无线，在 CMD 管理员模式中输出当前路由表：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;route print
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;顶部两行以 0.0.0.0 开头的路由即分别是有线与无线连接，注意最后一项「跃点数」，数值越低优先级越高。之所以不能在使用有线时同时使用 WiFi 就是由于这两条路由打架，系统按照跃点数选择了有线连接：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;网络目标    网络掩码     网关            接口               跃点数
-0.0.0.0    0.0.0.0    172.17.104.1    172.17.105.76     26
-0.0.0.0    0.0.0.0    192.168.2.1     192.168.2.102     35
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;要做的是删除其中一条，并重新添加为合理的路由形式。本文中保留有线连接不动（172.17.x.x）,调整 Wifi 连接（192.168.x.x）。&lt;/p&gt;
-&lt;p&gt;首先记下上面的路由表，然后删除原来的路由：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;route delete 0.0.0.0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;重新添加有线路由，注意内容要和上面对应&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;route add 0.0.0.0 mask 0.0.0.0  172.17.104.1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即这个格式：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;route add 网络目标 mask 网络掩码 网关
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;然后添加 WiFi 内网路由，这里认为 192.168.0.0/16（即 192.168.x.x）都属于实验室内网，则子网掩码为 255.255.0.0，网关为之前路由表的结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;route add 192.168.0.0 mask 255.255.0.0 192.168.2.1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即可。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;大多数情况下网关地址不会轻易改变，因此可以将以上流程写成批处理文件：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;%1&lt;/span&gt; mshta vbscript:CreateObject(&lt;span class="s2"&gt;&amp;quot;Shell.Application&amp;quot;&lt;/span&gt;).ShellExecute(&lt;span class="s2"&gt;&amp;quot;cmd.exe&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;/c &lt;/span&gt;&lt;span class="nv"&gt;%~s0&lt;/span&gt;&lt;span class="s2"&gt; ::&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class="s2"&gt;&amp;quot;runas&amp;quot;&lt;/span&gt;,1)(window.close)&lt;span class="p"&gt;&amp;amp;&amp;amp;&lt;/span&gt;&lt;span class="k"&gt;exit&lt;/span&gt;
-route delete 0.0.0.0
-route add 0.0.0.0 mask 0.0.0.0  172.17.104.1
-route add 192.168.0.0 mask 255.255.0.0 192.168.2.1
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;其中第一行是请求管理员权限。&lt;/p&gt;
-&lt;p&gt;网络盛传的把以上路由都添加为永久路由的方法不推荐，因为如此的话重启后也不会变回正常状态，可能影响电脑在别处联网。最好保存为批处理，在合适的时候运行一下即可，若有不对重启即可恢复原本状态。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/Windows 实现有线 + Wifi 同时上网（分管内外网）/" rel="alternate"/><published>2019-08-26T09:14:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/使用 Grid-Stride Loop 复用 CUDA 线程/</id><title>使用 Grid-Stride Loop 复用 CUDA 线程</title><updated>2020-05-01T11:19:39.915602+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;在阅读 CUDA 文档的过程中看到这一篇博文：&lt;a href="https://devblogs.nvidia.com/cuda-pro-tip-write-flexible-kernels-grid-stride-loops/"&gt;CUDA Pro Tip: Write Flexible Kernels with Grid-Stride Loops&lt;/a&gt;，觉得是很不错的思想（技巧），因此记录下来，并且附上一些验证数据。&lt;/p&gt;
-&lt;h3&gt;In theory&lt;/h3&gt;
-&lt;p&gt;问题起源：一般使用 CUDA 并行计算时，总使用一个线程对应一块数据，例如计算两向量之和：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// device code to compute c = a + b;&lt;/span&gt;
-&lt;span class="c1"&gt;// this method assumes we have enough threads to do the computation&lt;/span&gt;
-&lt;span class="c1"&gt;// enough means larger than the size of array a, b and c&lt;/span&gt;
-&lt;span class="n"&gt;__global__&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;addArray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="c1"&gt;// assume we have 1k elements to compute, in this way&lt;/span&gt;
-    &lt;span class="c1"&gt;// thread 0 is responsible for c[0] = a[0] + b[0]&lt;/span&gt;
-    &lt;span class="c1"&gt;// thread 1 is responsible for c[1] = a[1] + b[1]&lt;/span&gt;
-    &lt;span class="c1"&gt;// and so on&lt;/span&gt;
-    &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;blockIdx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;blockDim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;threadIdx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="cp"&gt;#define ARRAYSIZE 1000000&lt;/span&gt;
-&lt;span class="cp"&gt;#define BLOCKSIZE 1024  &lt;/span&gt;&lt;span class="c1"&gt;// can be any size, better be multiple of 32&lt;/span&gt;
-
-&lt;span class="n"&gt;__host__&lt;/span&gt;
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="c1"&gt;// ...&lt;/span&gt;
-    &lt;span class="c1"&gt;// calculate the minmal number of blocks to cover all data&lt;/span&gt;
-    &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;numBlocks&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ARRAYSIZE&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;BLOCKSIZE&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;BLOCKSIZE&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;addArray&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numBlocks&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BLOCKSIZE&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ARRAYSIZE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="c1"&gt;// ...&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;如我们所知，CUDA 中线程组织结构从高到低分为 Grid、Block、Warp 三层，这三层中，每一层都有自己能容纳的最大线程数量，例如在我的设备（1080Ti）上，每个 Block 最多容纳 1024 个线程，每个 Warp 固定是 32 个线程，而每个 Grid 能容纳的数量就比较大了（2147483647, 65535, 65535）。同时还有一个条件，每个 multiprocessor 最大容纳 2048 个线程。总而言之，GPU 虽然能提供大量的线程，但并不是无限的。&lt;/p&gt;
-&lt;p&gt;在不讨论显存大小的前提下，总可能出现这样的情况：程序需要的线程数量大于 GPU 可以提供的线程数量。此时上面的代码就不行了，但下面这种处理方式就可以适应：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;// another version to compute c = a + b&lt;/span&gt;
-&lt;span class="c1"&gt;// this uses grid loop to reuse some threads(if needed)&lt;/span&gt;
-&lt;span class="n"&gt;__global__&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;addArray_gird_loop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="c1"&gt;// total number of threads in one grid&lt;/span&gt;
-    &lt;span class="c1"&gt;// which is accessible to one kernel&lt;/span&gt;
-    &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;stride&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;blockDim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;gridDim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;blockIdx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;blockDim&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;threadIdx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-    &lt;span class="c1"&gt;// compute using the whole grid at once&lt;/span&gt;
-    &lt;span class="c1"&gt;// the reuse the threads in the same grid&lt;/span&gt;
-    &lt;span class="c1"&gt;// assume we have 1k elements to compute, and a stride of 100&lt;/span&gt;
-    &lt;span class="c1"&gt;// thread 0 is responsible for c[0] = a[0] + b[0]&lt;/span&gt;
-    &lt;span class="c1"&gt;//                             c[100] = a[100] + b[100]...&lt;/span&gt;
-    &lt;span class="c1"&gt;// thread 1 is responsible for c[1] = a[1] + b[1]&lt;/span&gt;
-    &lt;span class="c1"&gt;//                             c[101] = a[101] + b[101]...&lt;/span&gt;
-    &lt;span class="c1"&gt;// and so on&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;stride&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-
-&lt;span class="cp"&gt;#define ARRAYSIZE 1000000&lt;/span&gt;
-&lt;span class="cp"&gt;#define BLOCKSIZE 1024  &lt;/span&gt;&lt;span class="c1"&gt;// can be any size, better be multiple of 32&lt;/span&gt;
-&lt;span class="cp"&gt;#define GRIDSIZE 10  &lt;/span&gt;&lt;span class="c1"&gt;// can be any size, better be multipel of multiprocessor count&lt;/span&gt;
-
-&lt;span class="n"&gt;__host__&lt;/span&gt;
-&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="c1"&gt;// ...&lt;/span&gt;
-    &lt;span class="n"&gt;addArray_gird_loop&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;numBlocks&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;BLOCKSIZE&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ARRAYSIZE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;A&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="c1"&gt;// ...&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;在这种实现中，每个线程并不只负责一块数据，而是负责从 index 开始，stride 为步长的一组数据。在 kernel 中每个 for 循环的步长（Stride）刚好是一个 Grid 的大小，因此称作（Grid-Stride Loop）。&lt;/p&gt;
-&lt;p&gt;这种实现的特征是 Grid 的大小可以是任意的，因此解决了「线程不够用」的问题。应该注意到，当 Grid 的大小足够大时（大于等于上一种方法计算出的 &lt;code&gt;numBlocks&lt;/code&gt;），这种方法就退化到第一种方法。&lt;/p&gt;
-&lt;p&gt;另外还需要注意到，当 &lt;code&gt;GRIDSIZE&lt;/code&gt; 与 &lt;code&gt;BLOCKSIZE&lt;/code&gt; 都取 1 时，GPU 里实际上只有一个线程在跑，于是退化为串行程序。&lt;/p&gt;
-&lt;p&gt;文首提到的文章总结了这种思路的几个好处：&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><id>https://yltang.cn/</id><title>原谅糖</title><updated>2020-05-20T08:26:38.719318+08:06</updated><author><name>原谅糖</name><email>952716224@qq.com</email></author><link href="https://yltang.cn/" rel="alternate"/><generator uri="https://lkiesow.github.io/python-feedgen" version="0.9.0">python-feedgen</generator><logo>https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png</logo><subtitle>清醒的人最荒唐</subtitle><entry><id>https://yltang.cn/archives/something-about-blog-migration/</id><title>博客迁移二三事</title><updated>2020-05-20T08:26:38.719710+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;我还是放弃了虚拟主机，从那天客服给我解决 BUG 时，直接在我的目录里添加修改文件，我就有点害怕，我早就该明白的。&lt;/p&gt;
+&lt;h3&gt;服务器&lt;/h3&gt;
+&lt;p&gt;本来我买了 &lt;a href="https://www.aliyun.com/minisite/goods?userCode=qd1f2gzc&amp;amp;share_source=copy_link"&gt;阿里云&lt;/a&gt; 双十一的 T5，但是后来想想 20% 性能基线，1M 带宽还是太弱了。于是发工单退掉，转而选择了轻量学生机，有 5M 的带宽，CPU 性能 100%，114 一年感觉也很实惠。&lt;/p&gt;
+&lt;h3&gt;域名转入&lt;/h3&gt;
+&lt;p&gt;使用国内服务器需要域名备案，我需要把域名转入到阿里云。阿里云 xyz 域名续费一年只要 39，这是我没想到的，我在阿里和腾讯查询 xyz 续费价格都是 70 左右。&lt;/p&gt;
+&lt;p&gt;提交域名转入之后，需要等待 5 天才能完成转入。在这中间我还经历了实名认证无法通过的窘境，我拍了十几次身份证照片，反复确认信息填写正确，却始终无法通过实名认证。后来提交工单，客服一顿远程操作也无法解决，最终联系了实名局紧急处理后，我才完成实名认证。&lt;/p&gt;
+&lt;p&gt;转入成功后，不能立即备案，需要等两天实名认证信息同步。&lt;/p&gt;
+&lt;h3&gt;备案&lt;/h3&gt;
+&lt;p&gt;现在备案不需要幕布了，阿里云使用 APP，腾讯云使用小程序，都可以直接摄像头验证身份。&lt;/p&gt;
+&lt;p&gt;备案时网站名称可以随意填，如果不对，客服会打电话通知你修改，无需纠结。我所在的江苏对网站名称的要求比较特殊，必须是 XX 的个人博客，XX 是真名......&lt;/p&gt;
+&lt;p&gt;提交后初审很快，10 分钟内就会有客服联系我修改 XX 的个人博客......之后提交管局，页面显示需要等 12 天，我实际等待了 11 天左右。&lt;/p&gt;
+&lt;h3&gt;宝塔&lt;/h3&gt;
+&lt;p&gt;轻量服务器预装的是宝塔 5.2，过于旧，而且在宝塔里无法直接升级到 6.x，可以在轻量服务器面板里直接重置成 6.8 版本，再升级到最新版。&lt;/p&gt;
+&lt;p&gt;防火墙默认只放行了80 443 22，需要手动添加 8888 用于宝塔访问，建议之后修改这个默认端口。&lt;/p&gt;
+&lt;p&gt;备案时，服务器的 80 端口是封锁的，可以在宝塔中添加网站，域名栏直接填写服务器 IP，通过 IP 访问来调试网站。&lt;/p&gt;
+&lt;p&gt;上传博客文件的时候，才发现 FTP 有多难用，最后拥抱了 SFTP，Xshell+Xftp 可太好用了。&lt;/p&gt;
+&lt;h3&gt;搭建&lt;/h3&gt;
+&lt;p&gt;除了迁移我的博客，我还使用 docker 搭建了 RSSHub，即使面对微博这样反爬严格的网站，也能稳定订阅 RSS 了。&lt;/p&gt;
+&lt;p&gt;图床是我心心念念了好久的工具，现在终于可以自建了。之前一直使用的群友的图床，速度非常快，但是图片放在别人那里还是不太好，我也不太喜欢那个图床程序的使用逻辑。于是我使用 Lsky 搭建了我自己的图床，使用又拍云对象存储作为图片的家。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://console.upyun.com/register/?invite=SycyPYiRB"&gt;又拍云&lt;/a&gt; 可以申请免费的对象存储空间和 CDN 加速，支持 Gzip 和 Brotli 压缩，还能自适应加载 webp。另外，我还使用了宝塔的计划任务定期将网站和数据库备份到又拍云对象存储。&lt;/p&gt;
+&lt;h3&gt;后记&lt;/h3&gt;
+&lt;p&gt;从虚拟主机到阿里学生机，感觉鸟枪换大炮了，能做的事多了许多，这样看来其实虚拟主机性价比太低了。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/something-about-blog-migration/" rel="alternate"/><published>2019-12-21T19:55:00+08:06</published></entry><entry><id>https://yltang.cn/archives/awesome-bilibili/</id><title>观 Bilibili 新年晚会有感</title><updated>2020-05-20T08:26:38.719680+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;世界是你们的，世界也是我们的，世界终究是年轻人的。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/awesome-bilibili/" rel="alternate"/><published>2020-01-02T16:44:00+08:06</published></entry><entry><id>https://yltang.cn/archives/wiki-by-maverick/</id><title>使用 Maverick 搭建个人 Wiki</title><updated>2020-05-20T08:26:38.719651+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;Maverick 是 VOID 主题作者 &lt;a href="https://blog.imalan.cn/"&gt;熊猫小 A&lt;/a&gt; 的新项目，是一个类似 Hexo 的静态博客生成器，具体可以查看这两篇文章 &lt;a href="https://blog.imalan.cn/archives/blog-now-powered-by-maverick/"&gt;Maverick - Go My Own Way.&lt;/a&gt; 和 &lt;a href="https://blog.imalan.cn/archives/blog-with-github/"&gt;完全使用 GitHub 写博客&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;作者说得很明白了，我也不必大篇转载，主要想谈谈用 Maverick 搭建个人 Wiki 站的感受。&lt;/p&gt;
+&lt;h3&gt;为什么要用 Maverick&lt;/h3&gt;
+&lt;p&gt;作者发第一篇 Maverick 文章时，我是懵逼的，一是完全看不懂 Python，二是 VOID 已经足够好用了，为何还要造这样一个东西呢？&lt;/p&gt;
+&lt;p&gt;静态博客像一座围城，相信很多人和我一样，刚开始接触的是静态博客，比如 GitHub Pages。然后向往动态博客强大的功能扩展，尝试各种主题和插件，最后玩够了就又想回到静态博客的怀抱。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;本站还没有切换到静态，因为我还在评估，我到底能不能放弃那些插件带来的便利，能不能放弃 VOID 的各种特性。&lt;/del&gt;真香~&lt;/p&gt;
+&lt;p&gt;正好 Maverick 更新了一款新主题 Kepler，用于搭建 Wiki 站，我便开始了尝试。&lt;/p&gt;
+&lt;h3&gt;第一步是打开 GitHub Actions&lt;/h3&gt;
+&lt;p&gt;作者教程的第一步是打开 GitHub Pages，这也没错，但是我在这里卡了很久，因为始终显示 404 无法打开站点，但是其实不要紧，继续走教程，按教程打开 GitHub Actions，或者第一步就打开 GitHub Actions 也是可以的。&lt;/p&gt;
+&lt;h3&gt;什么是 GitHub Actions&lt;/h3&gt;
+&lt;p&gt;我一开始以为这是一个类似 Webhook 的东西，但其实不是，GitHub Actions 是一个免费的测试环境，相当于一台虚拟机，直接使用仓库中的代码构建项目，将生成的文件更新到仓库的 master 或者 gh-pagse 分支。并且它是能监控仓库的每一次 push 的，这样就能做到每一次更新文章，都能自动构建站点。&lt;/p&gt;
+&lt;h3&gt;几乎完美的写作体验&lt;/h3&gt;
+&lt;p&gt;将仓库克隆到本地之后，直接在资源管理器中查看博客的源文件并用 Typora 修改，再使用作者准备好的 bat or sh 脚本将改动 push 到线上仓库中，GitHub Actions 检测到 push 会自动开始构建站点，稍等即可。&lt;/p&gt;
+&lt;p&gt;再也不用使用 Typecho 那个非常简陋的编辑器了，再也不用费劲往图床里上传再复制链接了，再也不用...&lt;/p&gt;
+&lt;p&gt;这应该是我使用过的最爽的写作方式了，没有之一。&lt;/p&gt;
+&lt;h3&gt;后记&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;伸缩性与线程复用&lt;/strong&gt;。可扩展性是指，这种方法在理论上可以支持任意规模的并行计算，而不受设备提供的最大线程数限制；另外这种实现允许我们采用更合理的 &lt;code&gt;GRIDSIZE&lt;/code&gt;，比如常推荐的，使用 multiprocessor 数量的倍数。线程复用则可以帮助程序省去线程启动与销毁的开销。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;favicon.ico 默认放在 staic 文件里，还必须在 head 标签里加上&lt;code&gt;&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;${static_prefix}favicon.ico&amp;quot;&amp;gt;&lt;/code&gt;才能让 favicon.ico 读取正常。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;易于调试&lt;/strong&gt;。如上文所述，当 &lt;code&gt;GRIDSIZE&lt;/code&gt; 与 &lt;code&gt;BLOCKSIZE&lt;/code&gt; 都取 1 时程序实际退化为串行程序，这为调试提供了方便（例如在 kernel 中使用 printf 可以得到顺序的结果）。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;可移植性与可读性&lt;/strong&gt;。这种的写法可以轻易地修改为 CPU 代码，另外还有类似 &lt;a href="https://devblogs.nvidia.com/parallelforall/simple-portable-parallel-c-hemi-2/"&gt;Hemi&lt;/a&gt; 这样的库专门为 Grid-Stride Loop 提供支持，带来了 C++ 11 风格的循环语法：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;HEMI_LAUNCHABLE&lt;/span&gt;
-&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;addArray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="nl"&gt;i&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;hemi&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;grid_stride_range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-      &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;li&gt;&lt;p&gt;jsDelivr 只能加速静态文件和图片，所以如果你访问站点，首先就得忍受访问 GitHub 的响应速度，然后才能愉快地访问其他资源，并且文章也没办法获得加速。最后我只好套一个国内的 CDN 服务，站点才变得非常顺畅。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3&gt;In real world&lt;/h3&gt;
-&lt;p&gt;理论上说 Grid-Stride Loop 一切都很美好，但是由于每个线程要进行循环，想必会影响性能，这里我给出自己的测试结果。&lt;/p&gt;
-&lt;p&gt;测试设备：GeForce GTX 1080Ti&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;CUDA Driver Version / Runtime Version          9.0 / 9.0
-CUDA Capability Major/Minor version number:    6.1
-Maximum number of threads per multiprocessor:  2048
-Maximum number of threads per block:           1024
-Max dimension size of a thread block (x,y,z): (1024, 1024, 64)
-Max dimension size of a grid size    (x,y,z): (2147483647, 65535, 65535)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;首先看不使用 Grid-Stride Loop（GS Loop） 的方法中 &lt;code&gt;GRIDSIZE&lt;/code&gt; 和时间相对 ARRAYSIZE 的变化：&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="721" data-height="398" src="https://cdn.jsdelivr.net/gh/AlanDecode/site-Wiki@gh-pages/archives/assets/6d25c3996e10cb3f76025eb9d2c034a0.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;固定 &lt;code&gt;GRIDSIZE=10&lt;/code&gt;，使用 Grid-Stride Loop 的方法：&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="721" data-height="373" src="https://cdn.jsdelivr.net/gh/AlanDecode/site-Wiki@gh-pages/archives/assets/ac92e89173d7781e4c52292871b26a19.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;直观对比两种方法用时：&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="724" data-height="399" src="https://cdn.jsdelivr.net/gh/AlanDecode/site-Wiki@gh-pages/archives/assets/d1578d85e5da708987b7c8254075a43e.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;可见当 ARRAYSIZE 较大时，两种方法性能有可观的差距。当然，这个测试只是理论上的，实际应用中不可能只用 10 个 Block 来计算。&lt;/p&gt;
-&lt;p&gt;另外，若将显存大小纳入讨论则情况会稍有不同。向量相加这个例子中需要为相加的两个向量以及存储结果的一个向量在 GPU 上分配显存，有时会遇到这样的情况：线程还没用完，显存先用完了。这种情况与算法相关，并不是所有的程序都需要这么巨大的显存量，但需要巨大线程数的场景比比皆是。&lt;/p&gt;
-&lt;p&gt;另外，如何将其扩展到高维 Tensor 还有待思考。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/使用 Grid-Stride Loop 复用 CUDA 线程/" rel="alternate"/><published>2019-09-29T00:00:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/WSL 2 中配置终端走主机代理/</id><title>WSL 2 中配置终端走主机代理</title><updated>2020-05-01T11:19:39.915579+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;微软在 WSL 2 中更改了 Linux 子系统与 Windows 主机的通信方式，以往通过 localhost 即可互相访问，现在则不行，具体内容见 &lt;a href="https://docs.microsoft.com/zh-cn/windows/wsl/wsl2-ux-changes"&gt;WSL 1 与 WSL 2 的用户体验差异&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;之前可以在 Windows 主机内通过 Clash 或者其它软件开启一个本地代理，并允许通过 LAN 连接，来实现 WSL 终端魔法上网，经由 WSL 2 的更改后就需要加上获取 Windows 主机 IP 这一步。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 获取主机 IP&lt;/span&gt;
-&lt;span class="c1"&gt;# 主机 IP 保存在 /etc/resolv.conf 中&lt;/span&gt;
-&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;hostip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cat /etc/resolv.conf &lt;span class="p"&gt;|&lt;/span&gt;grep -oP &lt;span class="s1"&gt;&amp;#39;(?&amp;lt;=nameserver\ ).*&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;假设 Windows 上的 Clash 已允许 LAN 连接，监听在 8888 端口，SOCKS5 代理监听在 8889 端口，设置终端代理的方法与以往相同：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;https_proxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;hostip&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:8888&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;http_proxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;hostip&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:8888&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;all_proxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;socks5://&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;hostip&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;:8889&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;为了方便日常使用，可以将以上命令保存为 alias。添加以下内容到 &lt;code&gt;~/.bashrc&lt;/code&gt; 或者 &lt;code&gt;~/.zshrc&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nb"&gt;export&lt;/span&gt; &lt;span class="nv"&gt;hostip&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;cat /etc/resolv.conf &lt;span class="p"&gt;|&lt;/span&gt;grep -oP &lt;span class="s1"&gt;&amp;#39;(?&amp;lt;=nameserver\ ).*&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;alias&lt;/span&gt; &lt;span class="nv"&gt;setss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;export https_proxy=&amp;quot;http://${hostip}:8888&amp;quot;;export http_proxy=&amp;quot;http://${hostip}:8888&amp;quot;;export all_proxy=&amp;quot;socks5://${hostip}:8889&amp;quot;;&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;之后就可以在 WSL 2 中使用 &lt;code&gt;setss&lt;/code&gt; 设置终端代理。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/WSL 2 中配置终端走主机代理/" rel="alternate"/><published>2019-10-24T16:30:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/Marching Cubes 算法提取等值面/</id><title>Marching Cubes 算法提取等值面</title><updated>2020-05-01T11:19:39.915557+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;不失一般性，以抽取 0 等值面举例，假设面一侧为正值，另一侧为负值。则 Marching Cubes 算法总体上通过两个步骤建立这个等值面的 mesh 模型：&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/wiki-by-maverick/" rel="alternate"/><published>2020-01-06T14:08:00+08:06</published></entry><entry><id>https://yltang.cn/archives/my-start-page/</id><title>我的导航页修改方案</title><updated>2020-05-20T08:26:38.719622+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;&lt;figure&gt;&lt;img data-width="1920" data-height="1080" src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/archives/assets/93ea80820cb9806f54856260843b693e.jpg" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;ICP 备案之后，还需要公安备案。在公安备案中需要选择网站是交互式还是非交互式，简单来说有评论系统就是交互式，而交互式需要网警上门核验，很麻烦。于是我打算将 @ 和 www 页面做成静态导航页。&lt;/p&gt;
+&lt;p&gt;如今想找个静态导航页还是挺难的，搜索关键字 HTML 模板，一堆上个世纪的模板网站出现在面前，让人梦回十年前。&lt;/p&gt;
+&lt;p&gt;不过还好，有 HTML5UP 这么个网站专门做静态模板，如果你不知道 HTML5UP 的话，那你大概率也见过他们制作的 &lt;a href="https://html5up.net/dimension"&gt;Dimension | HTML5 UP&lt;/a&gt; 主题。&lt;/p&gt;
+&lt;p&gt;最终我找到现在这个 &lt;a href="https://html5up.net/eventually"&gt;Eventually | HTML5 UP&lt;/a&gt; 这个模板，背景动态轮换非常适合做导航页。&lt;/p&gt;
+&lt;p&gt;点击查看：&lt;a href="https://luhe.xyz/"&gt;我的导航页&lt;/a&gt;。&lt;/p&gt;
+&lt;h3&gt;更新&lt;/h3&gt;
+&lt;p&gt;因为有些 BUG 无法解决，加上作者也已修改样式，于是我也放弃了这个样式。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;突然注意到 Maverick 作者的着陆页 &lt;a href="https://www.imalan.cn/"&gt;三无计划 | Triple NULL&lt;/a&gt;，这个站点点击按钮弹出窗口并显示一个页面的功能，我非常喜欢，于是本前端小白花了点时间把这个功能 Ctrl+C 到我的导航页上了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;主要思路就是将三个静态文件：&lt;code&gt;font_1041623_qjcj60752f.css&lt;/code&gt;、&lt;code&gt;main-13d7fc41f2.css&lt;/code&gt;、&lt;code&gt;bundle-ffcbbae2ae.js&lt;/code&gt;，分别下载到自己的站点并引入。再将自己站点的几个&lt;code&gt;&amp;lt;a href&amp;gt;&lt;/code&gt;标签里增加&lt;code&gt;class=&amp;quot;link top&amp;quot;&lt;/code&gt;，就能实现弹出窗口的效果。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;最后需要注意的是，因为原站也有&lt;code&gt;header&lt;/code&gt;、&lt;code&gt;footer&lt;/code&gt;标签，所以样式会混乱，需要自行把新引入的 css 文件中冲突的样式删除，结合使用 F12 和 VScode 格式化插件即可。&lt;/del&gt;&lt;/p&gt;
+&lt;h3&gt;修改主页&lt;/h3&gt;
 &lt;ol&gt;
-&lt;li&gt;估计每个 cell 内的三角面片数量与连接方式（拓扑结构）&lt;/li&gt;
-&lt;li&gt;计算确定个面片的每个顶点的具体位置&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;首先修改主页&lt;code&gt;index.html&lt;/code&gt;文件中的标题，文字之类的个性化文字，在&lt;code&gt;head&lt;/code&gt;标签里用&lt;code&gt;link&lt;/code&gt;标签插入 ico 图标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;删除文本框和按钮，改成文字超链接，这里借鉴了&lt;a href="https://volf.club/"&gt;群狼动力&lt;/a&gt; 的样式，是否新标签页打开自行斟酌。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;底部&lt;code&gt;footer&lt;/code&gt;部分的图标是 FontAwesome 的，你可以在 &lt;a href="http://fa5.dashgame.com/#/%E6%96%87%E6%A1%A3/%E5%A0%86%E5%8F%A0"&gt;这里&lt;/a&gt; 查看相关文档语法。我是这样写的：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;footer&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;footer&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;icons&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;style&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;font-size: 1.5rem;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;fab fa-qq fa-1g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;fab fa-weibo fa-1g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;fab fa-github fa-1g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;fab fa-weixin fa-1g&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;i&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;copyright&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+ &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;target&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;_blank&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;备案号&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;a&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;ul&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;这里的 cell 区别于 voxel。voxel 可认为是对三维场的采样与离散，采样点位于 voxel 中心，这些采样点作为顶点则构成了 cell。即 cell 是以采样点为顶点的三维网格。&lt;/p&gt;
+&lt;h3&gt;修改 CSS&lt;/h3&gt;
+&lt;p&gt;由于我的博客是居中风格的，如果导航页居左，会给浏览者视觉上的割裂。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;打开&lt;code&gt;/images/css&lt;/code&gt;下的&lt;code&gt;main.css&lt;/code&gt;文件，映入眼帘的第二行就是万恶的谷歌字体，注释或者删除这一行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c"&gt;/*@import url(&amp;quot;https://fonts.googleapis.com/css?family=Roboto:400,700&amp;quot;);*/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;找到 357 行&lt;code&gt;header p&lt;/code&gt;，添加一条&lt;code&gt;text-align: center;&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;header&lt;/span&gt; &lt;span class="nt"&gt;p&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;relative&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mf"&gt;1.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;找到 286 行&lt;code&gt;h1&lt;/code&gt;，添加一条&lt;code&gt;text-align: center;&lt;/code&gt;：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;h1&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;2.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;line-height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.25&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;footer&lt;/code&gt;部分跟&lt;code&gt;header&lt;/code&gt;不太一样，我摸索了一阵，最后是这样修改的，从 838 行开始：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="kp"&gt;-moz-&lt;/span&gt;&lt;span class="k"&gt;transition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;opacity&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="kt"&gt;s&lt;/span&gt; &lt;span class="kc"&gt;ease-in-out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kp"&gt;-webkit-&lt;/span&gt;&lt;span class="k"&gt;transition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;opacity&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="kt"&gt;s&lt;/span&gt; &lt;span class="kc"&gt;ease-in-out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="kp"&gt;-ms-&lt;/span&gt;&lt;span class="k"&gt;transition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;opacity&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="kt"&gt;s&lt;/span&gt; &lt;span class="kc"&gt;ease-in-out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;transition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;opacity&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="kt"&gt;s&lt;/span&gt; &lt;span class="kc"&gt;ease-in-out&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;right&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;opacity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;span class="k"&gt;position&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;absolute&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;icons&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;copyright&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;font-size&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;list-style&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;none&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;copyright&lt;/span&gt; &lt;span class="nt"&gt;li&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;border-left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;solid&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;px&lt;/span&gt; &lt;span class="nb"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.25&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="k"&gt;display&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;inline-block&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;line-height&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;margin&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mf"&gt;0.75&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+      &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;copyright&lt;/span&gt; &lt;span class="nt"&gt;li&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;first-child&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="k"&gt;border-left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;margin-left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="k"&gt;padding-left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;copyright&lt;/span&gt; &lt;span class="nt"&gt;a&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;color&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;inherit&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;hover&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;opacity&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nd"&gt;last-child&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="k"&gt;margin-bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;media&lt;/span&gt; &lt;span class="nt"&gt;screen&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;max-width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;1680px&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;right&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;3.5&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;media&lt;/span&gt; &lt;span class="nt"&gt;screen&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;max-width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;736px&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;right&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;@&lt;/span&gt;&lt;span class="k"&gt;media&lt;/span&gt; &lt;span class="nt"&gt;screen&lt;/span&gt; &lt;span class="nt"&gt;and&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;max-width&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;360px&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="p"&gt;#&lt;/span&gt;&lt;span class="nn"&gt;footer&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="k"&gt;bottom&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.25&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.25&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;right&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mf"&gt;1.25&lt;/span&gt;&lt;span class="kt"&gt;em&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+      &lt;span class="k"&gt;text-align&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;center&lt;/span&gt;&lt;span class="p"&gt;;}&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;主要是挨个添加了&lt;code&gt;right&lt;/code&gt;字段和&lt;code&gt;text-align: center;&lt;/code&gt;，删除了最后一段&lt;code&gt;max-height: 640px&lt;/code&gt;部分。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;做完这些还没结束，有些移动端自适应还需修改，比如在 84 行，我将&lt;code&gt;640px&lt;/code&gt;修改为&lt;code&gt;736px&lt;/code&gt;正好是我的手机 iPhone7 Plus 的竖向逻辑分辨率。这样在我的手机上，&lt;code&gt;header&lt;/code&gt;部分是偏上的，而到了类似 iPhone X 的全面屏上，由于手机较长，&lt;code&gt;header&lt;/code&gt;部分是垂直居中的，方便单手操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;另外我还注释了 70 行到 72 行，使得横向分辨率无论拉到多小，&lt;code&gt;header&lt;/code&gt;部分也会居中，而不是去到屏幕外。这里纯粹是我强迫症。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;修改 JS&lt;/h3&gt;
+&lt;p&gt;主要是修改背景图，很简单。打开&lt;code&gt;/images/js&lt;/code&gt;下的&lt;code&gt;main.js&lt;/code&gt;，在 38 行修改图片链接即可。&lt;/p&gt;
+&lt;h3&gt;总结&lt;/h3&gt;
+&lt;p&gt;还有些冗余代码，如原版模板中的&lt;code&gt;form&lt;/code&gt;表单，也可以删除，但是我懒，就算了，F12 里没有多余加载项就 OK。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/my-start-page/" rel="alternate"/><published>2020-02-12T19:56:00+08:06</published></entry><entry><id>https://yltang.cn/archives/cloud-gaming-and-5g/</id><title>5G 是云游戏的未来吗</title><updated>2020-05-20T08:26:38.719592+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;最近逛论坛和水群，发现很多人真是被 5G 营销给误导了，以为云游戏的前景全看 5G 的普及，但是这种认识其实非常局限。&lt;/p&gt;
+&lt;h3&gt;关于 5G&lt;/h3&gt;
+&lt;p&gt;5G 定义了三大场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;eMBB (enhanced Mobile Broadband)，增强移动宽带&lt;/li&gt;
+&lt;li&gt;mMTC (massive Machine Type Communications)，大规模物联网&lt;/li&gt;
+&lt;li&gt;URLLC (Ultra-Reliable and Low Latency Communications)，低时延高可靠连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单来说就是更高的带宽，广连接和更低的延迟。&lt;/p&gt;
+&lt;p&gt;广连接是物联网特性，与云游戏关系不大，而高带宽和低延迟是关乎云游戏体验的关键。&lt;/p&gt;
+&lt;h3&gt;高带宽&lt;/h3&gt;
+&lt;p&gt;5G 的高带宽现在看来非常有限，从一开始宣传的 1Gbps，到现在的 500Mbps，再到不开 5G 套餐限速 300Mbps，随着以后 5G 用户的增加，速度必然会慢下来。当然，仍比 4G 快得多。&lt;/p&gt;
+&lt;p&gt;而家庭宽带呢？目前已经开始普及千兆，甚至万兆也已蓄势待发。&lt;/p&gt;
+&lt;h3&gt;低延迟&lt;/h3&gt;
+&lt;p&gt;低延迟的特性乍一看非常厉害，但是也只是降低了移动端到基站的延迟，还有一部分延迟是是永远无法消除的，即基站到游戏服务器的距离 / 光速，这是物理定律决定的。&lt;/p&gt;
+&lt;p&gt;而家庭宽带直接走光纤，本身就不存在移动端到基站这部分数据传输。&lt;/p&gt;
+&lt;h3&gt;5G 解决了什么？&lt;/h3&gt;
+&lt;p&gt;5G  确实能够提升移动端的云游戏体验，满足一些对带宽和延迟要求较低的游戏需求，但是真正的云游戏远不是 5G 能够胜任的。&lt;/p&gt;
+&lt;p&gt;甚至其实家庭宽带也没法解决延迟的问题，带宽即使达到万兆也无济于事，很难看好云游戏的发展。&lt;/p&gt;
+&lt;h3&gt;云游戏的未来&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;满足一些对带宽和延迟要求不高的游戏需求；&lt;/li&gt;
+&lt;li&gt;成为游戏商让用户快速体验游戏的一种方式；&lt;/li&gt;
+&lt;li&gt;不以体验为主的游戏方式，比如单纯为了游戏挂机。&lt;/li&gt;
+&lt;/ul&gt;
+</content><link href="https://yltang.cn/archives/cloud-gaming-and-5g/" rel="alternate"/><published>2020-02-23T09:53:00+08:06</published></entry><entry><id>https://yltang.cn/archives/ffmpeg-flv-mp4/</id><title>利用 FFmpeg 转换 flv 至 mp4</title><updated>2020-05-20T08:26:38.719561+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;又拍云 CDN 实在太便宜了，几个月下来，通过又拍云联盟获得的代金券才用了七毛钱（其实是本站没啥人看）。看到 Maverick 集成了 Dplayer 插件，于是打算放一个视频上来。&lt;/p&gt;
+&lt;p&gt;从 B 站下了个视频准备上传引用，突然发现视频是 flv 格式的，Dplayer 调用需要额外加载&lt;code&gt;flv.min.js&lt;/code&gt;，于是打算将 flv 转换成 mp4。&lt;/p&gt;
+&lt;p&gt;因为 flv 和 mp4 的编码都是 h.264，只是封装格式不一样，所以完全没必要使用格式工厂这种重工具，事实上我不是很喜欢格式工厂的远古设计，一般用完就卸载了。&lt;/p&gt;
+&lt;p&gt;可以使用 FFmpeg 来转换视频。&lt;/p&gt;
+&lt;h3&gt;下载&lt;/h3&gt;
+&lt;p&gt;到 &lt;a href="https://ffmpeg.zeranoe.com/builds/"&gt;这里&lt;/a&gt; 下载 Windows 版 FFmpeg。&lt;/p&gt;
+&lt;h3&gt;设置&lt;/h3&gt;
+&lt;p&gt;将下载好的 FFmpeg 解压，复制里面的 bin 文件夹路径，然后在此电脑上右键-属性-高级系统设置-环境变量，找到系统变量里的 path，新建一条，粘贴 bin 的路径，确定。&lt;/p&gt;
+&lt;h3&gt;开始&lt;/h3&gt;
+&lt;p&gt;将需要转换的视频文件放入 bin 文件夹中，按住 shift 键+鼠标右键，选择在此处打开 Powershell 窗口，输入命令：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ffmpeg -i input.flv output.mp4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;input&lt;/code&gt;是需要被转换的视频名称，&lt;code&gt;output&lt;/code&gt;是最终输出的视频名称，然后耐心等待即可。&lt;/p&gt;
+&lt;h3&gt;后记&lt;/h3&gt;
+&lt;p&gt;等我做好这一切，push 上去才发现 Kepler 不支持 Dplayer，伤心。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/ffmpeg-flv-mp4/" rel="alternate"/><published>2020-03-06T23:48:00+08:06</published></entry><entry><id>https://yltang.cn/archives/maverick-music-pio/</id><title>Maverick 增加音乐 / 看板娘功能</title><updated>2020-05-20T08:26:38.719528+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;h3&gt;音乐&lt;/h3&gt;
+&lt;p&gt;使用 MetingJS 公开的 CDN 引入方式。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;conf.py&lt;/code&gt;的&lt;code&gt;head_addon&lt;/code&gt;里添加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;继续在&lt;code&gt;nav&lt;/code&gt;里添加一条指向音乐的导航项：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;音乐&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${site_prefix}music/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;target&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;_self&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;新建一个&lt;code&gt;music.md&lt;/code&gt;文档：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
+layout: page
+title: 音乐
+slug: music
+date: 2020-02-21 08:33:46
+status: publish
+author: 原谅糖
+comment: false
+---
+
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;meting-js&lt;/span&gt; &lt;span class="na"&gt;server&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;netease&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;playlist&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;147958769&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;list-max-height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;329px&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;看板娘&lt;/h3&gt;
+&lt;p&gt;使用 &lt;a href="https://github.com/Dreamer-Paul/Pio"&gt;Pio-Typecho&lt;/a&gt; 项目中的&lt;code&gt;models&lt;/code&gt;和&lt;code&gt;static&lt;/code&gt;文件夹。&lt;/p&gt;
+&lt;p&gt;将&lt;code&gt;models&lt;/code&gt;整个文件夹和&lt;code&gt;static&lt;/code&gt;中的三个静态文件放到 Maverick 中的&lt;code&gt;src/static&lt;/code&gt;中。&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;conf.py&lt;/code&gt;的&lt;code&gt;head_addosn&lt;/code&gt;里添加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;${static_prefix}pio.css&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;stylesheet&amp;#39;&lt;/span&gt; &lt;span class="na"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/css&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;继续在&lt;code&gt;body_addon&lt;/code&gt;中添加：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;body_addon = r&amp;#39;&amp;#39;&amp;#39;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pio-container left&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt; &lt;span class="na"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pio-action&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;canvas&lt;/span&gt; &lt;span class="na"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;pio&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;width&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;280&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;height&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;250&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;canvas&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;div&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;${static_prefix}l2d.js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt; &lt;span class="na"&gt;src&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;${static_prefix}pio.js&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;pio&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;Paul_Pio&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
+    	&lt;span class="s2"&gt;&amp;quot;mode&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;static&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    	&lt;span class="s2"&gt;&amp;quot;hidden&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    	&lt;span class="s2"&gt;&amp;quot;content&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    		&lt;span class="s2"&gt;&amp;quot;welcome&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;欢迎来到原谅糖的博客！&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    		&lt;span class="s2"&gt;&amp;quot;referer&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;欢迎来自 %t 的朋友！&amp;quot;&lt;/span&gt;
+    	&lt;span class="p"&gt;},&lt;/span&gt;
+    	&lt;span class="s2"&gt;&amp;quot;model&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;${static_prefix}models/umaru/model.json&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+    	&lt;span class="nx"&gt;tips&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;
+    &lt;span class="p"&gt;});&lt;/span&gt;
+&lt;span class="p"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="nt"&gt;script&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
+&amp;#39;&amp;#39;&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+</content><link href="https://yltang.cn/archives/maverick-music-pio/" rel="alternate"/><published>2020-03-17T14:56:00+08:06</published></entry><entry><id>https://yltang.cn/archives/still-alive/</id><title>但是活下去说不定能找到有意思的事</title><updated>2020-05-20T08:26:38.719494+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;p&gt;晚上把一直没时间看的《我的三体之章北海传》看完了，虽然是方块风格，但是无论是配乐还是台词，仍能使我想到第一次看小说时的那种震撼。&lt;/p&gt;
+&lt;p&gt;晚上苹果在官网更新了 iPad Pro，摄像头更新成类似 iPhone 11 Pro 那样的排布，处理器换成了 A12Z，怎么看也就是一次小更新。最令我惊喜的是 iPad Pro 配套更新了一套妙控键盘，悬空设计太惊艳了，赋予了 iPad Pro 类 PC 的体验，奇怪的生产力增加了！&lt;/p&gt;
+&lt;p&gt;对未知宇宙的想象，对科技产品的热爱，构成了我现在最重要的精神食粮，在没有她的世界里。&lt;/p&gt;
+&lt;p&gt;快一年了，我一直在思考想要什么样的生活，我不愿枯燥地朝九晚五，不愿做没有未来的事情，不想去一个没有她的城市。现在这些不愿都慢慢成为了击穿我的子弹，现实永远比梦境残忍。&lt;/p&gt;
+&lt;p&gt;我时常在想，在我现在这个世界线外的无数平行宇宙里，会不会真有那么一个她，能看懂所有我与她分享的东西，微博段子也好，数码产品信息也好，游戏预告也好......&lt;/p&gt;
+&lt;p&gt;而在现在这个世界线里，有没有另外一个人，与我心意相通，大部分爱好相同，值得成为朋友所说的，属于我的那个她。&lt;/p&gt;
+&lt;p&gt;我还活着。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/still-alive/" rel="alternate"/><published>2020-03-18T22:56:00+08:06</published></entry><entry><id>https://yltang.cn/archives/nothing-happened/</id><title>最难过的，是我们什么都没发生过</title><updated>2020-05-20T08:26:38.719458+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;blockquote&gt;
+&lt;p&gt;原文链接：&lt;a href="https://www.yamdr.cn/index.php/archives/381/"&gt;&lt;a href="https://www.yamdr.cn/index.php/archives/381/"&gt;https://www.yamdr.cn/index.php/archives/381/&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;具体而言，对每一个 cell，首先确定这个 cell 内部面片的拓扑结构。即通过判断这个 cell 各顶点的符号来判断 cell 哪部分处于面内。当相邻两顶点符号改变时，表名这条边穿过了面，因此该边上必定有一个面片顶点（vertice）。这样，每个顶点都有两种情况：面内、面外，总共就有2^8 = 256 中情况，这些情况可归类为 15 中基本情况：&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img data-width="581" data-height="304" src="https://cdn.jsdelivr.net/gh/AlanDecode/site-Wiki@gh-pages/archives/assets/cf8912ad3cd96f93f718ee2aa3864674.png" alt="" /&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;图中黄色背景的代表 cell 内只有一个连续面片的情况；其它则代表有多个面片的情况。&lt;/p&gt;
-&lt;p&gt;得到拓扑结构后，对每条包含 vertice 的边进行线性插值，找到 0 值的位置，即可作为 vertice 的坐标，由此完成 mesh 提取。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/Marching Cubes 算法提取等值面/" rel="alternate"/><published>2019-11-01T16:06:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/命令行查看 SSL 证书过期时间/</id><title>命令行查看 SSL 证书过期时间</title><updated>2020-05-01T11:19:39.915533+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;命令行：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;openssl x509 -in server.crt -noout -dates
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;输出：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;notBefore=Dec 24 08:04:53 2019 GMT
-notAfter=Mar 23 08:04:53 2020 GMT
-&lt;/code&gt;&lt;/pre&gt;
-</content><link href="https://wiki.imalan.cn/archives/命令行查看 SSL 证书过期时间/" rel="alternate"/><published>2019-12-26T19:19:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/variable-pass-paradim-in-python/</id><title>Python 中的变量传递方式</title><updated>2020-05-01T11:19:39.915510+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;之前一直没有仔细思考过这个问题，直到最近用到方才深入了解。其实并不复杂，和 C++ 如出一辙。&lt;/p&gt;
-&lt;h2&gt;Python 中的变量&lt;/h2&gt;
-&lt;p&gt;简而言之，Python 中的变量都是对&lt;strong&gt;实体的引用&lt;/strong&gt;，但并&lt;strong&gt;不是实体本身&lt;/strong&gt;；此外，Python 的函数传参仍然&lt;strong&gt;遵循按值传递&lt;/strong&gt;，结合这两点就能搞明白 Python 的传参行为。&lt;/p&gt;
-&lt;p&gt;先抛开具体的编程语言，如果有以下伪代码：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;a=1
-a=2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;多数语言会把这两行解释为：声明一个变量 a，在内存里分配空间，这个空间&lt;strong&gt;就叫 a&lt;/strong&gt;，里面存 1；然后把这个空间里的值更新成 2。&lt;/p&gt;
-&lt;p&gt;但是 Python 中对变量（其实是对象）的处理有所不同。以上两行在 Python 中代表：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;创建一个对象（整数 1），放在内存里，再&lt;strong&gt;创建一个引用，这个引用叫做 a&lt;/strong&gt;，指向之前创建的对象&lt;/li&gt;
-&lt;li&gt;又创建一个对象（整数 2），放在内存里，把 a 指向这个新的对象&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;看到不同了吧？接下来讨论函数传参。&lt;/p&gt;
-&lt;h2&gt;Python 中的传参&lt;/h2&gt;
-&lt;p&gt;在 Python 中的函数传参是依照&lt;strong&gt;值传递&lt;/strong&gt;的；但由于 Python 中的变量都是引用，因此就有了以下这句有点绕的话：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Python passes references-to-objects by value (like Java), and everything in Python is an object.&lt;/p&gt;
+&lt;p&gt;先生你好，你有印象深刻的喜欢过谁吗&lt;/p&gt;
+&lt;p&gt;有&lt;/p&gt;
+&lt;p&gt;那你有为她做过什么事吗&lt;/p&gt;
+&lt;p&gt;送过口红当生日礼物&lt;/p&gt;
+&lt;p&gt;还有吗&lt;/p&gt;
+&lt;p&gt;啊，送她回家算吗&lt;/p&gt;
+&lt;p&gt;有更加令人印象深刻的例子吗&lt;/p&gt;
+&lt;p&gt;呀，我另一份资料落在车里了，得赶紧去拿一下，你帮我先把这份资料送过去可以吗&lt;/p&gt;
+&lt;p&gt;这么大的雨，我去车里拿吧&lt;/p&gt;
+&lt;p&gt;我去就行，麻烦你了&lt;/p&gt;
+&lt;p&gt;亲爱的，我们走吧&lt;/p&gt;
+&lt;p&gt;有吗，更印象深刻的例子&lt;/p&gt;
+&lt;p&gt;帮她送过资料&lt;/p&gt;
+&lt;p&gt;没有为他做更多的事情吗，比如一起淋过暴雨，比如为了她而放弃出国，什么都没有吗&lt;/p&gt;
+&lt;p&gt;什么都没有&lt;/p&gt;
+&lt;p&gt;所以对你来说，这是一段特别遗憾的感情吗&lt;/p&gt;
+&lt;p&gt;我喜欢你&lt;/p&gt;
+&lt;p&gt;你以为我不知道吗，虽然今天是愚人节，但是你的套路也太俗了，怎么可能骗得过我呢&lt;/p&gt;
+&lt;p&gt;哈哈，你真聪明&lt;/p&gt;
+&lt;p&gt;你再想新的来骗我吧。我先走了&lt;/p&gt;
+&lt;p&gt;嗯，先生是一段特别遗憾的感情吗&lt;/p&gt;
+&lt;p&gt;也不算是一段特别遗憾的感情吧，因为都没有开始过&lt;/p&gt;
+&lt;p&gt;这样阿，谢谢你阿&lt;/p&gt;
+&lt;p&gt;什么故事都没有，这算什么印象深刻的喜欢过阿&lt;/p&gt;
+&lt;p&gt;哼，就是阿&lt;/p&gt;
+&lt;p&gt;hi，你还好吗，发生什么了吗&lt;/p&gt;
+&lt;p&gt;没什么，刚才看到有人在采访&lt;/p&gt;
+&lt;p&gt;采访&lt;/p&gt;
+&lt;p&gt;嗯，问一个路人甲，有没有印象深刻的喜欢过谁&lt;/p&gt;
+&lt;p&gt;路人甲是怎么说的&lt;/p&gt;
+&lt;p&gt;他说，有啊，一个从来没有在一起过的女生&lt;/p&gt;
+&lt;p&gt;为什么是她&lt;/p&gt;
+&lt;p&gt;因为他想和她做的事情很多，但最后什么都没有做&lt;/p&gt;
+&lt;p&gt;什么都没做，还好意思在这里矫情啊&lt;/p&gt;
+&lt;p&gt;哈哈哈哈，是吧，好了，我就送你到这儿了，拜拜&lt;/p&gt;
+&lt;p&gt;拜拜&lt;/p&gt;
+&lt;p&gt;喂，新婚快乐啊.....&lt;/p&gt;
+&lt;p&gt;有句歌词是&lt;/p&gt;
+&lt;p&gt;我没有为你伤村悲秋不配有憾事&lt;/p&gt;
+&lt;p&gt;大意是说，我没有为你做过惊天动地的事，怎么配说我有多么多么的难过&lt;/p&gt;
+&lt;p&gt;但没有人想过，不是什么事，我都不想为你做，而是名不正言不顺的我，什么事都来不及为你做&lt;/p&gt;
+&lt;p&gt;有一句老话是这样说的&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;我一刻也未曾拥有你，却觉得失去了你千万遍&lt;/strong&gt;&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/nothing-happened/" rel="alternate"/><published>2020-03-27T16:56:00+08:06</published></entry><entry><id>https://yltang.cn/archives/black-white-memory/</id><title>黑白记忆</title><updated>2020-05-20T08:26:38.719390+00:00</updated><author><name>原谅糖</name><email>952716224@qq.com</email><uri>https://yltang.cn/</uri></author><content>&lt;blockquote&gt;
+&lt;p&gt;国务院公告：为表达全国各族人民对抗击新冠肺炎疫情斗争牺牲烈士和逝世同胞的深切哀悼，国务院决定，2020 年 4 月 4 日举行全国性哀悼活动。在此期间，全国和驻外使领馆下半旗志哀，全国停止公共娱乐活动。4 月 4 日 10 时起，全国人民默哀 3 分钟，汽车、火车、舰船鸣笛，防空警报鸣响。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;看以下代码段&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;输出：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[1]
-[1, 2]
-[1, 2]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;调用 &lt;code&gt;func&lt;/code&gt; 并把 a 传入时，Python 在局部&lt;strong&gt;新建了一个局部的变量 a&lt;/strong&gt;，并把外部 a 的值赋值给了新的变量。由于 a 是引用，新的变量也是引用，都指向内存中的同一个列表对象，因此在函数内部对列表进行的操作也同样可以由外部的 a 观测到。&lt;/p&gt;
-&lt;p&gt;然而，要注意两个陷阱：对引用进行 &lt;strong&gt;re-assign&lt;/strong&gt;；以及对 &lt;strong&gt;immutable 对象&lt;/strong&gt;的处理。&lt;/p&gt;
-&lt;h2&gt;对引用 re-assign&lt;/h2&gt;
-&lt;p&gt;修改以上代码为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 注意这里&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;输出：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[1]
-['a']
-[1]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;为什么函数内对 a 的修改不能被外部的 a 观测到？&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;a=['a']&lt;/code&gt; 这行代码并不是通过 a 修改 a 指向的 list，而是在内存中新建了一个列表对象 &lt;code&gt;['a']&lt;/code&gt;，并将函数内部的 a 指向了这个新的对象，并且此后的操作都针对这个新的列表对象；然而由于函数内部的 a 与外部的 a 是两个不同的变量，因此外部的 a 仍然指向之前的 list。这种操作称为 &lt;code&gt;re-assign&lt;/code&gt;，需要与 &lt;code&gt;append&lt;/code&gt; 这种针对对象本身的方法区别开。&lt;/p&gt;
-&lt;h2&gt;immutable 对象的处理&lt;/h2&gt;
-&lt;p&gt;如果不使用列表，而使用字符串：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;changed&amp;#39;&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;original&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;func&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;结果：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;original
-changed
-original
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果理解了前文的要点，那么针对 immutable 对象的处理并不难懂。由于 str 对象是 immutable 的（不可变对象），因此函数内部不能通过 a 修改指向的字符串，&lt;code&gt;a='changed'&lt;/code&gt; 这行代码实际是在进行 re-assign，也就是新建了一个字符串对象 &lt;code&gt;'changed'&lt;/code&gt;，使函数内部的 a 指向这个新的对象。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;总而言之记住三点：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Python 中的变量是对象的引用，而不是对象本身&lt;/li&gt;
-&lt;li&gt;Python 按值传参&lt;/li&gt;
-&lt;li&gt;警惕对引用进行 re-assign 与通过引用修改对象的区别&lt;/li&gt;
-&lt;/ol&gt;
-</content><link href="https://wiki.imalan.cn/archives/variable-pass-paradim-in-python/" rel="alternate"/><published>2020-01-02T15:20:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/vs-code-pylint-e1101-module-has-no-member/</id><title>VS Code Pylint E1101 Module has no member 错误</title><updated>2020-05-01T11:19:39.915487+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;VS Code 出现类似这样的问题：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Pylint E1101 Module 'torch' has no 'from_numpy' member...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这是 Pylint 的问题，三种方案都行：&lt;/p&gt;
-&lt;h2&gt;行内禁用提示&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# pylint: disable=E1101&lt;/span&gt;
-&lt;span class="n"&gt;tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;torch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_numpy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;np_array&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# pylint: enable=E1101&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;有点 ugly。&lt;/p&gt;
-&lt;h2&gt;设置忽略提示&lt;/h2&gt;
-&lt;p&gt;在 &lt;code&gt;.pylintrc&lt;/code&gt; 中：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;[MASTER]
-extension-pkg-whitelist=numpy,torch,cv,cv2
-
-[TYPECHECK]
-ignored-modules=numpy,torch,cv,cv2
-ignored-classes=numpy,torch,cv,cv2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;也不是很优雅。&lt;/p&gt;
-&lt;h2&gt;将 Member 指定为 generated&lt;/h2&gt;
-&lt;p&gt;VS Code 设置：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;&amp;quot;python.linting.pylintArgs&amp;quot;: [
-    &amp;quot;--errors-only&amp;quot;,
-    &amp;quot;--generated-members=numpy.* ,torch.* ,cv2.* , cv.*&amp;quot;
-]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这个还可以。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/vs-code-pylint-e1101-module-has-no-member/" rel="alternate"/><published>2020-01-09T09:28:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/using-webdav-on-linux/</id><title>Linux 使用 WebDAV</title><updated>2020-05-01T11:19:39.915463+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;Centos &amp;amp; Fedora &amp;amp; RedHat&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;yum -y install davfs2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;其他的比如Ubuntu之类的&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;apt-get -y install davfs2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;安装完davfs2之后执行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;sed -i 's/# use_locks       1/use_locks       0/g' /etc/davfs2/davfs2.conf
-echo &amp;quot;你的WebDAV地址 用户名 密码&amp;quot; &amp;gt;&amp;gt; /etc/davfs2/secrets #保存用户名密码，以后可以直接免密码挂载
-mount.davfs 你的WebDAV地址 你想要挂载到的目录
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;即可成功挂载&lt;/p&gt;
-&lt;p&gt;取消挂载：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;umount.davfs 挂载目录
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意1：挂载目录必须提前创建好！
-注意2：如果你不执行第二句保存用户名密码，那么你以后挂载的时候都会要求输入用户名密码！&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;挂载时若提示 &lt;code&gt;the server does not support WebDAV&lt;/code&gt;，可配置忽略 WebDAV 头：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vi /etc/davfs2/davfs2.conf
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;搜索并修改：&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;ignore_dav_header 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr /&gt;
-&lt;p&gt;来自：&lt;a href="https://moe.best/linux-memo/mount-webdav.html"&gt;如何在各个平台下挂载WebDAV&lt;/a&gt;。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/using-webdav-on-linux/" rel="alternate"/><published>2020-02-10T19:58:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/ffmpeg-cheat-sheet/</id><title>ffmpeg 常用指令</title><updated>2020-05-01T11:19:39.915435+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;&lt;strong&gt;视频格式转换：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -i input.flv output.mp4
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;视频截取：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -ss &lt;span class="m"&gt;00&lt;/span&gt;:00:00 -t &lt;span class="m"&gt;00&lt;/span&gt;:00:30 -i input.mp4 -vcodec copy -acodec copy output.mp4
-&lt;span class="c1"&gt;# -ss 指定从什么时间开始&lt;/span&gt;
-&lt;span class="c1"&gt;# -t 指定需要截取多长时间&lt;/span&gt;
-&lt;span class="c1"&gt;# -i 指定输入文件&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;视频去除音频：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -i input.mp4 -map &lt;span class="m"&gt;0&lt;/span&gt;:0 -vcodec copy output.mp4
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;视频提取音频：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -i input.mp4 -f mp3 -vn output.mp3
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;视频剪裁：&lt;/strong&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -i input.mp4 -filter:v &lt;span class="s2"&gt;&amp;quot;crop=out_w:out_h:x:y&amp;quot;&lt;/span&gt; output.mp4
-&lt;span class="c1"&gt;# out_w: 输出宽度&lt;/span&gt;
-&lt;span class="c1"&gt;# out_h: 输出高度&lt;/span&gt;
-&lt;span class="c1"&gt;# (x, y): 左上角坐标，横向为x轴&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;strong&gt;视频拼接：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;先准备文本文件 filelist.txt，写入要合并的文件名：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;file input1.mp4
-file input2.mp4
-file input3.mp4
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;然后：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ffmpeg -f concat -i filelist.txt -c copy output.mp4
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;注意尺寸与格式等。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/ffmpeg-cheat-sheet/" rel="alternate"/><published>2020-02-13T10:38:00+08:06</published></entry><entry><id>https://wiki.imalan.cn/archives/generate-self-signed-cert-with-openssl/</id><title>使用 openssl 生成自签名证书</title><updated>2020-05-01T11:19:39.915389+00:00</updated><author><name>熊猫小A</name><email>hi@imalan.cn</email><uri>https://www.imalan.cn</uri></author><content>&lt;p&gt;通过 openssl 生成私钥 server.key：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;openssl genrsa -out server.key &lt;span class="m"&gt;1024&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;根据私钥生成证书申请文件 csr：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;openssl req -new -key server.key -out server.csr
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;根据提示输入各项参数。Common Name 这一项可以填通配符域名。&lt;/p&gt;
-&lt;p&gt;使用私钥签名生成证书 server.crt：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;openssl x509 -req -in server.csr -out server.crt -signkey server.key -days &lt;span class="m"&gt;3650&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;有效期 3650 天。自己调试开发足够了。&lt;/p&gt;
-</content><link href="https://wiki.imalan.cn/archives/generate-self-signed-cert-with-openssl/" rel="alternate"/><published>2020-03-01T13:15:00+08:06</published></entry></feed>
+&lt;p&gt;我记忆里的上一次举国默哀是 2008 年四川汶川大地震，那时候我应该才五年级，下午两点二十八分，似乎是眼保健操的时间，我不记得是否有正常做眼保健操，只记得站着闭眼默哀了三分钟，然后就像平常一样继续上课。&lt;/p&gt;
+&lt;p&gt;那天放学回家，家里只有我奶奶在田间做农活，我没去问奶奶是否知道两千公里外的四川发生了何种灾难。我打开电视，电视里都是报道灾区的景象和各地默哀的场景。那天于我而言是黑白的，不知缘由的单调。&lt;/p&gt;
+&lt;p&gt;我不记得暂停一切公共娱乐是否也是那天的事了，只记得所有游戏都停服了，我刷着手机百无聊赖地转发空间日志。&lt;/p&gt;
+&lt;p&gt;我想起有一次在某个录像店里寻找有趣的光盘，不小心看到一张南京大屠杀的纪录片，封面有一个人被砍头的画面，让我每次想起都不寒而栗。&lt;/p&gt;
+&lt;p&gt;我又想起小学组织春游去烈士陵园，那座纪念碑是那么的高大，那座山是那么的沉重。&lt;/p&gt;
+</content><link href="https://yltang.cn/archives/black-white-memory/" rel="alternate"/><published>2020-04-03T22:56:00+08:06</published></entry></feed>
