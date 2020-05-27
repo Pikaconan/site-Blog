@@ -87,6 +87,7 @@ valine = {
     "el": '#vcomments',
     "appId": "qfulUMeeHaHSTNRWkv0NtufY-9Nh9j0Va",
     "appKey": "NpoJYNLR7JX05K9gJwbnccrS",
+    "serverURLs": "https://tab.leancloud.cn",
     "visitor": True,
     "placeholder": "来畅所欲言吧~"
 }
