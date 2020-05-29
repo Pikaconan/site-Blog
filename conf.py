@@ -34,6 +34,11 @@ external_links = [
         "name": "Travelling",
         "url": "https://travellings.now.sh/",
         "brief": "随机的友链总是好的"
+    },
+    {
+        "name": "Another",
+        "url": "https://www.yltang.cn/",
+        "brief": "我的另一个站点"
     }
 ]
 nav = [
