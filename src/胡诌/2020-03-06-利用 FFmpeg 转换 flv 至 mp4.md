@@ -6,7 +6,8 @@ date: 2020/03/06 23:48:00
 status: publish
 author: 原谅糖
 tags: 
-excerpt: 
+  - FFmpeg
+excerpt: FFmpeg 是个好东西。
 ---
 
 又拍云 CDN 实在太便宜了，几个月下来，通过又拍云联盟获得的代金券才用了七毛钱（其实是本站没啥人看）。看到 Maverick 集成了 Dplayer 插件，于是打算放一个视频上来。

@@ -36,9 +36,9 @@ external_links = [
         "brief": "随机的友链总是好的"
     },
     {
-        "name": "Another",
+        "name": "Dynamic",
         "url": "https://www.yltang.cn/",
-        "brief": "我的另一个站点"
+        "brief": "动态站点"
     }
 ]
 nav = [
