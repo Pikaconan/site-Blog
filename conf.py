@@ -29,6 +29,7 @@ author_homepage = "https://yltang.cn/"
 description = "清醒的人最荒唐"
 key_words = ['Maverick', '原谅糖', 'Galileo', 'blog']
 language = 'zh-CN'
+background_img = 'https://yltang.cn/background.jpg'
 external_links = [
     {
         "name": "Travelling",
@@ -38,7 +39,7 @@ external_links = [
     {
         "name": "Dynamic",
         "url": "https://www.yltang.cn/",
-        "brief": "动态站点。"
+        "brief": "动态站点"
     }
 ]
 nav = [
@@ -104,6 +105,12 @@ head_addon = r'''
 <link rel="apple-touch-icon" sizes="180x180" href="${static_prefix}mylogo.png">
 <link rel="shortcut icon" href="${static_prefix}favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style>.yue .ga-content_body {
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+}
+.ga-mono {
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+}</style>
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 <script>
