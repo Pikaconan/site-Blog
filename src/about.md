@@ -20,7 +20,6 @@ comment: false
 - 2020 年 01 月 07 日，使用 [Maverick](https://github.com/AlanDecode/Maverick) 静态博客生成器，默认 [Galileo](https://github.com/AlanDecode/Maverick-Theme-Galileo) 主题，托管和构建于 [GitHub](https://github.com/)，并开启 [又拍云](https://www.upyun.com/) 全站加速。
 - 2020 年 02 月 26 日，切换至 [Maverick](https://github.com/AlanDecode/Maverick) 的 [Kepler](https://github.com/AlanDecode/Maverick-Theme-Kepler) 主题。
 - 2020 年 04 月 12 日，购买域名 yltang.cn 并使用。
-- 2020 年 05 月 29 日，鉴于购买了 4K 显示器，重新搭建了 [www.yltang.cn]( https://www.yltang.cn/) 站点。
 
 ### 联系我
 
