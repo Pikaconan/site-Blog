@@ -38,7 +38,7 @@ external_links = [
     {
         "name": "Dynamic",
         "url": "https://www.yltang.cn/",
-        "brief": "动态站点"
+        "brief": "动态站点。"
     }
 ]
 nav = [
