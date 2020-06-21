@@ -125,6 +125,6 @@ var _hmt = _hmt || [];
 
 '''
 
-footer_addon = '<a no-style href="http://www.beian.miit.gov.cn/" target="_blank">苏ICP备20021763号</a> | <a no-style href="https://www.upyun.com/" target="_blank">又拍云</a>'
+footer_addon = '<a no-style href="http://www.beian.miit.gov.cn/" target="_blank">苏 ICP 备 20021763 号</a> | <a no-style href="https://www.upyun.com/" target="_blank">又拍云</a>'
 
 body_addon = ''

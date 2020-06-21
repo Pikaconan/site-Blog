@@ -43,6 +43,5 @@ comment: false
 [Velas 电波站](https://www.velasx.com/)+(https://yltang.cn/avatar/velsa.jpg)
 [METO 的部落格](https://i-meto.com/)+(https://yltang.cn/avatar/meto.jpeg)
 [Sukka's Blog](https://blog.skk.moe)+(https://yltang.cn/avatar/sukka.jpg)
-[阮一峰的网络日志](http://www.ruanyifeng.com/blog/)+(https://yltang.cn/avatar/ruanyifeng.jpeg)
 
 [/links]
