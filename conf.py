@@ -110,6 +110,20 @@ head_addon = r'''
 }
 .ga-mono {
     font-family: "Serif",-apple-system,system-ui,sans-serif;
+}
+main>.ga-section::after {
+    content: attr(data-title);
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.ga-section#ga-about>ul>li span.ga-read_more::before, .ga-section#ga-archive_list>ul>li span.ga-read_more::before, .ga-section#ga-external_links>ul>li span.ga-read_more::before, .ga-section#ga-post_list>ul>li span.ga-read_more::before {
+    content: "→ ";
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
 }</style>
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
