@@ -35,11 +35,6 @@ external_links = [
         "name": "Travelling",
         "url": "https://travellings.now.sh/",
         "brief": "随机开往一个网站"
-    },
-    {
-        "name": "Dynamic",
-        "url": "https://www.yltang.cn/",
-        "brief": "我的一个动态站点"
     }
 ]
 nav = [
