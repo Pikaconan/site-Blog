@@ -9,9 +9,9 @@ build_dir = "../dist/"
 index_page_size = 10
 archives_page_size = 20
 template = {
-    "name": "Kepler",
+    "name": "Galileo",
     "type": "local",
-    "path": "../Kepler"
+    "path": "../Galileo"
 }
 enable_jsdelivr = {
     "enabled": True,
@@ -27,7 +27,7 @@ author = "原谅糖"
 email = "952716224@qq.com"
 author_homepage = "https://yltang.cn/"
 description = "清醒的人最荒唐"
-key_words = ['Maverick', '原谅糖', 'Kepler', 'blog']
+key_words = ['Maverick', '原谅糖', 'Galileo', 'blog']
 language = 'zh-CN'
 external_links = [
     {
@@ -104,7 +104,6 @@ head_addon = r'''
 <link rel="apple-touch-icon" sizes="180x180" href="${static_prefix}mylogo.png">
 <link rel="shortcut icon" href="${static_prefix}favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<style>.yue a {color: #42b983;border-bottom: 0px solid #42b983;}</style>
 <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 <script>
