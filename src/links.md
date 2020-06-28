@@ -28,6 +28,7 @@ comment: false
 [萌豚 Moechu](https://moechu.cn/)+(https://yltang.cn/avatar/moechu.png)
 [BlogWe](https://blogwe.com/)+(https://yltang.cn/avatar/blogme.png)
 [Aicsukの世界](https://www.aicsuk.moe/)+(https://yltang.cn/avatar/aicsuk.jpeg)
+[饲养员](https://guaiwola.com/)+(https://yltang.cn/avatar/1lbsLuKDx4vMm9N.jpg)
 
 [/links]
 
