@@ -29,6 +29,7 @@ comment: false
 [BlogWe](https://blogwe.com/)+(https://yltang.cn/avatar/blogme.png)
 [Aicsukの世界](https://www.aicsuk.moe/)+(https://yltang.cn/avatar/aicsuk.jpeg)
 [饲养员](https://guaiwola.com/)+(https://yltang.cn/avatar/1lbsLuKDx4vMm9N.jpg)
+[呆哥/Dai.Ge](https://Dai.Ge)+(https://yltang.cn/avatar/logo.png)
 
 [/links]
 
