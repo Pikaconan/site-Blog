@@ -1,27 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>原谅糖</title><link>https://yltang.cn/</link><description>清醒的人最荒唐</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png</url><title>原谅糖</title><link>https://yltang.cn/</link></image><language>zh-CN</language><lastBuildDate>Thu, 27 Aug 2020 06:15:17 +0806</lastBuildDate><pubDate>Thu, 27 Aug 2020 06:15:17 +0806</pubDate><item><title>博客迁移二三事</title><link>https://yltang.cn/archives/something-about-blog-migration/</link><description>&lt;p&gt;我还是放弃了虚拟主机，从那天客服给我解决 BUG 时，直接在我的目录里添加修改文件，我就有点害怕，我早就该明白的。&lt;/p&gt;
-&lt;h3&gt;服务器&lt;/h3&gt;
-&lt;p&gt;本来我买了 &lt;a href="https://www.aliyun.com/minisite/goods?userCode=qd1f2gzc&amp;amp;share_source=copy_link"&gt;阿里云&lt;/a&gt; 双十一的 T5，但是后来想想 20% 性能基线，1M 带宽还是太弱了。于是发工单退掉，转而选择了轻量学生机，有 5M 的带宽，CPU 性能 100%，114 一年感觉也很实惠。&lt;/p&gt;
-&lt;h3&gt;域名转入&lt;/h3&gt;
-&lt;p&gt;使用国内服务器需要域名备案，我需要把域名转入到阿里云。阿里云 xyz 域名续费一年只要 39，这是我没想到的，我在阿里和腾讯查询 xyz 续费价格都是 70 左右。&lt;/p&gt;
-&lt;p&gt;提交域名转入之后，需要等待 5 天才能完成转入。在这中间我还经历了实名认证无法通过的窘境，我拍了十几次身份证照片，反复确认信息填写正确，却始终无法通过实名认证。后来提交工单，客服一顿远程操作也无法解决，最终联系了实名局紧急处理后，我才完成实名认证。&lt;/p&gt;
-&lt;p&gt;转入成功后，不能立即备案，需要等两天实名认证信息同步。&lt;/p&gt;
-&lt;h3&gt;备案&lt;/h3&gt;
-&lt;p&gt;现在备案不需要幕布了，阿里云使用 APP，腾讯云使用小程序，都可以直接摄像头验证身份。&lt;/p&gt;
-&lt;p&gt;备案时网站名称可以随意填，如果不对，客服会打电话通知你修改，无需纠结。我所在的江苏对网站名称的要求比较特殊，必须是 XX 的个人博客，XX 是真名......&lt;/p&gt;
-&lt;p&gt;提交后初审很快，10 分钟内就会有客服联系我修改 XX 的个人博客......之后提交管局，页面显示需要等 12 天，我实际等待了 11 天左右。&lt;/p&gt;
-&lt;h3&gt;宝塔&lt;/h3&gt;
-&lt;p&gt;轻量服务器预装的是宝塔 5.2，过于旧，而且在宝塔里无法直接升级到 6.x，可以在轻量服务器面板里直接重置成 6.8 版本，再升级到最新版。&lt;/p&gt;
-&lt;p&gt;防火墙默认只放行了80 443 22，需要手动添加 8888 用于宝塔访问，建议之后修改这个默认端口。&lt;/p&gt;
-&lt;p&gt;备案时，服务器的 80 端口是封锁的，可以在宝塔中添加网站，域名栏直接填写服务器 IP，通过 IP 访问来调试网站。&lt;/p&gt;
-&lt;p&gt;上传博客文件的时候，才发现 FTP 有多难用，最后拥抱了 SFTP，Xshell+Xftp 可太好用了。&lt;/p&gt;
-&lt;h3&gt;搭建&lt;/h3&gt;
-&lt;p&gt;除了迁移我的博客，我还使用 docker 搭建了 RSSHub，即使面对微博这样反爬严格的网站，也能稳定订阅 RSS 了。&lt;/p&gt;
-&lt;p&gt;图床是我心心念念了好久的工具，现在终于可以自建了。之前一直使用的群友的图床，速度非常快，但是图片放在别人那里还是不太好，我也不太喜欢那个图床程序的使用逻辑。于是我使用 Lsky 搭建了我自己的图床，使用又拍云对象存储作为图片的家。&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://console.upyun.com/register/?invite=SycyPYiRB"&gt;又拍云&lt;/a&gt; 可以申请免费的对象存储空间和 CDN 加速，支持 Gzip 和 Brotli 压缩，还能自适应加载 webp。另外，我还使用了宝塔的计划任务定期将网站和数据库备份到又拍云对象存储。&lt;/p&gt;
-&lt;h3&gt;后记&lt;/h3&gt;
-&lt;p&gt;从虚拟主机到阿里学生机，感觉鸟枪换大炮了，能做的事多了许多，这样看来其实虚拟主机性价比太低了。&lt;/p&gt;
-</description><author>952716224@qq.com (原谅糖)</author><guid isPermaLink="true">https://yltang.cn/archives/something-about-blog-migration/</guid><pubDate>Sat, 21 Dec 2019 19:55:00 +0806</pubDate></item><item><title>观 Bilibili 新年晚会有感</title><link>https://yltang.cn/archives/awesome-bilibili/</link><description>&lt;p&gt;世界是你们的，世界也是我们的，世界终究是年轻人的。&lt;/p&gt;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>原谅糖</title><link>https://yltang.cn/</link><description>清醒的人最荒唐</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png</url><title>原谅糖</title><link>https://yltang.cn/</link></image><language>zh-CN</language><lastBuildDate>Sun, 24 Jan 2021 06:56:24 +0806</lastBuildDate><pubDate>Sun, 24 Jan 2021 06:56:24 +0806</pubDate><item><title>观 Bilibili 新年晚会有感</title><link>https://yltang.cn/archives/awesome-bilibili/</link><description>&lt;p&gt;世界是你们的，世界也是我们的，世界终究是年轻人的。&lt;/p&gt;
 </description><author>952716224@qq.com (原谅糖)</author><guid isPermaLink="true">https://yltang.cn/archives/awesome-bilibili/</guid><pubDate>Thu, 02 Jan 2020 16:44:00 +0806</pubDate></item><item><title>使用 Maverick 搭建个人 Wiki</title><link>https://yltang.cn/archives/wiki-by-maverick/</link><description>&lt;p&gt;Maverick 是 VOID 主题作者 &lt;a href="https://blog.imalan.cn/"&gt;熊猫小 A&lt;/a&gt; 的新项目，是一个类似 Hexo 的静态博客生成器，具体可以查看这两篇文章 &lt;a href="https://blog.imalan.cn/archives/blog-now-powered-by-maverick/"&gt;Maverick - Go My Own Way.&lt;/a&gt; 和 &lt;a href="https://blog.imalan.cn/archives/blog-with-github/"&gt;完全使用 GitHub 写博客&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;作者说得很明白了，我也不必大篇转载，主要想谈谈用 Maverick 搭建个人 Wiki 站的感受。&lt;/p&gt;
 &lt;h3&gt;为什么要用 Maverick&lt;/h3&gt;
@@ -320,4 +298,16 @@ comment: false
 &lt;p&gt;我不记得暂停一切公共娱乐是否也是那天的事了，只记得所有游戏都停服了，我刷着手机百无聊赖地转发空间日志。&lt;/p&gt;
 &lt;p&gt;我想起有一次在某个录像店里寻找有趣的光盘，不小心看到一张南京大屠杀的纪录片，封面有一个人被砍头的画面，让我每次想起都不寒而栗。&lt;/p&gt;
 &lt;p&gt;我又想起小学组织春游去烈士陵园，那座纪念碑是那么的高大，那座山是那么的沉重。&lt;/p&gt;
-</description><author>952716224@qq.com (原谅糖)</author><guid isPermaLink="true">https://yltang.cn/archives/black-white-memory/</guid><pubDate>Fri, 03 Apr 2020 22:56:00 +0806</pubDate></item></channel></rss>
+</description><author>952716224@qq.com (原谅糖)</author><guid isPermaLink="true">https://yltang.cn/archives/black-white-memory/</guid><pubDate>Fri, 03 Apr 2020 22:56:00 +0806</pubDate></item><item><title>荒废的一年</title><link>https://yltang.cn/archives/the-past-year/</link><description>&lt;h3&gt;她&lt;/h3&gt;
+&lt;p&gt;有时候我会觉得她是故意不留余地的，她是为了我好。&lt;/p&gt;
+&lt;p&gt;在我用了一年的时间走出阴霾、步入生活的正轨后，我确信现在的这条路比一年前的那条更好。&lt;/p&gt;
+&lt;p&gt;性格决定命运，我那时总是犹豫不决、瞻前顾后，她的离开让我无路可走，只能走向现在。&lt;/p&gt;
+&lt;p&gt;只是，这条路没有她了。&lt;/p&gt;
+&lt;p&gt;如果我早点决定自己的人生，也许她就不会离开了。&lt;/p&gt;
+&lt;h3&gt;玩&lt;/h3&gt;
+&lt;p&gt;荒废了一年后，我终于买得起心心念念的 iPhone、iPad Pro、Apple Watch、Airpods Pro 和 Switch。&lt;/p&gt;
+&lt;p&gt;我在海拉鲁大陆上解神庙、在无人岛钓鱼挖化石，玩得很开心，也很累。&lt;/p&gt;
+&lt;p&gt;周末我找不到出门的理由，躺在床上像个废人一样，不是玩游戏就是睡觉，身与心无缘由地累。&lt;/p&gt;
+&lt;h3&gt;惑&lt;/h3&gt;
+&lt;p&gt;找不到活下去努力工作的理由。&lt;/p&gt;
+</description><author>952716224@qq.com (原谅糖)</author><guid isPermaLink="true">https://yltang.cn/archives/the-past-year/</guid><pubDate>Sun, 24 Jan 2021 14:21:00 +0806</pubDate></item></channel></rss>
