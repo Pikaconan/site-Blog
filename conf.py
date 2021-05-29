@@ -14,7 +14,7 @@ template = {
     "path": "../Galileo"
 }
 enable_jsdelivr = {
-    "enabled": True,
+    "enabled": False,
     "repo": "iyltang/site-Blog@gh-pages"
 }
 category_by_folder = True
