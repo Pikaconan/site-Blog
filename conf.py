@@ -29,7 +29,6 @@ author_homepage = "https://yltang.cn/"
 description = "清醒的人最荒唐"
 key_words = ['Maverick', '原谅糖', 'Galileo', 'blog']
 language = 'zh-CN'
-background_img = 'https://yltang.cn/background.jpg'
 external_links = [
     {
         "name": "Travelling",
