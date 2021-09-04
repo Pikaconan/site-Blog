@@ -82,16 +82,6 @@ social_links = [
     }
 ]
 
-valine = {
-    "enable": True,
-    "el": '#vcomments',
-    "appId": "qfulUMeeHaHSTNRWkv0NtufY-9Nh9j0Va",
-    "appKey": "NpoJYNLR7JX05K9gJwbnccrS",
-    "serverURLs": "https://tab.leancloud.cn",
-    "visitor": True,
-    "placeholder": "来畅所欲言吧~"
-}
-
 head_addon = r'''
 <meta http-equiv="x-dns-prefetch-control" content="on">
 <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
