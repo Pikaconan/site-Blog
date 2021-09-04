@@ -1,0 +1,1517 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Maverick,原谅糖,Galileo,blog" />
+    <meta name="generator" content="Maverick 1.1" />
+    <meta name="template" content="Galileo" />
+    <link rel="alternate" type="application/rss+xml" title="原谅糖 &raquo; RSS 2.0" href="https://yltang.cn/feed/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="原谅糖 &raquo; ATOM 1.0" href="https://yltang.cn/feed/atom/index.xml" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/galileo-8d8763e752.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/ExSearch/ExSearch-182e5a8868.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/katex.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700&display=swap">
+    <script>
+        var ExSearchConfig = {
+            root: "",
+            api: "https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/77d3c7c6d7499e53d5085b12566ae7cd.json"
+        }
+    </script>
+    
+<title>Java 笔记 - 原谅糖</title>
+<meta name="author" content="原谅糖" />
+<meta name="description" content="不用语雀了，迁移至此。" />
+<meta property="og:title" content="Java 笔记 - 原谅糖" />
+<meta property="og:description" content="不用语雀了，迁移至此。" />
+<meta property="og:site_name" content="原谅糖" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://yltang.cn/archives/java-note/" />
+<meta property="og:image" content="" />
+<meta property="article:published_time" content="2021-09-04T20:21:00-00.00" />
+<meta name="twitter:title" content="Java 笔记 - 原谅糖" />
+<meta name="twitter:description" content="不用语雀了，迁移至此。" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:image" content="" />
+
+
+    
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="dns-prefetch" href="//yltang.cn" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/mylogo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<style>.yue .ga-content_body {
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+}
+.ga-mono {
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+}
+main>.ga-section::after {
+    content: attr(data-title);
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.ga-section#ga-about>ul>li span.ga-read_more::before, .ga-section#ga-archive_list>ul>li span.ga-read_more::before, .ga-section#ga-external_links>ul>li span.ga-read_more::before, .ga-section#ga-post_list>ul>li span.ga-read_more::before {
+    content: "→ ";
+    font-family: "Serif",-apple-system,system-ui,sans-serif;
+}</style>
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?662d4f74107525a0ad20ea78dc27c62e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+    </head>
+    
+    <body>
+        
+        <div class="container">
+            <header id="ga-header">
+                <div first>
+                    <aside id="ga-brand">
+                        <h1 class="brand"><a class="no-style" href="https://yltang.cn/">原谅糖</a></h1>
+                        <p>清醒的人最荒唐</p>
+                    </aside>
+                </div>
+                <div second id="ga-nav">
+                    <nav class="navs">
+                        <ul><li><a class="ga-highlight" href="https://yltang.cn/" target="_self">首页</a></li><span class="separator">·</span><li><a class="ga-highlight" href="https://yltang.cn/music/" target="_self">音乐</a></li><span class="separator">·</span><li><a class="ga-highlight" href="https://yltang.cn/links/" target="_self">友链</a></li><span class="separator">·</span><li><a class="ga-highlight" href="https://yltang.cn/archives/" target="_self">归档</a></li><span class="separator">·</span><li><a class="ga-highlight" href="https://yltang.cn/about/" target="_self">关于</a></li><span class="separator">·</span><li><a href="#" target="_self" class="search-form-input ga-highlight">搜索</a></li></ul>
+                    </nav>
+                </div>
+            </header>
+            <div class="wrapper">
+                
+<main>    
+    <section class="ga-section ga-content">
+        <article class="yue">
+            <h1 class="ga-post_title">Java 笔记</h1>
+            <span class="ga-post_meta ga-mono">
+                <span>原谅糖</span>
+                <time>
+                    2021-09-04
+                </time>
+                
+                in <a no-style class="category" href="https://yltang.cn/category/%E8%83%A1%E8%AF%8C/">
+                    胡诌
+                </a>
+                
+                
+            </span>
+            <div class="ga-content_body">
+                <h3>JRE 和 JDK</h3>
+<ul>
+<li>JRE：Java 程序的运行时环境，包含 JVM 和运行时所需要的核心类库 。</li>
+<li>JDK：Java 程序开发工具包，包含 JRE 和开发人员使用的工具。</li>
+</ul>
+<h3>编译和运行</h3>
+<ul>
+<li>编译：指将编写的 Java 源文件翻译成 JVM 能认识的 class 字节码文件，javac 编译器会检查程序中是否有错，有错误就会提示，无错误则编译成功。</li>
+<li>运行：指将 class 文件 交给 JVM 运行。</li>
+</ul>
+<h3>基本数据类型</h3>
+<table>
+<thead>
+<tr>
+  <th>数据类型</th>
+  <th>关键字</th>
+  <th>内存占用</th>
+  <th>取值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>字节型</td>
+  <td>byte</td>
+  <td>1个字节</td>
+  <td>-128~127</td>
+</tr>
+<tr>
+  <td>短整型</td>
+  <td>short</td>
+  <td>2个字节</td>
+  <td>-32768~32767</td>
+</tr>
+<tr>
+  <td>整型</td>
+  <td>int（默认）</td>
+  <td>4个字节</td>
+  <td>-2的31次方~2的31次方-1</td>
+</tr>
+<tr>
+  <td>长整型</td>
+  <td>long</td>
+  <td>8个字节</td>
+  <td>-2的63次方~2的63次方-1</td>
+</tr>
+<tr>
+  <td>单精度浮点数</td>
+  <td>float</td>
+  <td>4个字节</td>
+  <td>-3.4028E+38~3.4028E+38</td>
+</tr>
+<tr>
+  <td>双精度浮点数</td>
+  <td>double（默认）</td>
+  <td>8个字节</td>
+  <td>-1.7977E+308~1.7977E+308</td>
+</tr>
+<tr>
+  <td>字符型</td>
+  <td>char</td>
+  <td>2个字节</td>
+  <td>0~65535</td>
+</tr>
+<tr>
+  <td>布尔型</td>
+  <td>boolean</td>
+  <td>1个字节</td>
+  <td>true，false</td>
+</tr>
+</tbody>
+</table>
+<h3>引用数据类型</h3>
+<p>除了八种基本数据类型，其他全都是引用数据类型，如 String。</p><h3>数据类型转换</h3>
+<ol>
+<li>自动转换：从小到大，byte-short-char--&gt;int--&gt;long--&gt;float--&gt;double</li>
+<li>强制转换：从大到小，浮点到整数可能会发生精度损失，int 转 short 可能会发生数据溢出（丢失）</li>
+</ol>
+<p>格式：<code>数据类型 变量名 = (数据类型) 被转数据值;</code></p><h3>ASCII 编码表</h3>
+<table>
+<thead>
+<tr>
+  <th>字符</th>
+  <th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0</td>
+  <td>48</td>
+</tr>
+<tr>
+  <td>A</td>
+  <td>65</td>
+</tr>
+<tr>
+  <td>a</td>
+  <td>97</td>
+</tr>
+</tbody>
+</table>
+<p>在 char 类型和 int 类型计算的过程中，char 类型的字符先查询编码表，得到 97，再和 1 求和，结果为 98。char 类型提升为了 int 类型。char 类型内存 2 个字节，int 类型内存 4 个字节。</p><h3>重载和重写</h3>
+<ul>
+<li>重载：方法名相同，参数不同，返回类型可以相同也可以不同，方法体不同。一般用在构造器方法上，JVM 会根据传入参数的不同，选择不同的构造方法。</li>
+<li>重写：方法名，参数，返回类型相同，方法体不同。一般用在子类对父类方法的重写，定义子类自己的行为。</li>
+</ul>
+<h3>Java 内存区域</h3>
+<p>JDK1.8 之后：图片丢失</p><h3>类和对象</h3>
+<ul>
+<li>类：一类事物的属性和行为的集合，抽象的。</li>
+<li>对象：一类事物的具体体现，类的一个实例，具体的。</li>
+</ul>
+<p>类是对象的模板，对象是类的实体。</p><h3>成员变量的默认值</h3>
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>数据类型</th>
+  <th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>基本类型</td>
+  <td>整数</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td></td>
+  <td>浮点</td>
+  <td>0.0</td>
+</tr>
+<tr>
+  <td></td>
+  <td>字符</td>
+  <td>'\u0000'</td>
+</tr>
+<tr>
+  <td></td>
+  <td>布尔类型</td>
+  <td>false</td>
+</tr>
+<tr>
+  <td>引用类型</td>
+  <td>数组、类、接口</td>
+  <td>null</td>
+</tr>
+</tbody>
+</table>
+<h3>面向对象三大基本特征</h3>
+<ul>
+<li>封装：将类的属性和方法隐藏起来，提供一个安全的接口供外界调用，减少耦合。缺点是重复代码，要写很多 getter 和 setter。</li>
+<li>继承：子类继承父类的属性和方法，减少代码重复，提高可维护性，程序更加有层次，缺点是增加了耦合。</li>
+<li>多态：同一个接口或者类，使用不同的实例完成不同的操作。减少耦合，提高可维护性。三个必要条件：继承，重写，父类引用指向子类对象。缺点是无法调用子类特有的方法。</li>
+</ul>
+<h3>Scanner 和 Random</h3>
+<div class="highlight"><pre><span></span><span class="c1">//Scanner</span>
+<span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;请输入第一个数据：&quot;</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+<span class="c1">//Random</span>
+<span class="n">Random</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">();</span>
+<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+</pre></div>
+<h3>Java 集合</h3>
+<ul>
+<li>List：顺序结构，有序可以重复<ul>
+<li>ArrayList：底层是 Object 数组，可以根据 index 快速访问</li>
+<li>LinkedList：底层是双向链表，无法快速访问</li>
+</ul>
+</li>
+<li>Set：不允许重复<ul>
+<li>HashSet：无序唯一，底层基于 HashMap，存储Key</li>
+<li>LinkedHashSet：底层基于 LinkedHashMap</li>
+</ul>
+</li>
+<li>Map：键值对 key&amp;value 形式，key 无法重复，value 可以<ul>
+<li>HashMap：底层是数组+链表，链表用于存储哈希冲突产生的多个 value，JDK1.8 之后链表换成了红黑树，查询效率更高</li>
+<li>LinkedHashMap：在 HashMap 基础上增加了一条双向链表，来保证存取顺序一定</li>
+</ul>
+</li>
+</ul>
+<p>HashSet 检查重复：先计算对象的 hashcode 值，与集合中的其他对象的 hashcode 值比较，如果没有相同的则存储。如果有相同的，则使用 equals() 方法判断是否相同。而 hashcode 并不完美，两个不同的对象，有概率 hashcode 值也相同，所以在需要使用 HashSet 存储对象时，一定要重写 hashcode 和 equals。</p><h3>== 与 equals</h3>
+<ul>
+<li>没有重写 equals() 方法，则两者相同：对基本类型比较值，对引用类型比较内存地址。</li>
+<li>有重写 equals() 方法，则 equals() 比较的是对象的内容是否相等。</li>
+</ul>
+<h3>String 类</h3>
+<p>常用方法：equals，length，charAt，indexOf，toCharArray，replace，split</p><p>字符串类，一旦被创建赋值之后，无法改变，只能将变量指向其他字符串的内存地址。</p><h3>static 关键字</h3>
+<p>可以修饰成员变量和成员方法，被修饰之后的变量和方法属于类，建议直接用类名调用。</p><p>静态代码块：在类加载之后只执行一次。</p><h3>Arrays 类</h3>
+<p>常用方法：toString，sort，asList</p><h3>Math 类</h3>
+<p>常用方法：abs（返回 double 的绝对值），ceil（返回大于等于参数的最小整数），floor（返回小于等于参数最大的整数），round（返回最接近参数的 long，相当于四舍五入）</p><h3>final 关键字</h3>
+<p>可以修饰类、方法和变量</p><ul>
+<li>类：不能被继承</li>
+<li>方法：不能被重写</li>
+<li>变量：基础数据类型不能被重新赋值，引用类型不能再指向另一个对象</li>
+</ul>
+<h3>权限修饰符</h3>
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>public</th>
+  <th>protected</th>
+  <th>default（空）</th>
+  <th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>同类中</td>
+  <td>✔</td>
+  <td>✔</td>
+  <td>✔</td>
+  <td>✔</td>
+</tr>
+<tr>
+  <td>同一包中</td>
+  <td>✔</td>
+  <td>✔</td>
+  <td>✔</td>
+  <td></td>
+</tr>
+<tr>
+  <td>不同包的子类</td>
+  <td>✔</td>
+  <td>✔</td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>不同包中的无关类</td>
+  <td>✔</td>
+  <td></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+<p>public 任意访问，private 只有同类能访问，default 只能在同包中访问，protected 在不同包子类中也能访问。</p><h3>匿名内部类</h3>
+<p>本质是一个带具体实现父类或父接口的匿名的子类对象。</p><div class="highlight"><pre><span></span><span class="k">new</span> <span class="n">父类名或者接口名</span><span class="p">(){</span>     
+    <span class="c1">// 方法重写     </span>
+    <span class="nd">@Override</span>      
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">()</span> <span class="p">{</span>         
+        <span class="c1">// 执行语句     </span>
+    <span class="p">}</span> 
+<span class="p">};</span>
+</pre></div>
+<h3>Object 类</h3>
+<p>Java 中所有类的父类</p><p>常用方法：toString，equals</p><p>Objects 是一个工具类，其中的 equals 方法直接传递两个参数，可以防止空指针异常。</p><h3>Date 类</h3>
+<p>无参构造自动设置系统当前时间的毫秒时刻（距 1970年1月1日00:00:00 GMT），有参构造传递一个 long 值可以自定义时刻。</p><p>常用方法：getTime（把日期对象转换成时间毫秒值）</p><h3>DateFormat 类</h3>
+<p>抽象类，可使用子类 SimpleDateFormat，构造方法传递一个日期格式。</p><table>
+<thead>
+<tr>
+  <th>标识字母（区分大小写）</th>
+  <th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>y</td>
+  <td>年</td>
+</tr>
+<tr>
+  <td>M</td>
+  <td>月</td>
+</tr>
+<tr>
+  <td>d</td>
+  <td>日</td>
+</tr>
+<tr>
+  <td>H</td>
+  <td>时</td>
+</tr>
+<tr>
+  <td>m</td>
+  <td>分</td>
+</tr>
+<tr>
+  <td>s</td>
+  <td>秒</td>
+</tr>
+</tbody>
+</table>
+<p>常用方法：format（将 Date 对象格式化为字符串），parse（将字符串解析为 Date 对象）</p><h3>System 类</h3>
+<p>常用方法：currentTimeMillis（获取当前时间到 1970年1月1日00:00:00 GMT 的毫秒值），arraycopy（将数组中指定的数据拷贝到另一个数组中）</p><h3>StringBuilder 类</h3>
+<p>为了解决 String 类无法修改造成的效率问题。</p><p>无参构造创建一个空的 StringBuilder 容器，有参构造创建一个StringBuilder 容器，传递一个字符串进去。</p><p>常用方法：append（在循环中效率比 + 更高），toString（将 StringBuilder 对象转换成 String 对象）</p><h3>包装类</h3>
+<p>基本类型效率高，但是功能少，Java 提供了基本类型对应的包装类，实现更多功能。</p><table>
+<thead>
+<tr>
+  <th>基本类型</th>
+  <th>对应的包装类（位于java.lang包中）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>byte</td>
+  <td>Byte</td>
+</tr>
+<tr>
+  <td>short</td>
+  <td>Short</td>
+</tr>
+<tr>
+  <td>int</td>
+  <td><strong>Integer</strong></td>
+</tr>
+<tr>
+  <td>long</td>
+  <td>Long</td>
+</tr>
+<tr>
+  <td>float</td>
+  <td>Float</td>
+</tr>
+<tr>
+  <td>double</td>
+  <td>Double</td>
+</tr>
+<tr>
+  <td>char</td>
+  <td><strong>Character</strong></td>
+</tr>
+<tr>
+  <td>boolean</td>
+  <td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>装箱：从基本类型转换成对应的包装类对象</li>
+<li>拆箱：从包装类对象转换成对应的基本类型</li>
+</ul>
+<p>JDK1.5 开始，装箱和拆箱可以自动完成。</p><h3>基本类型和字符串之间的转换</h3>
+<p>基本类型转换成字符串直接拼接：+&quot;&quot;</p><p>字符串转换成对应的基本类型使用对应包装类的 praseXxx 方法</p><h3>Collection 集合</h3>
+<p>所有单列集合（List 和 Set）的根接口</p><p>常用方法：add，remove，contains，isEmpty，size</p><h3>Iterator 接口</h3>
+<p>构造方法获取一个集合对应的迭代器</p><p>常用方法：next（返回下一个元素），hasNext（返回是否还有元素）</p><p>增强 for 的原理是迭代器</p><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="n">元素的数据类型</span>  <span class="n">变量</span> <span class="p">:</span> <span class="n">Collection集合or数组</span><span class="p">){</span> 
+    <span class="c1">//写操作代码</span>
+<span class="p">}</span>
+</pre></div>
+<h3>泛型</h3>
+<p>集合里可以存储不同类型的对象，但是没必要，一般都是同类型的。如果传递了不同的类型，取出时会发生强转异常。</p><p>可以在类或方法中预支地使用未知的类型，将运行时异常转移到了编译时期。</p><h3>常见的数据类型</h3>
+<p>栈，队列，数组，链表，二叉树</p><h3>Collections 工具类</h3>
+<p>常用方法：addAll，shuffle（打乱顺序），sort（排序，按指定规则排序）</p><h3>comparable 和 comparator 的区别</h3>
+<ul>
+<li>comparable 接口下有一个 compareTo(Object obj) 方法用来排序。用于在类中定义排序方法。</li>
+<li>comparator 接口下有一个 compare(Object obj1, Object obj2) 方法用来排序。用于在匿名内部类中重写排序方法。</li>
+</ul>
+<h3>Throwable 类</h3>
+<ul>
+<li>Error：严重错误，无法通过修改代码处理的错误</li>
+<li>Exception：表示异常，可以通过修改代码纠正使程序继续运行</li>
+</ul>
+<p>常用方法：printStackTrace，getMessage</p><h3>Exception 分类</h3>
+<p>编译期异常（如日期格式化异常）和运行时异常（数学异常）</p><p>异常处理：</p><ul>
+<li>throw 直接抛出给调用者</li>
+<li>throws 声明异常给调用者不处理</li>
+<li>try...catch 捕获异常</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">{</span>      
+    <span class="n">编写可能会出现异常的代码</span> 
+<span class="p">}</span><span class="k">catch</span><span class="p">(</span><span class="n">异常类型</span>  <span class="n">e</span><span class="p">){</span>      
+    <span class="n">处理异常的代码</span>      
+        <span class="c1">//记录日志/打印异常信息/继续抛出异常 </span>
+<span class="p">}</span><span class="n">ﬁnally</span><span class="p">{</span>
+    <span class="n">最终一定执行的代码</span>
+        <span class="c1">//当在 try 块或 catch 块中遇到 return 语句时，finally 语句块将在方法返回之前被执行。</span>
+        <span class="c1">//以下情况，ﬁnally 不会被执行：</span>
+        <span class="c1">//1.在 finally 语句块第一行发生了异常。 因为在其他行，finally 块还是会得到执行</span>
+    	<span class="c1">//2.在前面的代码中用了 System.exit(int)已退出程序。 exit 是带参函数 ；若该语句在异常语句之后，finally 会执行</span>
+    	<span class="c1">//3.程序所在的线程死亡。</span>
+    	<span class="c1">//4.关闭 CPU。</span>
+<span class="p">}</span>
+</pre></div>
+<ul>
+<li></li>
+</ul>
+<p>可以捕获多个异常，子异常在父异常上方</p><h3>并发和并行</h3>
+<ul>
+<li>并发：多个事件在同一个时间段发生</li>
+<li>并行：多个事件在同一时刻发生</li>
+</ul>
+<h3>线程和进程</h3>
+<ul>
+<li>进程：是指程序的一次执行过程，是系统运行的基本单位。</li>
+<li>线程：是进程中的一个执行单元，一个进程可以产生多个线程。</li>
+</ul>
+<h3>线程的几种状态</h3>
+<p>new，runnable，blocked，waiting，timewaiting，terminated</p><h3>创建线程的方法</h3>
+<ol>
+<li>定义Runnable接口的实现类，并重写该接口的run()方法，该run()方法的方法体同样是该线程的线程执行体。</li>
+<li>创建Runnable实现类的实例，并以此实例作为Thread的target来创建Thread对象，该Thread对象才是真正的线程对象。</li>
+<li>调用线程对象的start()方法来启动线程。</li>
+</ol>
+<h3>Thread 和 Runnable 的区别</h3>
+<p>实现 Runnable 接口比继承 Thread 类更好：</p><ol>
+<li>适合多个相同的程序代码的线程去共享同一个资源。</li>
+<li>可以避免java中的单继承的局限性。</li>
+<li>增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。</li>
+<li>线程池只能放入实现Runable或Callable类线程，不能直接放入继承Thread的类。</li>
+</ol>
+<h3>为什么我们调用 start() 方法时会执行 run() 方法，为什么我们不能直接调用 run() 方法？</h3>
+<p>调用 start 方法方可启动线程并使线程进入就绪状态，而 run 方法只是 thread 的一个普通方法调用，还是在主线程里执行。</p><h3>synchronized 关键字</h3>
+<p>保证被它修饰过的方法或者代码块在同一时刻只有一个线程执行</p><div class="highlight"><pre><span></span><span class="kd">synchronized</span><span class="p">(</span><span class="n">同步锁</span><span class="p">){</span>      
+    <span class="n">需要同步操作的代码</span> 
+<span class="p">}</span>
+<span class="c1">//锁对象可以是任意类型，多个线程对象要使用同一把锁</span>
+
+<span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">method</span><span class="p">(){</span>     
+    <span class="n">可能会产生线程安全问题的代码</span>   
+<span class="p">}</span>
+<span class="c1">//当有执行该方法的线程时，其他线程无法使用此方法</span>
+</pre></div>
+<h3>说说 sleep() 方法和 wait() 方法区别和共同点?</h3>
+<ul>
+<li>sleep 方法不会释放锁，wait 方法会释放锁</li>
+<li>除非使用 wait(long timeout) 方法传递一个时间，否则 wait() 无法自动苏醒，需要其他线程调用 notify</li>
+<li>wait 用于线程间通信，sleep 用于暂停执行</li>
+<li>都可以暂停线程的执行</li>
+</ul>
+<h3>使用线程池的步骤</h3>
+<ol>
+<li>创建线程池</li>
+<li>创建 Runnable 接口子类对象</li>
+<li>提交 Runnable 接口子类对象</li>
+<li>关闭线程池</li>
+</ol>
+<h3>File 类</h3>
+<ul>
+<li>绝对路径：从盘符开始的路径</li>
+<li>相对路径：相对于项目目录的路径</li>
+</ul>
+<p>常用方法：exist，isDirectory，isFile，createNewFile（当且仅当该名称的文件不存在时，创建一个新的空文件），delete，mkdir（创建此File表示的目录），mkdir（创建此File表示的目录以及任何必需但不存在的父目录），list（返回一个String数组，表示该File目录中所有的子文件或目录），listFiles（返回一个File数组，表示该File目录中所有的子文件或目录）</p><h3>递归</h3>
+<p>指在当前方法内调用自己的这种现象</p><ul>
+<li>直接递归自身调用自身</li>
+<li>间接递归可以A方法调用B方法，B方法调用C方法，C方法调用A方法</li>
+</ul>
+<p>递归一定要有限定条件，保证递归能够停下，并且递归次数不能过多，否则会发生栈内存溢出。构造方法禁止递归。</p><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DiGuiDemo</span> <span class="p">{</span>    
+    <span class="c1">//计算n的阶乘，使用递归完成        </span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>         
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>        
+        <span class="c1">// 调用求阶乘的方法            </span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">getValue</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>        
+        <span class="c1">// 输出结果</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;阶乘为:&quot;</span><span class="o">+</span> <span class="n">value</span><span class="p">);</span>     <span class="p">}</span> 
+    <span class="cm">/*           </span>
+<span class="cm">    通过递归算法实现.         </span>
+<span class="cm">    参数列表:int          </span>
+<span class="cm">    返回值类型: int        </span>
+<span class="cm">    */</span>        
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getValue</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>        
+        <span class="c1">// 1的阶乘为1            </span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>             
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>         
+        <span class="p">}</span>        
+        <span class="cm">/*             </span>
+<span class="cm">        n不为1时,方法返回 n! = n*(n‐1)!              </span>
+<span class="cm">        递归调用getValue方法        </span>
+<span class="cm">        */</span>            
+        <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">getValue</span><span class="p">(</span><span class="n">n</span> <span class="err">‐</span> <span class="mi">1</span><span class="p">);</span>     
+    <span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DiGuiDemo3</span> <span class="p">{</span>     
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>         
+        <span class="c1">// 创建File对象         </span>
+        <span class="n">File</span> <span class="n">dir</span>  <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;D:\\aaa&quot;</span><span class="p">);</span>        
+        <span class="c1">// 调用打印目录方法            </span>
+        <span class="n">printDir</span><span class="p">(</span><span class="n">dir</span><span class="p">);</span>     
+    <span class="p">}</span>       
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printDir</span><span class="p">(</span><span class="n">File</span> <span class="n">dir</span><span class="p">)</span> <span class="p">{</span>        
+        <span class="c1">// 获取子文件和目录            </span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">files</span> <span class="o">=</span> <span class="n">dir</span><span class="p">.</span><span class="na">listFiles</span><span class="p">();</span>                 
+        <span class="c1">// 循环打印            </span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">File</span> <span class="n">file</span> <span class="p">:</span> <span class="n">files</span><span class="p">)</span> <span class="p">{</span>             
+            <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">isFile</span><span class="p">())</span> <span class="p">{</span>                
+                <span class="c1">// 是文件，判断文件名并输出文件绝对路径</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;.java&quot;</span><span class="p">))</span> <span class="p">{</span>                     
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;文件名:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">());</span>                 
+                <span class="p">}</span>             
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>                 
+                <span class="c1">// 是目录，继续遍历,形成递归                 </span>
+                <span class="n">printDir</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>             
+            <span class="p">}</span>         
+        <span class="p">}</span>     
+    <span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+<h3>文件过滤器</h3>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DiGuiDemo4</span> <span class="p">{</span>     
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>         
+        <span class="n">File</span> <span class="n">dir</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">&quot;D:\\aaa&quot;</span><span class="p">);</span>         
+        <span class="n">printDir2</span><span class="p">(</span><span class="n">dir</span><span class="p">);</span>     
+    <span class="p">}</span>        
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">printDir2</span><span class="p">(</span><span class="n">File</span> <span class="n">dir</span><span class="p">)</span> <span class="p">{</span>        
+        <span class="c1">// 匿名内部类方式,创建过滤器子类对象  </span>
+        <span class="n">File</span><span class="o">[]</span> <span class="n">files</span> <span class="o">=</span> <span class="n">dir</span><span class="p">.</span><span class="na">listFiles</span><span class="p">(</span><span class="k">new</span> <span class="n">FileFilter</span><span class="p">()</span> <span class="p">{</span>             
+        <span class="nd">@Override</span>             
+            <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">accept</span><span class="p">(</span><span class="n">File</span> <span class="n">pathname</span><span class="p">)</span> <span class="p">{</span>                 
+                <span class="k">return</span> <span class="n">pathname</span><span class="p">.</span><span class="na">getName</span><span class="p">().</span><span class="na">endsWith</span><span class="p">(</span><span class="s">&quot;.java&quot;</span><span class="p">)</span><span class="o">||</span><span class="n">pathname</span><span class="p">.</span><span class="na">isDirectory</span><span class="p">();</span>             
+
+            <span class="p">}</span>         
+        <span class="p">});</span>        
+        <span class="c1">// 循环打印            </span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">File</span> <span class="n">file</span> <span class="p">:</span> <span class="n">files</span><span class="p">)</span> <span class="p">{</span>             
+            <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">isFile</span><span class="p">())</span> <span class="p">{</span>                 
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;文件名:&quot;</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">getAbsolutePath</span><span class="p">());</span>             
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>                 
+                <span class="n">printDir2</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>             
+            <span class="p">}</span>         
+        <span class="p">}</span>     
+    <span class="p">}</span> 
+<span class="p">}</span>
+</pre></div>
+<h3>字节流</h3>
+<h4>字节输出流 OutputStream</h4>
+<p>常用方法：close（完成操作之后必须执行），flush，write</p><h5>文件输出流 FileOutputStream</h5>
+<p>构造方法传递 File 对象或者 String 路径创建文件输出流，加一个 true 可追加数据</p><p>Windows 换行符号：<code>\r\n</code></p><p>Unix 换行符号：<code>\n</code></p><h4>字节输入流 InputStream</h4>
+<p>常用方法：close（完成操作之后必须执行），read（读取字节时会自动提升为int类型）</p><h5>文件输入流 FileInputStream</h5>
+<p>构造方法传递 File 对象或者 String 路径创建文件输入流</p><h3>字符流</h3>
+<p>中文字符占用多个字节存储，所以使用字符流处理文本文件更方便。使用系统默认的字符编码和默认字节缓冲区。字符流无法处理图片视频等非文本文件。</p><p>FileWriter 与 FileOutputStream 不同， 如果不关闭，数据只是保存到缓冲区，并未保存到文件。</p><p>在 close 执行之后，流对象无法继续使用写出别的内容，所以必须在 close 之前执行 flush 方法。</p><p>在实际开发中，IO 异常一定要处理。</p><h3>缓冲流</h3>
+<p>对四个基本流的增强，在创建流对象时，创建一个内置的默认大小的缓冲区数组，通过缓冲区读写，减少系统 IO 次数，提高读写效率。</p><h4>字节缓冲流：BufferedInputStream，BufferedOutputStream</h4>
+<div class="highlight"><pre><span></span><span class="c1">// 创建字节缓冲输入流 </span>
+<span class="n">BufferedInputStream</span> <span class="n">bis</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedInputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;bis.txt&quot;</span><span class="p">));</span> 
+<span class="c1">// 创建字节缓冲输出流 </span>
+<span class="n">BufferedOutputStream</span> <span class="n">bos</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">&quot;bos.txt&quot;</span><span class="p">));</span>
+</pre></div>
+<p>读取时 read 传递一个 byte 数组，效率更高。</p><h4>字符缓冲流：BufferedReader，BufferedWriter</h4>
+<div class="highlight"><pre><span></span><span class="c1">// 创建字符缓冲输入流 </span>
+<span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="p">(</span><span class="s">&quot;br.txt&quot;</span><span class="p">));</span> 
+<span class="c1">// 创建字符缓冲输出流 </span>
+<span class="n">BufferedWriter</span> <span class="n">bw</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="p">(</span><span class="k">new</span> <span class="n">FileWriter</span><span class="p">(</span><span class="s">&quot;bw.txt&quot;</span><span class="p">));</span>
+</pre></div>
+<p>特有方法：readLine（读取一行文字），newLine（写一行分隔符）</p><h3>转换流</h3>
+<p>是字节与字符间的桥梁</p><p>InputStreamReader 类：Reader 的子类，读取字节解码为字符。</p><div class="highlight"><pre><span></span><span class="n">InputStreamReader</span> <span class="n">isr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;in.txt&quot;</span><span class="p">));</span> <span class="n">InputStreamReader</span> <span class="n">isr2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InputStreamReader</span><span class="p">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;in.txt&quot;</span><span class="p">)</span> <span class="p">,</span> <span class="s">&quot;GBK&quot;</span><span class="p">);</span>
+</pre></div>
+<p>OutputStreamWriter 类：Writer 的子类，读取字符编码为字节。</p><div class="highlight"><pre><span></span><span class="n">OutputStreamWriter</span> <span class="n">isr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">&quot;out.txt&quot;</span><span class="p">));</span> <span class="n">OutputStreamWriter</span> <span class="n">isr2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OutputStreamWriter</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">&quot;out.txt&quot;</span><span class="p">)</span> <span class="p">,</span> <span class="s">&quot;GBK&quot;</span><span class="p">);</span>
+</pre></div>
+<h3>序列化</h3>
+<p>对象序列化，用一个字节序列表示一个对象，字节序列中存储对象的数据，类型和属性等信息，可以写出到文件，持久化存储。反之，还可以从文件中读取字节序列，重构对象，称为反序列化。</p><p>ObjectOutputStream 类</p><div class="highlight"><pre><span></span><span class="n">FileOutputStream</span> <span class="n">fileOut</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">&quot;employee.txt&quot;</span><span class="p">);</span> <span class="n">ObjectOutputStream</span> <span class="n">out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">fileOut</span><span class="p">);</span>
+</pre></div>
+<p>一个对象想要序列化，必须实现 Serializable 接口，对象内部的所有属性必须可序列化，如果有某个属性不需要序列化，可使用 transient 关键字修饰。</p><p>常用方法： writeObject（将指定的对象写出）</p><p>ObjectInputStream 类：</p><div class="highlight"><pre><span></span><span class="n">FileInputStream</span> <span class="n">fileIn</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">&quot;employee.txt&quot;</span><span class="p">);</span> <span class="n">ObjectInputStream</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="p">(</span><span class="n">fileIn</span><span class="p">);</span>
+</pre></div>
+<p>常用方法：readObject</p><ul>
+<li>如果能找到类对应的 class 文件，则反序列化成功，如果没有，则会抛出 ClassNotFoundException  异常。</li>
+<li>如果找到的 class 文件在序列化对象之后发生了修改，则反序列化失败，抛出  InvalidClassException 异常。</li>
+</ul>
+<p>Serializable 提供了序列版本号的功能，验证序列化对象和类的版本是否一致。</p><div class="highlight"><pre><span></span><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="p">;</span> 
+<span class="c1">//指定1L，即使修改过类，反序列化也不会抛异常报错</span>
+</pre></div>
+<h3>TCP/IP 协议</h3>
+<p>应用层，传输层，网络层，数据链路层，物理层</p><p>TCP 面向连接，三次握手：</p><ul>
+<li>客户端向服务器发出请求，等待服务器确认</li>
+<li>服务器向客户端发回一个相应，通知客户端已经收到了请求</li>
+<li>客户端再次向服务器端发送确认信息，确认连接</li>
+</ul>
+<p>UDP 面向无连接，直接传输不需要建立连接</p><p>网络编程三要素：协议，IP 地址，端口号</p><h3>Socket 类</h3>
+<p>Socket：该类实现客户端套接字，套接字指的是两台设备之间通讯的端点。</p><p>构造方法</p><div class="highlight"><pre><span></span><span class="n">Socket</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Socket</span><span class="p">(</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">6666</span><span class="p">);</span>
+</pre></div>
+<p>常用方法：getInputStream（返回此套接字的输入流），getOutputStream，close，shutdownOutput（禁用此套接字的输出流）</p><p>ServerSocket 类：这个类实现了服务器套接字，该对象等待通过网络的请求。</p><div class="highlight"><pre><span></span><span class="n">ServerSocket</span> <span class="n">server</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ServerSocket</span><span class="p">(</span><span class="mi">6666</span><span class="p">);</span>
+</pre></div>
+<p>常用方法：accept（侦听并接受连接，返回一个新的 Socket 对象，用于和客户端实现通信）</p><h3>注解</h3>
+<p>注解是给计算机看的，注释是给程序员看的。也叫元数据，一种代码级别的说明。</p><h3>反射</h3>
+<p>将类的各个组成部分封装为其他对象。</p><p>可以在程序运行过程中操作这些对象，可以解耦，提高程序可扩展性。</p><p>获取 class 对象的方式：</p><ul>
+<li>Class.forName(&quot;全类名&quot;)，用于配置文件</li>
+<li>类名.class，用于参数传递</li>
+<li>对象.getClass()，用于对象获取字节码</li>
+</ul>
+<p>同一个字节码文件在一次程序运行过程中只会被加载一次。</p><p>class 对象功能：获取成员变量 Field，获取构造方法 Constructor，获取成员方法 Method，获取全类名</p><h3>如何解决无法使用最新的 springboot--2.2.6.RELEASE 下载 dependencies</h3>
+<p>到 maven 的 settings.xml 里注释掉 阿里云的 镜像， 让 maven 从官方库下载，就没问题了</p><h3>@RestController 写在类上，导致类中的方法全部返回了 json 数据，无法通过视图解析器跳转到页面</h3>
+<p>@RestController 是包括 @Controller 和 @ResponseBody 的组合注解</p><h3>@Repository 和 @Mapper 注解的区别</h3>
+<p>@Mapper 注解是 Mybatis 的注解，是用来说明这个是一个 Mapper，对应的 xxxMapper.xml 就是来实现这个 Mapper。然后在 service 层使用 @Autowired 注解注入。
+@Repository 注解是 Spring 的注解，使用该注解把当前类注册成一个 bean，再使用 @Autowired注入。
+接口上的 @Mapper 也是可以去掉的，但是要在启动类上加上 @MapperScan(value = {&quot;cn.yltang.mapper&quot;})。这句话的意思是在指定位置扫描 Mapper 类。</p><h3>前置通知</h3>
+<p>切入点方法之前执行</p><h3>MVC 设计模式</h3>
+<p>model模型层，封装数据，实体类；view视图层，jsp，html，展示数据；controller控制层，处理程序逻辑</p><h3>SpringMVC 中返回 String 时 return 的写法</h3>
+<ul>
+<li>return &quot;main&quot;，返回视图。</li>
+<li>需要携带request用forward，不需要则redirect。</li>
+<li>相对路径不带/，绝对路径带/。</li>
+</ul>
+<h3>#{} 与 ${} 的区别</h3>
+<p><code>#{}</code>表示一个占位符号，通过<code>#{}</code>可以实现 preparedStatement 向占位符中设置值，自动进行 java 类型和 jdbc 类型转换， <code>#{}</code>可以有效防止 sql 注入。 <code>#{}</code>可以接收简单类型值或 pojo 属性值。 如果 parameterType 传输单个简单类型值，<code>#{}</code>括号中可以是 value 或其它名称。</p><p><code>${}</code> 表示拼接 sql 串，通过<code>${}</code>可以将 parameterType 传入的内容拼接在 sql 中且不进行 jdbc 类型转换， <code>${}</code>可以接收简单类型值或 pojo 属性值，如果 parameterType 传输单个简单类型值，<code>${}</code>括号中只能是 value。</p><h3>MyBatis 设计模式</h3>
+<p>工厂模式 SqlSessionFactory，代理模式 MapperProxyFactory，构建者模式 SqlSessionFactoryBuilder</p><h3>MyBatis 自动提交事务的设置</h3>
+<div class="highlight"><pre><span></span><span class="nd">@Test</span> 
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSaveUser</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>   
+    <span class="n">User</span> <span class="n">user</span> <span class="o">=</span> <span class="k">new</span> <span class="n">User</span><span class="p">();</span>   
+    <span class="n">user</span><span class="p">.</span><span class="na">setUsername</span><span class="p">(</span><span class="s">&quot;mybatis user09&quot;</span><span class="p">);</span> 
+    <span class="c1">//6.执行操作   </span>
+    <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="n">userDao</span><span class="p">.</span><span class="na">saveUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>   
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>   
+    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>  
+<span class="p">}</span>   
+<span class="nd">@Before</span><span class="c1">//在测试方法执行之前执行  </span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span><span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span> 
+    <span class="c1">//1.读取配置文件   </span>
+    <span class="n">in</span> <span class="o">=</span> <span class="n">Resources</span><span class="p">.</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;SqlMapConfig.xml&quot;</span><span class="p">);</span>   
+    <span class="c1">//2.创建构建者对象   </span>
+    <span class="n">SqlSessionFactoryBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SqlSessionFactoryBuilder</span><span class="p">();</span>   
+    <span class="c1">//3.创建 SqlSession 工厂对象   </span>
+    <span class="n">factory</span> <span class="o">=</span> <span class="n">builder</span><span class="p">.</span><span class="na">build</span><span class="p">(</span><span class="n">in</span><span class="p">);</span>
+    <span class="c1">//4.创建 SqlSession 对象   </span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">factory</span><span class="p">.</span><span class="na">openSession</span><span class="p">();</span> <span class="c1">//传递一个 true 打开自动提交事务</span>
+    <span class="c1">//5.创建 Dao 的代理对象   </span>
+    <span class="n">userDao</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">getMapper</span><span class="p">(</span><span class="n">IUserDao</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>  
+<span class="p">}</span>   
+<span class="nd">@After</span><span class="c1">//在测试方法执行完成之后执行  </span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span><span class="p">{</span>   
+    <span class="c1">//7.提交事务 </span>
+    <span class="n">session</span><span class="p">.</span><span class="na">commit</span><span class="p">();</span> <span class="c1">//自动提交事务则此行不需要</span>
+    <span class="c1">//8.释放资源</span>
+    <span class="n">session</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+    <span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>  
+<span class="p">}</span>
+</pre></div>
+<h3>Mybatis 延迟加载</h3>
+<p>就是在需要用到数据时才进行加载，不需要用到数据时就不加载数据。延迟加载也称懒加载</p><p>好处：先从单表查询，需要时再从关联表去关联查询，大大提高数据库性能，因为查询单表要比关联查询多张表速 度要快。</p><p>坏处：因为只有当需要用到数据时，才会进行数据库查询，这样在大批量数据查询时，因为查询工作也要消耗 时间，所以可能造成用户等待时间变长，造成用户体验下降。</p><div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span> 
+    <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;lazyLoadingEnabled&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;aggressiveLazyLoading&quot;</span> <span class="na">value=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span> 
+<span class="nt">&lt;/settings&gt;</span>
+</pre></div>
+<h3>Mybatis 缓存</h3>
+<ul>
+<li>一级缓存：是 SqlSession 级别的缓存，只要 SqlSession 没有 flush 或 close，它就存在。</li>
+<li>二级缓存：是 mapper 映射级别的缓存，多个 SqlSession 去操作同一个 Mapper 映射的 sql 语句，多个 SqlSession 可以共用二级缓存，二级缓存是跨 SqlSession 的。 需要开启。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span> 
+    <span class="c">&lt;!-- 开启二级缓存的支持 --&gt;</span>  
+    <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;cacheEnabled&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</pre></div>
+<h3>Mybatis 接口绑定</h3>
+<p>与映射文件名相同，基于动态代理来生成对象执行sql</p><h3>Mybatis 和 hebernate</h3>
+<p>h是通过实体映射模型全自动，m是写sql半自动</p><h3>Mybatis 核心对象</h3>
+<p>SqlSessionFactory</p><h3>MySQL5.7 之后修改默认密码</h3>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">USER</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;root密码&#39;</span><span class="p">;</span>
+</pre></div>
+<h3>增删改</h3>
+<div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="err">表名</span><span class="p">(</span><span class="err">列名</span><span class="mi">1</span><span class="p">,</span><span class="err">列名</span><span class="mi">2</span><span class="p">,...</span><span class="err">列名</span><span class="n">n</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="err">值</span><span class="mi">2</span><span class="p">,...</span><span class="err">值</span><span class="n">n</span><span class="p">);</span>
+<span class="k">delete</span> <span class="k">from</span> <span class="err">表名</span> <span class="p">[</span><span class="k">where</span> <span class="err">条件</span><span class="p">]</span>
+<span class="k">update</span> <span class="err">表名</span> <span class="k">set</span> <span class="err">列名</span><span class="mi">1</span> <span class="o">=</span> <span class="err">值</span><span class="mi">1</span><span class="p">,</span> <span class="err">列名</span><span class="mi">2</span> <span class="o">=</span> <span class="err">值</span><span class="mi">2</span><span class="p">,...</span> <span class="p">[</span><span class="k">where</span> <span class="err">条件</span><span class="p">];</span>
+</pre></div>
+<h3>查询</h3>
+<div class="highlight"><pre><span></span><span class="k">select</span>
+    <span class="err">字段列表</span>
+<span class="k">from</span>
+    <span class="err">表名列表</span>
+<span class="k">where</span>
+    <span class="err">条件列表</span>
+<span class="k">group</span> <span class="k">by</span>
+    <span class="err">分组字段</span>
+<span class="k">having</span>
+    <span class="err">分组之后的条件</span>
+<span class="k">order</span> <span class="k">by</span>
+    <span class="err">排序</span>
+<span class="k">limit</span>
+    <span class="err">分页限定</span>
+</pre></div>
+<p>多个字段查询</p><div class="highlight"><pre><span></span><span class="k">select</span> <span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span> <span class="k">from</span> <span class="err">表名；</span>
+</pre></div>
+<p>去除重复</p><div class="highlight"><pre><span></span><span class="k">select</span> <span class="k">distinct</span> <span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span> <span class="k">from</span> <span class="err">表名；</span>
+</pre></div>
+<p>where 条件</p><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">&gt;</span> <span class="err">、</span><span class="o">&lt;</span> <span class="err">、</span><span class="o">&lt;=</span> <span class="err">、</span><span class="o">&gt;=</span> <span class="err">、</span><span class="o">=</span> <span class="err">、</span><span class="o">&lt;&gt;</span>
+<span class="o">*</span> <span class="k">BETWEEN</span><span class="p">...</span><span class="k">AND</span>  
+<span class="o">*</span> <span class="k">IN</span><span class="p">(</span> <span class="err">集合</span><span class="p">)</span> 
+<span class="o">*</span> <span class="k">LIKE</span><span class="err">：模糊查询</span>
+    <span class="o">*</span> <span class="err">占位符：</span>
+    	<span class="o">*</span> <span class="n">_</span><span class="p">:</span><span class="err">单个任意字符</span>
+    	<span class="o">*</span> <span class="o">%</span><span class="err">：多个任意字符</span>
+<span class="o">*</span> <span class="k">IS</span> <span class="k">NULL</span>  
+<span class="o">*</span> <span class="k">and</span>  <span class="err">或</span> <span class="o">&amp;&amp;</span>
+<span class="o">*</span> <span class="k">or</span>  <span class="err">或</span> <span class="o">||</span> 
+<span class="o">*</span> <span class="k">not</span>  <span class="err">或</span> <span class="o">!</span>
+    	
+<span class="c1">-- 查询年龄大于等于20 小于等于30</span>
+    		
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="o">&amp;&amp;</span>  <span class="n">age</span> <span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">AND</span>  <span class="n">age</span> <span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="k">BETWEEN</span> <span class="mi">20</span> <span class="k">AND</span> <span class="mi">30</span><span class="p">;</span>
+    		
+<span class="c1">-- 查询年龄22岁，18岁，25岁的信息</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">22</span> <span class="k">OR</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">18</span> <span class="k">OR</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">25</span><span class="p">);</span>
+    		
+<span class="c1">-- 查询英语成绩为null			</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">english</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
+    		
+<span class="c1">-- 查询英语成绩不为null</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">english</span>  <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
+    		
+<span class="c1">-- 查询姓马的有哪些？ like</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;马%&#39;</span><span class="p">;</span>
+    		
+<span class="c1">-- 查询姓名第二个字是化的人</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="ss">&quot;_化%&quot;</span><span class="p">;</span>
+    		
+<span class="c1">-- 查询姓名是3个字的人</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;___&#39;</span><span class="p">;</span>
+
+<span class="c1">-- 查询姓名中包含德的人</span>
+<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%德%&#39;</span><span class="p">;</span>
+</pre></div>
+<h3>排序分组</h3>
+<div class="highlight"><pre><span></span><span class="c1">-- 排序 ASC：升序，默认的。DESC：降序。 </span>
+<span class="k">order</span> <span class="k">by</span> <span class="err">排序字段</span><span class="mi">1</span> <span class="err">排序方式</span><span class="mi">1</span> <span class="err">，</span>  <span class="err">排序字段</span><span class="mi">2</span> <span class="err">排序方式</span><span class="mi">2</span><span class="p">...</span>
+
+<span class="c1">-- 聚合函数</span>
+<span class="mi">1</span><span class="p">.</span> <span class="k">count</span><span class="err">：计算个数</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="err">一般选择非空的列：主键</span>
+    <span class="mi">2</span><span class="p">.</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="mi">2</span><span class="p">.</span> <span class="k">max</span><span class="err">：计算最大值</span>
+<span class="mi">3</span><span class="p">.</span> <span class="k">min</span><span class="err">：计算最小值</span>
+<span class="mi">4</span><span class="p">.</span> <span class="k">sum</span><span class="err">：计算和</span>
+<span class="mi">5</span><span class="p">.</span> <span class="k">avg</span><span class="err">：计算平均值</span>
+<span class="o">*</span> <span class="err">注意：聚合函数的计算，排除</span><span class="n">null值</span><span class="err">。</span>
+    	<span class="err">解决方案：</span>
+    		<span class="mi">1</span><span class="p">.</span> <span class="err">选择不包含非空的列进行计算</span>
+    		<span class="mi">2</span><span class="p">.</span> <span class="n">IFNULL函数</span>
+
+<span class="c1">-- 分组查询</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="err">语法：</span><span class="k">group</span> <span class="k">by</span> <span class="err">分组字段；</span>
+    <span class="mi">2</span><span class="p">.</span> <span class="err">注意：</span>
+    	<span class="mi">1</span><span class="p">.</span> <span class="err">分组之后查询的字段：分组字段、聚合函数</span>
+    	<span class="mi">2</span><span class="p">.</span> <span class="k">where</span> <span class="err">和</span> <span class="k">having</span> <span class="err">的区别？</span>
+    		<span class="mi">1</span><span class="p">.</span> <span class="k">where</span> <span class="err">在分组之前进行限定，如果不满足条件，则不参与分组。</span><span class="n">having在分组之后进行限定</span><span class="err">，如果不满足结果，则不会被查询出来</span>
+    		<span class="mi">2</span><span class="p">.</span> <span class="k">where</span> <span class="err">后不可以跟聚合函数，</span><span class="n">having可以进行聚合函数的判断</span><span class="err">。</span>
+
+    	<span class="c1">-- 按照性别分组。分别查询男、女同学的平均分</span>
+
+    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
+    	
+    	<span class="c1">-- 按照性别分组。分别查询男、女同学的平均分,人数</span>
+    	
+    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
+    	
+    	<span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组</span>
+    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
+    	
+    	<span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人</span>
+    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
+    	
+    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="err">人数</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span> <span class="k">HAVING</span> <span class="err">人数</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="c1">-- 分页查询</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="err">语法：</span><span class="k">limit</span> <span class="err">开始的索引</span><span class="p">,</span><span class="err">每页查询的条数</span><span class="p">;</span>
+    <span class="mi">2</span><span class="p">.</span> <span class="err">公式：开始的索引</span> <span class="o">=</span> <span class="err">（当前的页码</span> <span class="o">-</span> <span class="mi">1</span><span class="err">）</span> <span class="o">*</span> <span class="err">每页显示的条数</span>
+    	<span class="c1">-- 每页显示3条记录 </span>
+
+    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第1页</span>
+    	
+    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第2页</span>
+    	
+    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第3页</span>
+
+    <span class="mi">3</span><span class="p">.</span> <span class="k">limit</span> <span class="err">是一个</span><span class="n">MySQL</span><span class="ss">&quot;方言&quot;</span>
+</pre></div>
+<h3>约束</h3>
+<div class="highlight"><pre><span></span><span class="o">*</span> <span class="err">概念：</span> <span class="err">对表中的数据进行限定，保证数据的正确性、有效性和完整性。</span>	
+<span class="o">*</span> <span class="err">分类：</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="err">主键约束：</span><span class="k">primary</span> <span class="k">key</span> <span class="err">自增</span> <span class="n">auto_increment</span>
+    <span class="mi">2</span><span class="p">.</span> <span class="err">非空约束：</span><span class="k">not</span> <span class="k">null</span>
+    <span class="mi">3</span><span class="p">.</span> <span class="err">唯一约束：</span><span class="k">unique</span>
+    <span class="mi">4</span><span class="p">.</span> <span class="err">外键约束：</span><span class="k">foreign</span> <span class="k">key</span>
+
+<span class="c1">-- 外键约束</span>
+<span class="k">foreign</span> <span class="k">key</span><span class="p">,</span><span class="err">让表于表产生关系，从而保证数据的正确性。</span>
+    <span class="mi">1</span><span class="p">.</span> <span class="err">在创建表时，可以添加外键</span>
+    	<span class="o">*</span> <span class="err">语法：</span>
+    		<span class="k">create</span> <span class="k">table</span> <span class="err">表名</span><span class="p">(</span>
+    			<span class="p">....</span>
+    			<span class="err">外键列</span>
+    			<span class="k">constraint</span> <span class="err">外键名称</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="err">外键列名称</span><span class="p">)</span> <span class="k">references</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span>
+    		<span class="p">);</span>
+
+    <span class="mi">2</span><span class="p">.</span> <span class="err">删除外键</span>
+    	<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="err">外键名称</span><span class="p">;</span>
+
+    <span class="mi">3</span><span class="p">.</span> <span class="err">创建表之后，添加外键</span>
+    	<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="err">外键名称</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">);</span>
+    <span class="mi">4</span><span class="p">.</span> <span class="err">级联操作</span>
+    	<span class="mi">1</span><span class="p">.</span> <span class="err">添加级联操作</span>
+    		<span class="err">语法：</span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="err">外键名称</span> 
+    				<span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>  <span class="p">;</span>
+    	<span class="mi">2</span><span class="p">.</span> <span class="err">分类：</span>
+    		<span class="mi">1</span><span class="p">.</span> <span class="err">级联更新：</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span> 
+    		<span class="mi">2</span><span class="p">.</span> <span class="err">级联删除：</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
+</pre></div>
+<h3>多表查询</h3>
+<div class="highlight"><pre><span></span><span class="c1">-- 内连接查询：</span>
+    		<span class="mi">1</span><span class="p">.</span> <span class="err">从哪些表中查询数据</span>
+    		<span class="mi">2</span><span class="p">.</span> <span class="err">条件是什么</span>
+    		<span class="mi">3</span><span class="p">.</span> <span class="err">查询哪些字段</span>
+<span class="c1">-- 隐式内连接：使用where条件消除无用数据</span>
+    		<span class="o">*</span> <span class="err">例子：</span>
+    		<span class="c1">-- 查询所有员工信息和对应的部门信息</span>
+
+    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+    		
+    		<span class="c1">-- 查询员工表的名称，性别。部门表的名称</span>
+    		<span class="k">SELECT</span> <span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">name</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+    		
+    		<span class="k">SELECT</span> 
+    			<span class="n">t1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="c1">-- 员工表的姓名</span>
+    			<span class="n">t1</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="c1">-- 员工表的性别</span>
+    			<span class="n">t2</span><span class="p">.</span><span class="n">name</span> <span class="c1">-- 部门表的名称</span>
+    		<span class="k">FROM</span>
+    			<span class="n">emp</span> <span class="n">t1</span><span class="p">,</span>
+    			<span class="n">dept</span> <span class="n">t2</span>
+    		<span class="k">WHERE</span> 
+    			<span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+<span class="c1">-- 显式内连接：</span>
+    		<span class="o">*</span> <span class="err">语法：</span> <span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表名</span><span class="mi">1</span> <span class="p">[</span><span class="k">inner</span><span class="p">]</span> <span class="k">join</span> <span class="err">表名</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件</span>
+    		<span class="o">*</span> <span class="err">例如：</span>
+    			<span class="o">*</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="k">ON</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>	
+    			<span class="o">*</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="k">ON</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>	
+
+<span class="c1">-- 外链接查询：</span>
+    	<span class="mi">1</span><span class="p">.</span> <span class="err">左外连接：</span>
+    		<span class="o">*</span> <span class="err">语法：</span><span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表</span><span class="mi">1</span> <span class="k">left</span> <span class="p">[</span><span class="k">outer</span><span class="p">]</span> <span class="k">join</span> <span class="err">表</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件；</span>
+    		<span class="o">*</span> <span class="err">查询的是左表所有数据以及其交集部分。</span>
+    		<span class="o">*</span> <span class="err">例子：</span>
+    			<span class="c1">-- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称</span>
+    			<span class="k">SELECT</span> 	<span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">t1</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="n">t2</span> <span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+    	<span class="mi">2</span><span class="p">.</span> <span class="err">右外连接：</span>
+    		<span class="o">*</span> <span class="err">语法：</span><span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表</span><span class="mi">1</span> <span class="k">right</span> <span class="p">[</span><span class="k">outer</span><span class="p">]</span> <span class="k">join</span> <span class="err">表</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件；</span>
+    		<span class="o">*</span> <span class="err">查询的是右表所有数据以及其交集部分。</span>
+    		<span class="o">*</span> <span class="err">例子：</span>
+    			<span class="k">SELECT</span> 	<span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="n">t2</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">emp</span> <span class="n">t1</span> <span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+
+<span class="c1">-- 子查询：</span>
+    	<span class="o">*</span> <span class="err">概念：查询中嵌套查询，称嵌套查询为子查询。</span>
+    		<span class="c1">-- 查询工资最高的员工信息</span>
+    		<span class="c1">-- 1 查询最高的工资是多少 9000</span>
+    		<span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">;</span>
+    		
+    		<span class="c1">-- 2 查询员工信息，并且工资等于9000的</span>
+    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span> <span class="o">=</span> <span class="mi">9000</span><span class="p">;</span>
+    		
+    		<span class="c1">-- 一条sql就完成这个操作。子查询</span>
+    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">);</span>
+
+    	<span class="o">*</span> <span class="err">子查询不同情况</span>
+    		<span class="mi">1</span><span class="p">.</span> <span class="err">子查询的结果是单行单列的：</span>
+    			<span class="o">*</span> <span class="err">子查询可以作为条件，使用运算符去判断。</span> <span class="err">运算符：</span> <span class="o">&gt;</span> <span class="o">&gt;=</span> <span class="o">&lt;</span> <span class="o">&lt;=</span> <span class="o">=</span>
+    			<span class="o">*</span> 
+    			<span class="c1">-- 查询员工工资小于平均工资的人</span>
+    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">salary</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">);</span>
+    		<span class="mi">2</span><span class="p">.</span> <span class="err">子查询的结果是多行单列的：</span>
+    			<span class="o">*</span> <span class="err">子查询可以作为条件，使用运算符</span><span class="n">in来判断</span>
+    			<span class="c1">-- 查询&#39;财务部&#39;和&#39;市场部&#39;所有的员工信息</span>
+    			<span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;财务部&#39;</span> <span class="k">OR</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;市场部&#39;</span><span class="p">;</span>
+    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">dept_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">OR</span> <span class="n">dept_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    			<span class="c1">-- 子查询</span>
+    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">dept_id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;财务部&#39;</span> <span class="k">OR</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;市场部&#39;</span><span class="p">);</span>
+
+    		<span class="mi">3</span><span class="p">.</span> <span class="err">子查询的结果是多行多列的：</span>
+    			<span class="o">*</span> <span class="err">子查询可以作为一张虚拟表参与查询</span>
+    			<span class="c1">-- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息</span>
+    			<span class="c1">-- 子查询</span>
+    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="n">t1</span> <span class="p">,(</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span> <span class="o">&gt;</span> <span class="s1">&#39;2011-11-11&#39;</span><span class="p">)</span> <span class="n">t2</span>
+    			<span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span>
+    			
+    			<span class="c1">-- 普通内连接</span>
+    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">t1</span><span class="p">,</span><span class="n">dept</span> <span class="n">t2</span> <span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="k">AND</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span> <span class="o">&gt;</span>  <span class="s1">&#39;2011-11-11&#39;</span>
+</pre></div>
+<h3>事务</h3>
+<p>如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。</p><ul>
+<li>开启事务： start transaction;</li>
+<li>回滚：rollback;</li>
+<li>提交：commit;</li>
+</ul>
+<p>事务提交的两种方式：</p><p>自动提交：mysql就是自动提交的，一条DML(增删改)语句会自动提交一次事务</p><p>手动提交：Oracle 数据库默认是手动提交事务，需要先开启事务，再提交</p><p>事务的四大特征：</p><ol>
+<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
+<li>持久性：当事务提交或回滚后，数据库会持久化的保存数据。</li>
+<li>隔离性：多个事务之间。相互独立。</li>
+<li>一致性：事务操作前后，数据总量不变</li>
+</ol>
+<p>隔离级别：</p><ol>
+<li>read uncommitted：读未提交，产生的问题：脏读、不可重复读、幻读</li>
+<li>read committed：读已提交 （Oracle）产生的问题：不可重复读、幻读</li>
+<li>repeatable read：可重复读 （MySQL默认）产生的问题：幻读</li>
+<li>serializable：串行化，可以解决所有的问题</li>
+</ol>
+<h3>批量将数据库中的某个字段的部分字符串更新</h3>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">T</span> <span class="k">SET</span> <span class="n">images</span> <span class="o">=</span> <span class="k">REPLACE</span><span class="p">(</span><span class="n">images</span><span class="p">,</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+</pre></div>
+<h3>数据表 A 操作三题</h3>
+<table>
+<thead>
+<tr>
+  <th>name</th>
+  <th>class</th>
+  <th>grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>张三</td>
+  <td>英语</td>
+  <td>31</td>
+</tr>
+<tr>
+  <td>张三</td>
+  <td>语文</td>
+  <td>49</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>数学</td>
+  <td>90</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>英语</td>
+  <td>45</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>语文</td>
+  <td>57</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>化学</td>
+  <td>51</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>化学</td>
+  <td>70</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>语文</td>
+  <td>81</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>使用 MySQL 语法。用一个 sql 语句 查询出每门课都小于 60 分的学生姓名</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span>
+    <span class="n">NAME</span>
+<span class="k">FROM</span>
+    <span class="n">A</span>
+<span class="k">GROUP</span> <span class="k">BY</span>
+    <span class="n">NAME</span>
+<span class="k">HAVING</span>
+    <span class="k">max</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span>
+    <span class="n">NAME</span>
+<span class="k">FROM</span>
+    <span class="n">A</span>
+<span class="k">WHERE</span>
+    <span class="n">NAME</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span>
+    	<span class="k">SELECT</span> <span class="k">DISTINCT</span>
+    		<span class="n">NAME</span>
+    	<span class="k">FROM</span>
+    		<span class="n">A</span>
+    	<span class="k">WHERE</span>
+    		<span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">60</span>
+    <span class="p">);</span>
+</pre></div>
+<ol start="2">
+<li>使用 MySQL 语法。用一个 sql 查出出现次数大于 3 次的人名</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span>
+    <span class="n">NAME</span>
+<span class="k">FROM</span>
+    <span class="n">A</span>
+<span class="k">WHERE</span>
+    <span class="n">NAME</span> <span class="k">IN</span> <span class="p">(</span>
+    	<span class="k">SELECT</span>
+    		<span class="n">NAME</span>
+    	<span class="k">FROM</span>
+    		<span class="n">A</span>
+    	<span class="k">GROUP</span> <span class="k">BY</span>
+    		<span class="n">NAME</span>
+    	<span class="k">HAVING</span>
+    		<span class="k">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+    <span class="p">);</span>
+</pre></div>
+<ol start="3">
+<li>使用 MySQL 语法。用一个 sql 查询以下结果，如果分数 0-59 展示不及格 , 60-79 展示良好，80-100 展示优秀</li>
+</ol>
+<table>
+<thead>
+<tr>
+  <th>name</th>
+  <th>class</th>
+  <th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>张三</td>
+  <td>英语</td>
+  <td>不及格</td>
+</tr>
+<tr>
+  <td>张三</td>
+  <td>语文</td>
+  <td>不及格</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>数学</td>
+  <td>优秀</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>英语</td>
+  <td>不及格</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>语文</td>
+  <td>不及格</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>化学</td>
+  <td>不及格</td>
+</tr>
+<tr>
+  <td>王五</td>
+  <td>化学</td>
+  <td>良好</td>
+</tr>
+<tr>
+  <td>李四</td>
+  <td>语文</td>
+  <td>优秀</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span><span class="k">class</span><span class="p">,</span>
+    <span class="p">(</span>
+    	<span class="k">CASE</span>
+    	<span class="k">WHEN</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="k">THEN</span>
+    		<span class="s1">&#39;优秀&#39;</span>
+    	<span class="k">WHEN</span> <span class="n">grade</span> <span class="o">&lt;=</span> <span class="mi">59</span> <span class="k">THEN</span>
+    		<span class="s1">&#39;不及格&#39;</span>
+    	<span class="k">ELSE</span>
+    		<span class="s1">&#39;良好&#39;</span>
+    	<span class="k">END</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="k">level</span>
+<span class="k">FROM</span>
+    <span class="n">A</span><span class="p">;</span>
+</pre></div>
+<h3>合并两个数据表</h3>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T1</span> <span class="k">union</span> <span class="k">all</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T2</span><span class="p">;</span>
+</pre></div>
+<h3>输出数据表中相同的字段</h3>
+<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T</span> <span class="k">where</span> <span class="n">name</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">T</span> <span class="k">group</span> <span class="k">by</span> <span class="n">name</span> <span class="k">having</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+<h3>在已有的表中添加列（字段）</h3>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">people</span> <span class="k">ADD</span> <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</pre></div>
+<h3>删除数据表 A 中 name 字段为空的数据</h3>
+<div class="highlight"><pre><span></span><span class="k">delete</span> <span class="k">from</span> <span class="n">A</span> <span class="k">where</span> <span class="n">name</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
+</pre></div>
+<h3>查询科目语文分数大于 90 分的学生列表</h3>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">A</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">from</span> <span class="n">B</span> <span class="k">WHERE</span> <span class="n">score</span><span class="o">&gt;</span><span class="mi">90</span> <span class="k">and</span> <span class="n">SUBJECT</span> <span class="o">=</span> <span class="ss">&quot;语文&quot;</span><span class="p">);</span>
+</pre></div>
+<h3>查询名字为张三的所有科目的成绩</h3>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">B</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">from</span> <span class="n">A</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;张三&quot;</span><span class="p">;</span>
+</pre></div>
+<h3>实体类注解</h3>
+<ol>
+<li>表名默认使用类名,驼峰转下划线(只对大写字母进行处理),如<code>UserInfo</code>默认对应的表名为<code>user_info</code>。</li>
+<li>表名可以使用<code>@Table(name = &quot;tableName&quot;)</code>进行指定,对不符合第一条默认规则的可以通过这种方式指定表名.</li>
+<li>字段默认和<code>@Column</code>一样,都会作为表字段,表字段默认为Java对象的<code>Field</code>名字驼峰转下划线形式.</li>
+<li>可以使用<code>@Column(name = &quot;fieldName&quot;)</code>指定不符合第3条规则的字段名</li>
+<li>使用<code>@Transient</code>注解可以忽略字段,添加该注解的字段不会作为表字段使用.如果你的实体类中包含了不是数据库表中的字段，你需要给这个字段加上<code>@Transient</code>注解，这样通用Mapper在处理单表操作时就不会将标注的属性当成表字段处理！</li>
+<li><strong>建议一定是有一个<code>@Id</code>注解作为主键的字段,可以有多个<code>@Id</code>注解的字段作为联合主键.</strong></li>
+<li><strong>默认情况下,实体类中如果不存在包含<code>@Id</code>注解的字段,所有的字段都会作为主键字段进行使用(这种效率极低).</strong></li>
+<li>实体类可以继承使用,可以参考测试代码中的<code>tk.mybatis.mapper.model.UserLogin2</code>类.</li>
+<li>由于基本类型,如int作为实体类字段时会有默认值0,而且无法消除,所以实体类中建议不要使用基本类型.</li>
+<li>主键回显：@GeneratedValue(strategy  = GenerationType.IDENTITY)</li>
+</ol>
+<h3>常用接口方法</h3>
+<h4>基础接口</h4>
+<h5>Select</h5>
+<p>接口：<code>SelectMapper</code>
+方法：<code>List select(T record);</code>
+说明：根据实体中的属性值进行查询，查询条件使用等号</p><p>接口：<code>SelectByPrimaryKeyMapper</code>
+方法：<code>T selectByPrimaryKey(Object key);</code>
+说明：根据主键字段进行查询，方法参数必须包含完整的主键属性，查询条件使用等号</p><p>接口：<code>SelectAllMapper</code>
+方法：<code>List selectAll();</code>
+说明：查询全部结果，select(null)方法能达到同样的效果</p><p>接口：<code>SelectOneMapper</code>
+方法：<code>T selectOne(T record);</code>
+说明：根据实体中的属性进行查询，只能有一个返回值，有多个结果是抛出异常，查询条件使用等号</p><p>接口：<code>SelectCountMapper</code>
+方法：<code>int selectCount(T record);</code>
+说明：根据实体中的属性查询总数，查询条件使用等号</p><h5>Insert</h5>
+<p>接口：<code>InsertMapper</code>
+方法：<code>int insert(T record);</code>
+说明：保存一个实体，null的属性也会保存，不会使用数据库默认值</p><p>接口：<code>InsertSelectiveMapper</code>
+方法：<code>int insertSelective(T record);</code>
+说明：保存一个实体，null的属性不会保存，会使用数据库默认值</p><h5>Update</h5>
+<p>接口：<code>UpdateByPrimaryKeyMapper</code>
+方法：<code>int updateByPrimaryKey(T record);</code>
+说明：根据主键更新实体全部字段，null值会被更新</p><p>接口：<code>UpdateByPrimaryKeySelectiveMapper</code>
+方法：<code>int updateByPrimaryKeySelective(T record);</code>
+说明：根据主键更新属性不为null的值</p><h5>Delete</h5>
+<p>接口：<code>DeleteMapper</code>
+方法：<code>int delete(T record);</code>
+说明：根据实体属性作为条件进行删除，查询条件使用等号</p><p>接口：<code>DeleteByPrimaryKeyMapper</code>
+方法：<code>int deleteByPrimaryKey(Object key);</code>
+说明：根据主键字段进行删除，方法参数必须包含完整的主键属性</p><h5>base 组合接口</h5>
+<p>接口：<code>BaseSelectMapper</code>
+方法：包含上面Select的4个方法</p><p>接口：<code>BaseInsertMapper</code>
+方法：包含上面Insert的2个方法</p><p>接口：<code>BaseUpdateMapper</code>
+方法：包含上面Update的2个方法</p><p>接口：<code>BaseDeleteMapper</code>
+方法：包含上面Delete的2个方法</p><h5>CRUD 组合接口</h5>
+<p>接口：<code>BaseMapper</code>
+方法：继承了base组合接口中的4个组合接口，包含完整的CRUD方法</p><h4>Example 方法</h4>
+<p>接口：<code>SelectByExampleMapper</code>
+方法：<code>List selectByExample(Object example);</code>
+说明：根据Example条件进行查询
+<strong>重点：</strong>这个查询支持通过<code>Example</code>类指定查询列，通过<code>selectProperties</code>方法指定查询列</p><p>接口：<code>SelectCountByExampleMapper</code>
+方法：<code>int selectCountByExample(Object example);</code>
+说明：根据Example条件进行查询总数</p><p>接口：<code>UpdateByExampleMapper</code>
+方法：<code>int updateByExample(@Param(&quot;record&quot;) T record, @Param(&quot;example&quot;) Object example);</code>
+说明：根据Example条件更新实体<code>record</code>包含的全部属性，null值会被更新</p><p>接口：<code>UpdateByExampleSelectiveMapper</code>
+方法：<code>int updateByExampleSelective(@Param(&quot;record&quot;) T record, @Param(&quot;example&quot;) Object example);</code>
+说明：根据Example条件更新实体<code>record</code>包含的不是null的属性值</p><p>接口：<code>DeleteByExampleMapper</code>
+方法：<code>int deleteByExample(Object example);</code>
+说明：根据Example条件删除数据</p><h5>Example 组合接口</h5>
+<p>接口：<code>ExampleMapper</code>
+方法：包含上面Example中的5个方法</p><h4>Condition 方法</h4>
+<p>Condition方法和Example方法作用完全一样，只是为了避免Example带来的歧义，提供的的Condition方法</p><p>接口：<code>SelectByConditionMapper</code>
+方法：<code>List selectByCondition(Object condition);</code>
+说明：根据Condition条件进行查询</p><p>接口：<code>SelectCountByConditionMapper</code>
+方法：<code>int selectCountByCondition(Object condition);</code>
+说明：根据Condition条件进行查询总数</p><p>接口：<code>UpdateByConditionMapper</code>
+方法：<code>int updateByCondition(@Param(&quot;record&quot;) T record, @Param(&quot;example&quot;) Object condition);</code>
+说明：根据Condition条件更新实体<code>record</code>包含的全部属性，null值会被更新</p><p>接口：<code>UpdateByConditionSelectiveMapper</code>
+方法：<code>int updateByConditionSelective(@Param(&quot;record&quot;) T record, @Param(&quot;example&quot;) Object condition);</code>
+说明：根据Condition条件更新实体<code>record</code>包含的不是null的属性值</p><p>接口：<code>DeleteByConditionMapper</code>
+方法：<code>int deleteByCondition(Object condition);</code>
+说明：根据Condition条件删除数据</p><h5>Condition 组合接口</h5>
+<p>接口：<code>ConditionMapper</code>
+方法：包含上面Condition中的5个方法</p><h4>RowBounds</h4>
+<p>默认为<strong>内存分页</strong>，可以配合<a href="http://git.oschina.net/free/Mybatis_PageHelper">PageHelper</a>实现物理分页</p><p>接口：<code>SelectRowBoundsMapper</code>
+方法：<code>List selectByRowBounds(T record, RowBounds rowBounds);</code>
+说明：根据实体属性和RowBounds进行分页查询</p><p>接口：<code>SelectByExampleRowBoundsMapper</code>
+方法：<code>List selectByExampleAndRowBounds(Object example, RowBounds rowBounds);</code>
+说明：根据example条件和RowBounds进行分页查询</p><p>接口：<code>SelectByConditionRowBoundsMapper</code>
+方法：<code>List selectByConditionAndRowBounds(Object condition, RowBounds rowBounds);</code>
+说明：根据example条件和RowBounds进行分页查询，该方法和selectByExampleAndRowBounds完全一样，只是名字改成了Condition</p><h5>RowBounds 组合接口</h5>
+<p>接口：<code>RowBoundsMapper</code>
+方法：包含上面RowBounds中的前两个方法，不包含<code>selectByConditionAndRowBounds</code></p><h4>special 特殊接口</h4>
+<p>这些接口针对部分数据库设计，不是所有数据库都支持</p><p>接口：<code>InsertListMapper</code>
+方法：<code>int insertList(List recordList);</code>
+说明：批量插入，支持批量插入的数据库可以使用，例如MySQL,H2等，另外该接口限制实体包含<code>id</code>属性并且必须为自增列</p><p>接口：<code>InsertUseGeneratedKeysMapper</code>
+方法：<code>int insertUseGeneratedKeys(T record);</code>
+说明：插入数据，限制为实体包含<code>id</code>属性并且必须为自增列，实体配置的主键策略无效</p><h4>MySQL 专用</h4>
+<p>接口：<code>MySqlMapper</code>
+继承方法：<code>int insertList(List recordList);</code>
+继承方法：<code>int insertUseGeneratedKeys(T record);</code>
+说明：该接口不包含方法，继承了special中的<code>InsertListMapper</code>和<code>InsertUseGeneratedKeysMapper</code></p><h3>Jsp 四个作用域九个内置对象</h3>
+<table>
+<thead>
+<tr>
+  <th>名称</th>
+  <th>作用域</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>application</td>
+  <td>在所有应用程序中有效</td>
+</tr>
+<tr>
+  <td>session</td>
+  <td>在当前会话中有效</td>
+</tr>
+<tr>
+  <td>request</td>
+  <td>在当前请求中有效</td>
+</tr>
+<tr>
+  <td>page</td>
+  <td>在当前页面有效</td>
+</tr>
+</tbody>
+</table>
+<p>out，request，response，session，application，pageContext，page，config，exception</p><h3>常用快捷键</h3>
+<table>
+<thead>
+<tr>
+  <th>快捷键</th>
+  <th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Alt+Enter</td>
+  <td>导入包，自动修正代码</td>
+</tr>
+<tr>
+  <td>Ctrl+Y</td>
+  <td>删除光标所在行</td>
+</tr>
+<tr>
+  <td>Ctrl+D</td>
+  <td>复制光标所在行的内容，插入光标位置下面</td>
+</tr>
+<tr>
+  <td>Ctrl+Alt+L</td>
+  <td>格式化代码</td>
+</tr>
+<tr>
+  <td>Ctrl+/</td>
+  <td>单行注释</td>
+</tr>
+<tr>
+  <td>Ctrl+Shift+/</td>
+  <td>选中代码注释，多行注释，再按取消注释</td>
+</tr>
+<tr>
+  <td>Alt+Ins</td>
+  <td>自动生成代码，toString，get，set等方法</td>
+</tr>
+<tr>
+  <td>Alt+Shift+上下箭头</td>
+  <td>移动当前代码行</td>
+</tr>
+</tbody>
+</table>
+<h3>IDEA 将包展开</h3>
+<p>右键项目目录左边竖向的<code>Project</code>按钮，取消勾选<code>Compact Middle Packages</code>。</p><h3>IDEA 设置项目文件夹类型</h3>
+<ul>
+<li><p>在任意需要更改类型的文件夹上右键选择<code>Make Directory as</code>。</p></li>
+<li><p><code>File</code>-<code>Project Structure</code>-<code>Modules</code>。</p></li>
+</ul>
+<h3>IDEA设置背景图片</h3>
+<ul>
+<li><p>双击shift搜索</p></li>
+<li><p>输入image</p></li>
+</ul>
+<h3>Cannot access org.springframework.context.ConfigurableApplicationContext</h3>
+<p>新导入项目，提示报 Cannot access org.springframework.context.ConfigurableApplicationContext的错，百度一番，需删除导入项目自动生成的xxx.iml ，然后刷新下右侧maven tab即可，这里记录一下。</p><h3>创建版本库</h3>
+<p>在需要创建版本库的目录下执行：</p>
+<pre><code>git init
+</code></pre>
+<p>会创建一个隐藏的<code>.git</code>目录。</p><h3>Git 工作流程</h3>
+<ol>
+<li>从远程仓库克隆项目至本地：</li>
+</ol>
+
+<pre><code>git clone https://github.com/luhexyz/site-Blog.git
+</code></pre>
+<ol start="2">
+<li>在本地仓库中<code>checkout</code>代码并修改；</li>
+<li>将代码提交到暂存区：</li>
+</ol>
+
+<pre><code>git add .
+</code></pre>
+<ol start="4">
+<li>提交修改到本地仓库：</li>
+</ol>
+
+<pre><code>git commit -m &quot;message&quot;
+</code></pre>
+<ol start="5">
+<li>将改动推送到远程仓库：</li>
+</ol>
+
+<pre><code>git push
+</code></pre>
+<ol start="6">
+<li>从远程仓库拉取并合并代码：</li>
+</ol>
+
+<pre><code>git pull
+</code></pre>
+<h3>Git 设置代理</h3>
+<p>Windows 下的命令行 CMD 设置代理：</p>
+<pre><code>set https_proxy=http://127.0.0.1:1080
+</code></pre>
+<p>在 Git 里设置代理：</p>
+<pre><code>git config --global https.proxy https://127.0.0.1:1080
+</code></pre>
+<p>取消代理：</p>
+<pre><code>git config --global --unset https.proxy
+</code></pre>
+<p>macOS 下的命令设置代理：</p>
+<pre><code>export https_proxy=socks5://127.0.0.1:7891
+</code></pre>
+<h3>添加子模块</h3>
+
+<pre><code>git submodule add &lt;url&gt; &lt;path&gt;
+</code></pre>
+<p>此时子模块文件夹里是空的，在项目根目录执行：</p>
+<pre><code>git submodule initgit submodule update
+</code></pre>
+<p>或者：</p>
+<pre><code>git submodule update --init --recursive
+</code></pre>
+<p>即可下载子模块代码。</p><p>若在整个项目<code>clone</code>时添加<code>--recursive</code>，也可以下载子模块代码：</p>
+<pre><code>git clone --recursive https://github.com/luhexyz/site-Blog.git
+</code></pre>
+<h3>删除子模块</h3>
+<p><code>Kepler</code>为子模块名。</p>
+<pre><code>git rm --cached Kepler
+rm -rf Kepler
+</code></pre>
+<p>删除<code>.gitmodules</code>文件中的相关模块信息：</p>
+<pre><code>[submodule &quot;Kepler&quot;]
+  path = Kepler
+  url = https://github.com/AlanDecode/Maverick-Theme-Kepler.git
+</code></pre>
+<p>删除<code>.git/config</code>中的相关子模块信息：</p>
+<pre><code>[submodule &quot;Kepler&quot;]
+  url = https://github.com/AlanDecode/Maverick-Theme-Kepler.git
+</code></pre>
+<p>删除<code>.git</code>文件夹中的相关子模块文件：</p>
+<pre><code>rm -rf .git/modules/Kepler
+</code></pre>
+
+            </div>
+        </article>
+        <div id="ga-tags">
+    
+</div>
+    </section>
+
+    
+<section id="ga-content_pager">
+
+    <div class="next">
+        <h3>没有了</h3>
+        <p class="yue">这是最新的文章</p>
+    </div>
+
+
+    <div class="prev">
+        <a class="ga-highlight" href="https://yltang.cn/archives/shopping-and-happy/">只有买自己喜欢的东西才会得到片刻的欢愉</a>
+        <p class="yue">我的购物清单。</p>
+    </div>
+
+</section>
+
+
+    
+
+</main>
+
+                <footer class="ga-mono" id="ga-footer">
+                    <section>
+                        <span id="ga-uptime"></span>
+                        <span class="brand">原谅糖</span>
+                    </section>
+                    <section>
+                        <p class="copyright">
+                            <span>Copyright © 2021 原谅糖</span>
+                            <span>Powered by <a no-style href="https://github.com/AlanDecode/Maverick" target="_blank">Maverick & Galileo</a></span>
+                        </p>
+                        <div class="copyright">
+                            <span class="footer-addon">
+                                <a no-style href="http://www.beian.miit.gov.cn/" target="_blank">苏 ICP 备 20021763 号</a> | <a no-style href="https://www.upyun.com/" target="_blank">又拍云</a>
+                            </span>
+                            <nav class="social-links">
+                                <ul><li><a class="no-style" title="Twitter" href="#" target="_blank"><i class="gi gi-twitter"></i>Twitter</a></li><span class="separator">·</span><li><a class="no-style" title="GitHub" href="#" target="_blank"><i class="gi gi-github"></i>GitHub</a></li><span class="separator">·</span><li><a class="no-style" title="Weibo" href="#" target="_blank"><i class="gi gi-weibo"></i>Weibo</a></li></ul>
+                            </nav>
+                        </div>
+                    </section>
+                    <script>
+                        var site_build_date = "2019-09-03T17:44+08:00"
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/galileo-7c8cea54ab.js"></script>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!--katex-->
+    <script defer src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/katex.min.js"></script>
+    <script>
+    mathOpts = {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "\\[", right: "\\]", display: true},
+            {left: "$", right: "$", display: false},
+            {left: "\\(", right: "\\)", display: false}
+        ]
+    };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/auto-render.min.js" onload="renderMathInElement(document.body, mathOpts);"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/ExSearch/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/assets/ExSearch/ExSearch-493cb9cd89.js"></script>
+
+    
+    </body>
+</html>
