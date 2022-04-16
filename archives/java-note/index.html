@@ -19,7 +19,7 @@
     <script>
         var ExSearchConfig = {
             root: "",
-            api: "https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/77d3c7c6d7499e53d5085b12566ae7cd.json"
+            api: "https://cdn.jsdelivr.net/gh/iyltang/site-Blog@gh-pages/42d9889410417a8713313a056e4a40e8.json"
         }
     </script>
     
@@ -742,7 +742,7 @@ var _hmt = _hmt || [];
 <li>二级缓存：是 mapper 映射级别的缓存，多个 SqlSession 去操作同一个 Mapper 映射的 sql 语句，多个 SqlSession 可以共用二级缓存，二级缓存是跨 SqlSession 的。 需要开启。</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span> 
-    <span class="c">&lt;!-- 开启二级缓存的支持 --&gt;</span>  
+    <span class="cm">&lt;!-- 开启二级缓存的支持 --&gt;</span>  
     <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">&quot;cacheEnabled&quot;</span> <span class="na">value=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/settings&gt;</span>
 </pre></div>
@@ -750,235 +750,235 @@ var _hmt = _hmt || [];
 <p>与映射文件名相同，基于动态代理来生成对象执行sql</p><h3>Mybatis 和 hebernate</h3>
 <p>h是通过实体映射模型全自动，m是写sql半自动</p><h3>Mybatis 核心对象</h3>
 <p>SqlSessionFactory</p><h3>MySQL5.7 之后修改默认密码</h3>
-<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">USER</span> <span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="k">BY</span> <span class="s1">&#39;root密码&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;root密码&#39;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>增删改</h3>
-<div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="err">表名</span><span class="p">(</span><span class="err">列名</span><span class="mi">1</span><span class="p">,</span><span class="err">列名</span><span class="mi">2</span><span class="p">,...</span><span class="err">列名</span><span class="n">n</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="err">值</span><span class="mi">2</span><span class="p">,...</span><span class="err">值</span><span class="n">n</span><span class="p">);</span>
-<span class="k">delete</span> <span class="k">from</span> <span class="err">表名</span> <span class="p">[</span><span class="k">where</span> <span class="err">条件</span><span class="p">]</span>
-<span class="k">update</span> <span class="err">表名</span> <span class="k">set</span> <span class="err">列名</span><span class="mi">1</span> <span class="o">=</span> <span class="err">值</span><span class="mi">1</span><span class="p">,</span> <span class="err">列名</span><span class="mi">2</span> <span class="o">=</span> <span class="err">值</span><span class="mi">2</span><span class="p">,...</span> <span class="p">[</span><span class="k">where</span> <span class="err">条件</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="err">表名</span><span class="p">(</span><span class="err">列名</span><span class="mi">1</span><span class="p">,</span><span class="err">列名</span><span class="mi">2</span><span class="p">,...</span><span class="err">列名</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="err">值</span><span class="mi">2</span><span class="p">,...</span><span class="err">值</span><span class="n">n</span><span class="p">);</span><span class="w"></span>
+<span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="p">[</span><span class="k">where</span><span class="w"> </span><span class="err">条件</span><span class="p">]</span><span class="w"></span>
+<span class="k">update</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="err">列名</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">列名</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">值</span><span class="mi">2</span><span class="p">,...</span><span class="w"> </span><span class="p">[</span><span class="k">where</span><span class="w"> </span><span class="err">条件</span><span class="p">];</span><span class="w"></span>
 </pre></div>
 <h3>查询</h3>
-<div class="highlight"><pre><span></span><span class="k">select</span>
-    <span class="err">字段列表</span>
-<span class="k">from</span>
-    <span class="err">表名列表</span>
-<span class="k">where</span>
-    <span class="err">条件列表</span>
-<span class="k">group</span> <span class="k">by</span>
-    <span class="err">分组字段</span>
-<span class="k">having</span>
-    <span class="err">分组之后的条件</span>
-<span class="k">order</span> <span class="k">by</span>
-    <span class="err">排序</span>
-<span class="k">limit</span>
-    <span class="err">分页限定</span>
+<div class="highlight"><pre><span></span><span class="k">select</span><span class="w"></span>
+<span class="w">    </span><span class="err">字段列表</span><span class="w"></span>
+<span class="k">from</span><span class="w"></span>
+<span class="w">    </span><span class="err">表名列表</span><span class="w"></span>
+<span class="k">where</span><span class="w"></span>
+<span class="w">    </span><span class="err">条件列表</span><span class="w"></span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"></span>
+<span class="w">    </span><span class="err">分组字段</span><span class="w"></span>
+<span class="k">having</span><span class="w"></span>
+<span class="w">    </span><span class="err">分组之后的条件</span><span class="w"></span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"></span>
+<span class="w">    </span><span class="err">排序</span><span class="w"></span>
+<span class="k">limit</span><span class="w"></span>
+<span class="w">    </span><span class="err">分页限定</span><span class="w"></span>
 </pre></div>
-<p>多个字段查询</p><div class="highlight"><pre><span></span><span class="k">select</span> <span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span> <span class="k">from</span> <span class="err">表名；</span>
+<p>多个字段查询</p><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表名；</span><span class="w"></span>
 </pre></div>
-<p>去除重复</p><div class="highlight"><pre><span></span><span class="k">select</span> <span class="k">distinct</span> <span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span> <span class="k">from</span> <span class="err">表名；</span>
+<p>去除重复</p><div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="err">字段名</span><span class="mi">1</span><span class="err">，字段名</span><span class="mi">2</span><span class="p">...</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表名；</span><span class="w"></span>
 </pre></div>
-<p>where 条件</p><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">&gt;</span> <span class="err">、</span><span class="o">&lt;</span> <span class="err">、</span><span class="o">&lt;=</span> <span class="err">、</span><span class="o">&gt;=</span> <span class="err">、</span><span class="o">=</span> <span class="err">、</span><span class="o">&lt;&gt;</span>
-<span class="o">*</span> <span class="k">BETWEEN</span><span class="p">...</span><span class="k">AND</span>  
-<span class="o">*</span> <span class="k">IN</span><span class="p">(</span> <span class="err">集合</span><span class="p">)</span> 
-<span class="o">*</span> <span class="k">LIKE</span><span class="err">：模糊查询</span>
-    <span class="o">*</span> <span class="err">占位符：</span>
-    	<span class="o">*</span> <span class="n">_</span><span class="p">:</span><span class="err">单个任意字符</span>
-    	<span class="o">*</span> <span class="o">%</span><span class="err">：多个任意字符</span>
-<span class="o">*</span> <span class="k">IS</span> <span class="k">NULL</span>  
-<span class="o">*</span> <span class="k">and</span>  <span class="err">或</span> <span class="o">&amp;&amp;</span>
-<span class="o">*</span> <span class="k">or</span>  <span class="err">或</span> <span class="o">||</span> 
-<span class="o">*</span> <span class="k">not</span>  <span class="err">或</span> <span class="o">!</span>
-    	
+<p>where 条件</p><div class="highlight"><pre><span></span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="err">、</span><span class="o">&lt;</span><span class="w"> </span><span class="err">、</span><span class="o">&lt;=</span><span class="w"> </span><span class="err">、</span><span class="o">&gt;=</span><span class="w"> </span><span class="err">、</span><span class="o">=</span><span class="w"> </span><span class="err">、</span><span class="o">&lt;&gt;</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="k">BETWEEN</span><span class="p">...</span><span class="k">AND</span><span class="w">  </span>
+<span class="o">*</span><span class="w"> </span><span class="k">IN</span><span class="p">(</span><span class="w"> </span><span class="err">集合</span><span class="p">)</span><span class="w"> </span>
+<span class="o">*</span><span class="w"> </span><span class="k">LIKE</span><span class="err">：模糊查询</span><span class="w"></span>
+<span class="w">    </span><span class="o">*</span><span class="w"> </span><span class="err">占位符：</span><span class="w"></span>
+<span class="w">    	</span><span class="o">*</span><span class="w"> </span><span class="n">_</span><span class="p">:</span><span class="err">单个任意字符</span><span class="w"></span>
+<span class="w">    	</span><span class="o">*</span><span class="w"> </span><span class="o">%</span><span class="err">：多个任意字符</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w">  </span>
+<span class="o">*</span><span class="w"> </span><span class="k">and</span><span class="w">  </span><span class="err">或</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="k">or</span><span class="w">  </span><span class="err">或</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>
+<span class="o">*</span><span class="w"> </span><span class="k">not</span><span class="w">  </span><span class="err">或</span><span class="w"> </span><span class="o">!</span><span class="w"></span>
+<span class="w">    	</span>
 <span class="c1">-- 查询年龄大于等于20 小于等于30</span>
-    		
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="o">&amp;&amp;</span>  <span class="n">age</span> <span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">20</span> <span class="k">AND</span>  <span class="n">age</span> <span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="k">BETWEEN</span> <span class="mi">20</span> <span class="k">AND</span> <span class="mi">30</span><span class="p">;</span>
-    		
+<span class="w">    		</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="o">&lt;=</span><span class="mi">30</span><span class="p">;</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">30</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询年龄22岁，18岁，25岁的信息</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">22</span> <span class="k">OR</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">18</span> <span class="k">OR</span> <span class="n">age</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">age</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">25</span><span class="p">);</span>
-    		
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="w"></span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="mi">22</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">25</span><span class="p">);</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询英语成绩为null			</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">english</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
-    		
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">english</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询英语成绩不为null</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">english</span>  <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
-    		
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">english</span><span class="w">  </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询姓马的有哪些？ like</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;马%&#39;</span><span class="p">;</span>
-    		
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;马%&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询姓名第二个字是化的人</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="ss">&quot;_化%&quot;</span><span class="p">;</span>
-    		
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;_化%&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
 <span class="c1">-- 查询姓名是3个字的人</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;___&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;___&#39;</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">-- 查询姓名中包含德的人</span>
-<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="k">LIKE</span> <span class="s1">&#39;%德%&#39;</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%德%&#39;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>排序分组</h3>
 <div class="highlight"><pre><span></span><span class="c1">-- 排序 ASC：升序，默认的。DESC：降序。 </span>
-<span class="k">order</span> <span class="k">by</span> <span class="err">排序字段</span><span class="mi">1</span> <span class="err">排序方式</span><span class="mi">1</span> <span class="err">，</span>  <span class="err">排序字段</span><span class="mi">2</span> <span class="err">排序方式</span><span class="mi">2</span><span class="p">...</span>
+<span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="err">排序字段</span><span class="mi">1</span><span class="w"> </span><span class="err">排序方式</span><span class="mi">1</span><span class="w"> </span><span class="err">，</span><span class="w">  </span><span class="err">排序字段</span><span class="mi">2</span><span class="w"> </span><span class="err">排序方式</span><span class="mi">2</span><span class="p">...</span><span class="w"></span>
 
 <span class="c1">-- 聚合函数</span>
-<span class="mi">1</span><span class="p">.</span> <span class="k">count</span><span class="err">：计算个数</span>
-    <span class="mi">1</span><span class="p">.</span> <span class="err">一般选择非空的列：主键</span>
-    <span class="mi">2</span><span class="p">.</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="mi">2</span><span class="p">.</span> <span class="k">max</span><span class="err">：计算最大值</span>
-<span class="mi">3</span><span class="p">.</span> <span class="k">min</span><span class="err">：计算最小值</span>
-<span class="mi">4</span><span class="p">.</span> <span class="k">sum</span><span class="err">：计算和</span>
-<span class="mi">5</span><span class="p">.</span> <span class="k">avg</span><span class="err">：计算平均值</span>
-<span class="o">*</span> <span class="err">注意：聚合函数的计算，排除</span><span class="n">null值</span><span class="err">。</span>
-    	<span class="err">解决方案：</span>
-    		<span class="mi">1</span><span class="p">.</span> <span class="err">选择不包含非空的列进行计算</span>
-    		<span class="mi">2</span><span class="p">.</span> <span class="n">IFNULL函数</span>
+<span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="k">count</span><span class="err">：计算个数</span><span class="w"></span>
+<span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">一般选择非空的列：主键</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="k">max</span><span class="err">：计算最大值</span><span class="w"></span>
+<span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="k">min</span><span class="err">：计算最小值</span><span class="w"></span>
+<span class="mi">4</span><span class="p">.</span><span class="w"> </span><span class="k">sum</span><span class="err">：计算和</span><span class="w"></span>
+<span class="mi">5</span><span class="p">.</span><span class="w"> </span><span class="k">avg</span><span class="err">：计算平均值</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="err">注意：聚合函数的计算，排除</span><span class="n">null值</span><span class="err">。</span><span class="w"></span>
+<span class="w">    	</span><span class="err">解决方案：</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">选择不包含非空的列进行计算</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="n">IFNULL函数</span><span class="w"></span>
 
 <span class="c1">-- 分组查询</span>
-    <span class="mi">1</span><span class="p">.</span> <span class="err">语法：</span><span class="k">group</span> <span class="k">by</span> <span class="err">分组字段；</span>
-    <span class="mi">2</span><span class="p">.</span> <span class="err">注意：</span>
-    	<span class="mi">1</span><span class="p">.</span> <span class="err">分组之后查询的字段：分组字段、聚合函数</span>
-    	<span class="mi">2</span><span class="p">.</span> <span class="k">where</span> <span class="err">和</span> <span class="k">having</span> <span class="err">的区别？</span>
-    		<span class="mi">1</span><span class="p">.</span> <span class="k">where</span> <span class="err">在分组之前进行限定，如果不满足条件，则不参与分组。</span><span class="n">having在分组之后进行限定</span><span class="err">，如果不满足结果，则不会被查询出来</span>
-    		<span class="mi">2</span><span class="p">.</span> <span class="k">where</span> <span class="err">后不可以跟聚合函数，</span><span class="n">having可以进行聚合函数的判断</span><span class="err">。</span>
+<span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">语法：</span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="err">分组字段；</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">注意：</span><span class="w"></span>
+<span class="w">    	</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">分组之后查询的字段：分组字段、聚合函数</span><span class="w"></span>
+<span class="w">    	</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="err">和</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="err">的区别？</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="err">在分组之前进行限定，如果不满足条件，则不参与分组。</span><span class="n">having在分组之后进行限定</span><span class="err">，如果不满足结果，则不会被查询出来</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="err">后不可以跟聚合函数，</span><span class="n">having可以进行聚合函数的判断</span><span class="err">。</span><span class="w"></span>
 
-    	<span class="c1">-- 按照性别分组。分别查询男、女同学的平均分</span>
+<span class="w">    	</span><span class="c1">-- 按照性别分组。分别查询男、女同学的平均分</span>
 
-    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
-    	
-    	<span class="c1">-- 按照性别分组。分别查询男、女同学的平均分,人数</span>
-    	
-    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
-    	
-    	<span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组</span>
-    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span><span class="p">;</span>
-    	
-    	<span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人</span>
-    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span> <span class="k">HAVING</span> <span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
-    	
-    	<span class="k">SELECT</span> <span class="n">sex</span> <span class="p">,</span> <span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="err">人数</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">WHERE</span> <span class="n">math</span> <span class="o">&gt;</span> <span class="mi">70</span> <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">sex</span> <span class="k">HAVING</span> <span class="err">人数</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">;</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="c1">-- 按照性别分组。分别查询男、女同学的平均分,人数</span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sex</span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="c1">--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">math</span><span class="p">),</span><span class="k">COUNT</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="err">人数</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">math</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="k">HAVING</span><span class="w"> </span><span class="err">人数</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">-- 分页查询</span>
-    <span class="mi">1</span><span class="p">.</span> <span class="err">语法：</span><span class="k">limit</span> <span class="err">开始的索引</span><span class="p">,</span><span class="err">每页查询的条数</span><span class="p">;</span>
-    <span class="mi">2</span><span class="p">.</span> <span class="err">公式：开始的索引</span> <span class="o">=</span> <span class="err">（当前的页码</span> <span class="o">-</span> <span class="mi">1</span><span class="err">）</span> <span class="o">*</span> <span class="err">每页显示的条数</span>
-    	<span class="c1">-- 每页显示3条记录 </span>
+<span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">语法：</span><span class="k">limit</span><span class="w"> </span><span class="err">开始的索引</span><span class="p">,</span><span class="err">每页查询的条数</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">公式：开始的索引</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">（当前的页码</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="err">）</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="err">每页显示的条数</span><span class="w"></span>
+<span class="w">    	</span><span class="c1">-- 每页显示3条记录 </span>
 
-    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第1页</span>
-    	
-    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第2页</span>
-    	
-    	<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">student</span> <span class="k">LIMIT</span> <span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span> <span class="c1">-- 第3页</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 第1页</span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 第2页</span>
+<span class="w">    	</span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="c1">-- 第3页</span>
 
-    <span class="mi">3</span><span class="p">.</span> <span class="k">limit</span> <span class="err">是一个</span><span class="n">MySQL</span><span class="ss">&quot;方言&quot;</span>
+<span class="w">    </span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="err">是一个</span><span class="n">MySQL</span><span class="ss">&quot;方言&quot;</span><span class="w"></span>
 </pre></div>
 <h3>约束</h3>
-<div class="highlight"><pre><span></span><span class="o">*</span> <span class="err">概念：</span> <span class="err">对表中的数据进行限定，保证数据的正确性、有效性和完整性。</span>	
-<span class="o">*</span> <span class="err">分类：</span>
-    <span class="mi">1</span><span class="p">.</span> <span class="err">主键约束：</span><span class="k">primary</span> <span class="k">key</span> <span class="err">自增</span> <span class="n">auto_increment</span>
-    <span class="mi">2</span><span class="p">.</span> <span class="err">非空约束：</span><span class="k">not</span> <span class="k">null</span>
-    <span class="mi">3</span><span class="p">.</span> <span class="err">唯一约束：</span><span class="k">unique</span>
-    <span class="mi">4</span><span class="p">.</span> <span class="err">外键约束：</span><span class="k">foreign</span> <span class="k">key</span>
+<div class="highlight"><pre><span></span><span class="o">*</span><span class="w"> </span><span class="err">概念：</span><span class="w"> </span><span class="err">对表中的数据进行限定，保证数据的正确性、有效性和完整性。</span><span class="w">	</span>
+<span class="o">*</span><span class="w"> </span><span class="err">分类：</span><span class="w"></span>
+<span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">主键约束：</span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="err">自增</span><span class="w"> </span><span class="n">auto_increment</span><span class="w"></span>
+<span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">非空约束：</span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"></span>
+<span class="w">    </span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="err">唯一约束：</span><span class="k">unique</span><span class="w"></span>
+<span class="w">    </span><span class="mi">4</span><span class="p">.</span><span class="w"> </span><span class="err">外键约束：</span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"></span>
 
 <span class="c1">-- 外键约束</span>
-<span class="k">foreign</span> <span class="k">key</span><span class="p">,</span><span class="err">让表于表产生关系，从而保证数据的正确性。</span>
-    <span class="mi">1</span><span class="p">.</span> <span class="err">在创建表时，可以添加外键</span>
-    	<span class="o">*</span> <span class="err">语法：</span>
-    		<span class="k">create</span> <span class="k">table</span> <span class="err">表名</span><span class="p">(</span>
-    			<span class="p">....</span>
-    			<span class="err">外键列</span>
-    			<span class="k">constraint</span> <span class="err">外键名称</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="err">外键列名称</span><span class="p">)</span> <span class="k">references</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span>
-    		<span class="p">);</span>
+<span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="err">让表于表产生关系，从而保证数据的正确性。</span><span class="w"></span>
+<span class="w">    </span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">在创建表时，可以添加外键</span><span class="w"></span>
+<span class="w">    	</span><span class="o">*</span><span class="w"> </span><span class="err">语法：</span><span class="w"></span>
+<span class="w">    		</span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="err">表名</span><span class="p">(</span><span class="w"></span>
+<span class="w">    			</span><span class="p">....</span><span class="w"></span>
+<span class="w">    			</span><span class="err">外键列</span><span class="w"></span>
+<span class="w">    			</span><span class="k">constraint</span><span class="w"> </span><span class="err">外键名称</span><span class="w"> </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="err">外键列名称</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span><span class="w"></span>
+<span class="w">    		</span><span class="p">);</span><span class="w"></span>
 
-    <span class="mi">2</span><span class="p">.</span> <span class="err">删除外键</span>
-    	<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">DROP</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="err">外键名称</span><span class="p">;</span>
+<span class="w">    </span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">删除外键</span><span class="w"></span>
+<span class="w">    	</span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="err">外键名称</span><span class="p">;</span><span class="w"></span>
 
-    <span class="mi">3</span><span class="p">.</span> <span class="err">创建表之后，添加外键</span>
-    	<span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="err">外键名称</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">);</span>
-    <span class="mi">4</span><span class="p">.</span> <span class="err">级联操作</span>
-    	<span class="mi">1</span><span class="p">.</span> <span class="err">添加级联操作</span>
-    		<span class="err">语法：</span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="err">表名</span> <span class="k">ADD</span> <span class="k">CONSTRAINT</span> <span class="err">外键名称</span> 
-    				<span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span> <span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span> <span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>  <span class="p">;</span>
-    	<span class="mi">2</span><span class="p">.</span> <span class="err">分类：</span>
-    		<span class="mi">1</span><span class="p">.</span> <span class="err">级联更新：</span><span class="k">ON</span> <span class="k">UPDATE</span> <span class="k">CASCADE</span> 
-    		<span class="mi">2</span><span class="p">.</span> <span class="err">级联删除：</span><span class="k">ON</span> <span class="k">DELETE</span> <span class="k">CASCADE</span>
+<span class="w">    </span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="err">创建表之后，添加外键</span><span class="w"></span>
+<span class="w">    	</span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="err">外键名称</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="mi">4</span><span class="p">.</span><span class="w"> </span><span class="err">级联操作</span><span class="w"></span>
+<span class="w">    	</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">添加级联操作</span><span class="w"></span>
+<span class="w">    		</span><span class="err">语法：</span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="err">外键名称</span><span class="w"> </span>
+<span class="w">    				</span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="err">外键字段名称</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="err">主表名称</span><span class="p">(</span><span class="err">主表列名称</span><span class="p">)</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w">  </span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">分类：</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">级联更新：</span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"> </span>
+<span class="w">    		</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">级联删除：</span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"></span>
 </pre></div>
 <h3>多表查询</h3>
 <div class="highlight"><pre><span></span><span class="c1">-- 内连接查询：</span>
-    		<span class="mi">1</span><span class="p">.</span> <span class="err">从哪些表中查询数据</span>
-    		<span class="mi">2</span><span class="p">.</span> <span class="err">条件是什么</span>
-    		<span class="mi">3</span><span class="p">.</span> <span class="err">查询哪些字段</span>
+<span class="w">    		</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">从哪些表中查询数据</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">条件是什么</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="err">查询哪些字段</span><span class="w"></span>
 <span class="c1">-- 隐式内连接：使用where条件消除无用数据</span>
-    		<span class="o">*</span> <span class="err">例子：</span>
-    		<span class="c1">-- 查询所有员工信息和对应的部门信息</span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">例子：</span><span class="w"></span>
+<span class="w">    		</span><span class="c1">-- 查询所有员工信息和对应的部门信息</span>
 
-    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
-    		
-    		<span class="c1">-- 查询员工表的名称，性别。部门表的名称</span>
-    		<span class="k">SELECT</span> <span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">name</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">,</span><span class="n">dept</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
-    		
-    		<span class="k">SELECT</span> 
-    			<span class="n">t1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="c1">-- 员工表的姓名</span>
-    			<span class="n">t1</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="c1">-- 员工表的性别</span>
-    			<span class="n">t2</span><span class="p">.</span><span class="n">name</span> <span class="c1">-- 部门表的名称</span>
-    		<span class="k">FROM</span>
-    			<span class="n">emp</span> <span class="n">t1</span><span class="p">,</span>
-    			<span class="n">dept</span> <span class="n">t2</span>
-    		<span class="k">WHERE</span> 
-    			<span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">,</span><span class="n">dept</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
+<span class="w">    		</span><span class="c1">-- 查询员工表的名称，性别。部门表的名称</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">emp</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="n">dept</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">,</span><span class="n">dept</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    			</span><span class="n">t1</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="c1">-- 员工表的姓名</span>
+<span class="w">    			</span><span class="n">t1</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span><span class="c1">-- 员工表的性别</span>
+<span class="w">    			</span><span class="n">t2</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="c1">-- 部门表的名称</span>
+<span class="w">    		</span><span class="k">FROM</span><span class="w"></span>
+<span class="w">    			</span><span class="n">emp</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    			</span><span class="n">dept</span><span class="w"> </span><span class="n">t2</span><span class="w"></span>
+<span class="w">    		</span><span class="k">WHERE</span><span class="w"> </span>
+<span class="w">    			</span><span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w"></span>
 <span class="c1">-- 显式内连接：</span>
-    		<span class="o">*</span> <span class="err">语法：</span> <span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表名</span><span class="mi">1</span> <span class="p">[</span><span class="k">inner</span><span class="p">]</span> <span class="k">join</span> <span class="err">表名</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件</span>
-    		<span class="o">*</span> <span class="err">例如：</span>
-    			<span class="o">*</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="k">ON</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>	
-    			<span class="o">*</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="k">ON</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>	
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">语法：</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="err">字段列表</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表名</span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="k">inner</span><span class="p">]</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">表名</span><span class="mi">2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">条件</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">例如：</span><span class="w"></span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">INNER</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w">	</span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dept</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w">	</span>
 
 <span class="c1">-- 外链接查询：</span>
-    	<span class="mi">1</span><span class="p">.</span> <span class="err">左外连接：</span>
-    		<span class="o">*</span> <span class="err">语法：</span><span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表</span><span class="mi">1</span> <span class="k">left</span> <span class="p">[</span><span class="k">outer</span><span class="p">]</span> <span class="k">join</span> <span class="err">表</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件；</span>
-    		<span class="o">*</span> <span class="err">查询的是左表所有数据以及其交集部分。</span>
-    		<span class="o">*</span> <span class="err">例子：</span>
-    			<span class="c1">-- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称</span>
-    			<span class="k">SELECT</span> 	<span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">name</span><span class="o">`</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">t1</span> <span class="k">LEFT</span> <span class="k">JOIN</span> <span class="n">dept</span> <span class="n">t2</span> <span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
-    	<span class="mi">2</span><span class="p">.</span> <span class="err">右外连接：</span>
-    		<span class="o">*</span> <span class="err">语法：</span><span class="k">select</span> <span class="err">字段列表</span> <span class="k">from</span> <span class="err">表</span><span class="mi">1</span> <span class="k">right</span> <span class="p">[</span><span class="k">outer</span><span class="p">]</span> <span class="k">join</span> <span class="err">表</span><span class="mi">2</span> <span class="k">on</span> <span class="err">条件；</span>
-    		<span class="o">*</span> <span class="err">查询的是右表所有数据以及其交集部分。</span>
-    		<span class="o">*</span> <span class="err">例子：</span>
-    			<span class="k">SELECT</span> 	<span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="n">t2</span> <span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">emp</span> <span class="n">t1</span> <span class="k">ON</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span>
+<span class="w">    	</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">左外连接：</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">语法：</span><span class="k">select</span><span class="w"> </span><span class="err">字段列表</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表</span><span class="mi">1</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="p">[</span><span class="k">outer</span><span class="p">]</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">条件；</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">查询的是左表所有数据以及其交集部分。</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">例子：</span><span class="w"></span>
+<span class="w">    			</span><span class="c1">-- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> 	</span><span class="n">t1</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">name</span><span class="o">`</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w"></span>
+<span class="w">    	</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">右外连接：</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">语法：</span><span class="k">select</span><span class="w"> </span><span class="err">字段列表</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表</span><span class="mi">1</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="p">[</span><span class="k">outer</span><span class="p">]</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="err">表</span><span class="mi">2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="err">条件；</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">查询的是右表所有数据以及其交集部分。</span><span class="w"></span>
+<span class="w">    		</span><span class="o">*</span><span class="w"> </span><span class="err">例子：</span><span class="w"></span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> 	</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="p">;</span><span class="w"></span>
 
 <span class="c1">-- 子查询：</span>
-    	<span class="o">*</span> <span class="err">概念：查询中嵌套查询，称嵌套查询为子查询。</span>
-    		<span class="c1">-- 查询工资最高的员工信息</span>
-    		<span class="c1">-- 1 查询最高的工资是多少 9000</span>
-    		<span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">;</span>
-    		
-    		<span class="c1">-- 2 查询员工信息，并且工资等于9000的</span>
-    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span> <span class="o">=</span> <span class="mi">9000</span><span class="p">;</span>
-    		
-    		<span class="c1">-- 一条sql就完成这个操作。子查询</span>
-    		<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span> <span class="o">=</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">);</span>
+<span class="w">    	</span><span class="o">*</span><span class="w"> </span><span class="err">概念：查询中嵌套查询，称嵌套查询为子查询。</span><span class="w"></span>
+<span class="w">    		</span><span class="c1">-- 查询工资最高的员工信息</span>
+<span class="w">    		</span><span class="c1">-- 1 查询最高的工资是多少 9000</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
+<span class="w">    		</span><span class="c1">-- 2 查询员工信息，并且工资等于9000的</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9000</span><span class="p">;</span><span class="w"></span>
+<span class="w">    		</span>
+<span class="w">    		</span><span class="c1">-- 一条sql就完成这个操作。子查询</span>
+<span class="w">    		</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">salary</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">);</span><span class="w"></span>
 
-    	<span class="o">*</span> <span class="err">子查询不同情况</span>
-    		<span class="mi">1</span><span class="p">.</span> <span class="err">子查询的结果是单行单列的：</span>
-    			<span class="o">*</span> <span class="err">子查询可以作为条件，使用运算符去判断。</span> <span class="err">运算符：</span> <span class="o">&gt;</span> <span class="o">&gt;=</span> <span class="o">&lt;</span> <span class="o">&lt;=</span> <span class="o">=</span>
-    			<span class="o">*</span> 
-    			<span class="c1">-- 查询员工工资小于平均工资的人</span>
-    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="n">salary</span> <span class="o">&lt;</span> <span class="p">(</span><span class="k">SELECT</span> <span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span> <span class="k">FROM</span> <span class="n">emp</span><span class="p">);</span>
-    		<span class="mi">2</span><span class="p">.</span> <span class="err">子查询的结果是多行单列的：</span>
-    			<span class="o">*</span> <span class="err">子查询可以作为条件，使用运算符</span><span class="n">in来判断</span>
-    			<span class="c1">-- 查询&#39;财务部&#39;和&#39;市场部&#39;所有的员工信息</span>
-    			<span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;财务部&#39;</span> <span class="k">OR</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;市场部&#39;</span><span class="p">;</span>
-    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">dept_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">OR</span> <span class="n">dept_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-    			<span class="c1">-- 子查询</span>
-    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">dept_id</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="k">WHERE</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;财务部&#39;</span> <span class="k">OR</span> <span class="n">NAME</span> <span class="o">=</span> <span class="s1">&#39;市场部&#39;</span><span class="p">);</span>
+<span class="w">    	</span><span class="o">*</span><span class="w"> </span><span class="err">子查询不同情况</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">1</span><span class="p">.</span><span class="w"> </span><span class="err">子查询的结果是单行单列的：</span><span class="w"></span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span><span class="err">子查询可以作为条件，使用运算符去判断。</span><span class="w"> </span><span class="err">运算符：</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span>
+<span class="w">    			</span><span class="c1">-- 查询员工工资小于平均工资的人</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">salary</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="p">);</span><span class="w"></span>
+<span class="w">    		</span><span class="mi">2</span><span class="p">.</span><span class="w"> </span><span class="err">子查询的结果是多行单列的：</span><span class="w"></span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span><span class="err">子查询可以作为条件，使用运算符</span><span class="n">in来判断</span><span class="w"></span>
+<span class="w">    			</span><span class="c1">-- 查询&#39;财务部&#39;和&#39;市场部&#39;所有的员工信息</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;财务部&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;市场部&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">dept_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"></span>
+<span class="w">    			</span><span class="c1">-- 子查询</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">dept_id</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;财务部&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;市场部&#39;</span><span class="p">);</span><span class="w"></span>
 
-    		<span class="mi">3</span><span class="p">.</span> <span class="err">子查询的结果是多行多列的：</span>
-    			<span class="o">*</span> <span class="err">子查询可以作为一张虚拟表参与查询</span>
-    			<span class="c1">-- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息</span>
-    			<span class="c1">-- 子查询</span>
-    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">dept</span> <span class="n">t1</span> <span class="p">,(</span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="k">WHERE</span> <span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span> <span class="o">&gt;</span> <span class="s1">&#39;2011-11-11&#39;</span><span class="p">)</span> <span class="n">t2</span>
-    			<span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span>
-    			
-    			<span class="c1">-- 普通内连接</span>
-    			<span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">emp</span> <span class="n">t1</span><span class="p">,</span><span class="n">dept</span> <span class="n">t2</span> <span class="k">WHERE</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="k">AND</span> <span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span> <span class="o">&gt;</span>  <span class="s1">&#39;2011-11-11&#39;</span>
+<span class="w">    		</span><span class="mi">3</span><span class="p">.</span><span class="w"> </span><span class="err">子查询的结果是多行多列的：</span><span class="w"></span>
+<span class="w">    			</span><span class="o">*</span><span class="w"> </span><span class="err">子查询可以作为一张虚拟表参与查询</span><span class="w"></span>
+<span class="w">    			</span><span class="c1">-- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息</span>
+<span class="w">    			</span><span class="c1">-- 子查询</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dept</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="p">,(</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">emp</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2011-11-11&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">t2</span><span class="w"></span>
+<span class="w">    			</span><span class="k">WHERE</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">dept_id</span><span class="p">;</span><span class="w"></span>
+<span class="w">    			</span>
+<span class="w">    			</span><span class="c1">-- 普通内连接</span>
+<span class="w">    			</span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">emp</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="n">dept</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">dept_id</span><span class="o">`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="o">`</span><span class="n">id</span><span class="o">`</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="o">`</span><span class="n">join_date</span><span class="o">`</span><span class="w"> </span><span class="o">&gt;</span><span class="w">  </span><span class="s1">&#39;2011-11-11&#39;</span><span class="w"></span>
 </pre></div>
 <h3>事务</h3>
 <p>如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。</p><ul>
@@ -999,7 +999,7 @@ var _hmt = _hmt || [];
 <li>serializable：串行化，可以解决所有的问题</li>
 </ol>
 <h3>批量将数据库中的某个字段的部分字符串更新</h3>
-<div class="highlight"><pre><span></span><span class="k">UPDATE</span> <span class="n">T</span> <span class="k">SET</span> <span class="n">images</span> <span class="o">=</span> <span class="k">REPLACE</span><span class="p">(</span><span class="n">images</span><span class="p">,</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">(</span><span class="n">images</span><span class="p">,</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 <h3>数据表 A 操作三题</h3>
 <table>
@@ -1056,47 +1056,47 @@ var _hmt = _hmt || [];
 <ol>
 <li>使用 MySQL 语法。用一个 sql 语句 查询出每门课都小于 60 分的学生姓名</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span>
-    <span class="n">NAME</span>
-<span class="k">FROM</span>
-    <span class="n">A</span>
-<span class="k">GROUP</span> <span class="k">BY</span>
-    <span class="n">NAME</span>
-<span class="k">HAVING</span>
-    <span class="k">max</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">60</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
+<span class="k">HAVING</span><span class="w"></span>
+<span class="w">    </span><span class="k">max</span><span class="p">(</span><span class="n">grade</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"></span>
 </pre></div>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span>
-    <span class="n">NAME</span>
-<span class="k">FROM</span>
-    <span class="n">A</span>
-<span class="k">WHERE</span>
-    <span class="n">NAME</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span>
-    	<span class="k">SELECT</span> <span class="k">DISTINCT</span>
-    		<span class="n">NAME</span>
-    	<span class="k">FROM</span>
-    		<span class="n">A</span>
-    	<span class="k">WHERE</span>
-    		<span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">60</span>
-    <span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"></span>
+<span class="w">    		</span><span class="n">NAME</span><span class="w"></span>
+<span class="w">    	</span><span class="k">FROM</span><span class="w"></span>
+<span class="w">    		</span><span class="n">A</span><span class="w"></span>
+<span class="w">    	</span><span class="k">WHERE</span><span class="w"></span>
+<span class="w">    		</span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">60</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <ol start="2">
 <li>使用 MySQL 语法。用一个 sql 查出出现次数大于 3 次的人名</li>
 </ol>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span>
-    <span class="n">NAME</span>
-<span class="k">FROM</span>
-    <span class="n">A</span>
-<span class="k">WHERE</span>
-    <span class="n">NAME</span> <span class="k">IN</span> <span class="p">(</span>
-    	<span class="k">SELECT</span>
-    		<span class="n">NAME</span>
-    	<span class="k">FROM</span>
-    		<span class="n">A</span>
-    	<span class="k">GROUP</span> <span class="k">BY</span>
-    		<span class="n">NAME</span>
-    	<span class="k">HAVING</span>
-    		<span class="k">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
-    <span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"></span>
+<span class="w">    </span><span class="n">NAME</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    	</span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">    		</span><span class="n">NAME</span><span class="w"></span>
+<span class="w">    	</span><span class="k">FROM</span><span class="w"></span>
+<span class="w">    		</span><span class="n">A</span><span class="w"></span>
+<span class="w">    	</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"></span>
+<span class="w">    		</span><span class="n">NAME</span><span class="w"></span>
+<span class="w">    	</span><span class="k">HAVING</span><span class="w"></span>
+<span class="w">    		</span><span class="k">COUNT</span><span class="p">(</span><span class="n">NAME</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="w">    </span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <ol start="3">
 <li>使用 MySQL 语法。用一个 sql 查询以下结果，如果分数 0-59 展示不及格 , 60-79 展示良好，80-100 展示优秀</li>
@@ -1152,37 +1152,37 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">name</span><span class="p">,</span><span class="k">class</span><span class="p">,</span>
-    <span class="p">(</span>
-    	<span class="k">CASE</span>
-    	<span class="k">WHEN</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">80</span> <span class="k">THEN</span>
-    		<span class="s1">&#39;优秀&#39;</span>
-    	<span class="k">WHEN</span> <span class="n">grade</span> <span class="o">&lt;=</span> <span class="mi">59</span> <span class="k">THEN</span>
-    		<span class="s1">&#39;不及格&#39;</span>
-    	<span class="k">ELSE</span>
-    		<span class="s1">&#39;良好&#39;</span>
-    	<span class="k">END</span>
-    <span class="p">)</span> <span class="k">as</span> <span class="k">level</span>
-<span class="k">FROM</span>
-    <span class="n">A</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="k">class</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">(</span><span class="w"></span>
+<span class="w">    	</span><span class="k">CASE</span><span class="w"></span>
+<span class="w">    	</span><span class="k">WHEN</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<span class="w">    		</span><span class="s1">&#39;优秀&#39;</span><span class="w"></span>
+<span class="w">    	</span><span class="k">WHEN</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">59</span><span class="w"> </span><span class="k">THEN</span><span class="w"></span>
+<span class="w">    		</span><span class="s1">&#39;不及格&#39;</span><span class="w"></span>
+<span class="w">    	</span><span class="k">ELSE</span><span class="w"></span>
+<span class="w">    		</span><span class="s1">&#39;良好&#39;</span><span class="w"></span>
+<span class="w">    	</span><span class="k">END</span><span class="w"></span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">level</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>合并两个数据表</h3>
-<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T1</span> <span class="k">union</span> <span class="k">all</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T2</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">T1</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">T2</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>输出数据表中相同的字段</h3>
-<div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">T</span> <span class="k">where</span> <span class="n">name</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">T</span> <span class="k">group</span> <span class="k">by</span> <span class="n">name</span> <span class="k">having</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <h3>在已有的表中添加列（字段）</h3>
-<div class="highlight"><pre><span></span><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">people</span> <span class="k">ADD</span> <span class="n">name</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <h3>删除数据表 A 中 name 字段为空的数据</h3>
-<div class="highlight"><pre><span></span><span class="k">delete</span> <span class="k">from</span> <span class="n">A</span> <span class="k">where</span> <span class="n">name</span> <span class="k">is</span> <span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>查询科目语文分数大于 90 分的学生列表</h3>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">A</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">from</span> <span class="n">B</span> <span class="k">WHERE</span> <span class="n">score</span><span class="o">&gt;</span><span class="mi">90</span> <span class="k">and</span> <span class="n">SUBJECT</span> <span class="o">=</span> <span class="ss">&quot;语文&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">in</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">score</span><span class="o">&gt;</span><span class="mi">90</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">SUBJECT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;语文&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 <h3>查询名字为张三的所有科目的成绩</h3>
-<div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">B</span> <span class="k">where</span> <span class="n">id</span> <span class="k">in</span><span class="p">(</span><span class="k">SELECT</span> <span class="n">id</span> <span class="k">from</span> <span class="n">A</span> <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="ss">&quot;张三&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">in</span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;张三&quot;</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 <h3>实体类注解</h3>
 <ol>
@@ -1474,7 +1474,7 @@ rm -rf Kepler
                     </section>
                     <section>
                         <p class="copyright">
-                            <span>Copyright © 2021 原谅糖</span>
+                            <span>Copyright © 2022 原谅糖</span>
                             <span>Powered by <a no-style href="https://github.com/AlanDecode/Maverick" target="_blank">Maverick & Galileo</a></span>
                         </p>
                         <div class="copyright">
