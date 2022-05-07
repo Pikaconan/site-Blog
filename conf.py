@@ -15,7 +15,7 @@ template = {
 }
 enable_jsdelivr = {
     "enabled": True,
-    "repo": "iyltang/site-Blog@gh-pages"
+    "repo": "Pikaconan/site-Blog@gh-pages"
 }
 category_by_folder = True
 
