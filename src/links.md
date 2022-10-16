@@ -11,16 +11,12 @@ comment: false
 **小伙伴们**
 
 [links]
-
-[伍林堂工作室](https://www.wulintang.cn)+(https://yltang.cn/avatar/wulintang.png)
 [Ye's Blog](https://imyee.cn)+(https://yltang.cn/avatar/ye.jpg)
 [自由灵的梦境](https://lemonadorable.gitee.io/)+(https://yltang.cn/avatar/freeling.png)
-[狱杰 'NoteBook](https://yujienb.cn/)+(https://yltang.cn/avatar/yujie.jpeg)
 [Jianger’s Blog](https://jianger.space/)+(https://yltang.cn/avatar/jianger.jpeg)
 [非礼勿言 Yelin’s Blog](https://feiliwuyan.com/)+(https://yltang.cn/avatar/feiliwuyan.jpeg)
 [雁陎的自耕地](https://www.sitstars.com)+(https://yltang.cn/avatar/yanshu.jpg)
 [萌豚 Moechu](https://moechu.cn/)+(https://yltang.cn/avatar/moechu.png)
-[Aicsukの世界](https://www.aicsuk.moe/)+(https://yltang.cn/avatar/aicsuk.jpeg)
 
 [/links]
 
