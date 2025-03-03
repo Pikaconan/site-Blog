@@ -32,7 +32,7 @@ language = 'zh-CN'
 external_links = [
     {
         "name": "Travelling",
-        "url": "https://travellings.link/",
+        "url": "https://www.travellings.cn/go.html",
         "brief": "随机开往一个网站"
     }
 ]
