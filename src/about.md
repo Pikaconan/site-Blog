@@ -18,6 +18,8 @@ comment: false
 - 2019 年 12 月 17 日，迁移至阿里云学生机，使用 [Typecho](http://typecho.org/) 博客程序和 [VOID](https://blog.imalan.cn/archives/247/) 主题。
 - 2020 年 01 月 07 日，使用 [Maverick](https://github.com/AlanDecode/Maverick) 静态博客生成器，默认 [Galileo](https://github.com/AlanDecode/Maverick-Theme-Galileo) 主题，托管和构建于 [GitHub](https://github.com/)，并开启 [又拍云](https://www.upyun.com/) 全站加速。
 - 2020 年 04 月 12 日，购买域名 yltang.cn 并使用至今。
+- 2025 年 08 月 04 日，取消备案，关闭 [又拍云](https://www.upyun.com/) 全站加速，改为 GitHub Pages。
+- 2026 年 06 月 19 日，修改 [Maverick](https://github.com/AlanDecode/Maverick) 和 [Galileo](https://github.com/AlanDecode/Maverick-Theme-Galileo) 的引入方式，修复 Actions 自动部署脚本，以上均使用 Codex 完成。
 
 ### 联系我
 

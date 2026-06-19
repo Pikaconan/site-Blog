@@ -64,23 +64,7 @@ nav = [
     }
 ]
 
-social_links = [
-    {
-        "name": "Twitter",
-        "url": "#",
-        "icon": "gi gi-twitter"
-    },
-    {
-        "name": "GitHub",
-        "url": "#",
-        "icon": "gi gi-github"
-    },
-    {
-        "name": "Weibo",
-        "url": "#",
-        "icon": "gi gi-weibo"
-    }
-]
+social_links = []
 
 head_addon = r'''
 <meta http-equiv="x-dns-prefetch-control" content="on">
@@ -123,6 +107,6 @@ var _hmt = _hmt || [];
 
 '''
 
-footer_addon = '<a no-style href="http://www.beian.miit.gov.cn/" target="_blank">苏 ICP 备 20021763 号</a> | <a no-style href="https://www.upyun.com/" target="_blank">又拍云</a>'
+footer_addon = ''
 
 body_addon = ''
