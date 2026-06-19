@@ -5,6 +5,9 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   build:
 
@@ -45,19 +48,17 @@ jobs:
         cp ./Maverick/cached_imgs/sizeinfo.json ./build_cache
 
     - name: Deploy to GitHub Pages
-      uses: docker://peaceiris/gh-pages:v2
-      env:
-        PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./dist
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        emptyCommits: false
+        personal_token: ${{ secrets.PERSONAL_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./dist
+        allow_empty_commit: false
 
     - name: Save build cache
-      uses: docker://peaceiris/gh-pages:v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PUBLISH_BRANCH: cache
-        PUBLISH_DIR: ./build_cache
+      uses: peaceiris/actions-gh-pages@v4
       with:
-        emptyCommits: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: cache
+        publish_dir: ./build_cache
+        allow_empty_commit: false
